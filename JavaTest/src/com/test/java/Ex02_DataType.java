@@ -33,6 +33,27 @@ public class Ex02_DataType {
 		 
 		 final byte score = 100;
 		 System.out.println(score);
+		 
+		 //국, 영, 수 점수
+		 byte kor1;
+		 byte eng1;
+		 byte math1;
+		 kor1 = 100;
+		 eng1 = 90;
+		 math1 = 80;
+		 
+		 byte kor2 = 100;
+		 byte eng2 = 90;
+		 byte math2 = 80;
+		 
+		 byte kor3 = 100,    //국어점수
+		      eng3 = 90,     //영어점수
+		      math3 = 80;    //수학점수
+		 
+		 System.out.println(kor3);
+		 System.out.println(math3);
+		 
+		 
 	
 		 
 		 
