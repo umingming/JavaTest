@@ -35,9 +35,9 @@ public class Ex02_DataType {
 		 System.out.println(score);
 		 
 		 //국, 영, 수 점수
-		 byte kor1;
-		 byte eng1;
-		 byte math1;
+		 byte kor1;		//국어점수
+		 byte eng1;		//영어점수
+		 byte math1;	//수학점수
 		 kor1 = 100;
 		 eng1 = 90;
 		 math1 = 80;
@@ -53,6 +53,8 @@ public class Ex02_DataType {
 		 System.out.println(kor3);
 		 System.out.println(math3);
 		 
+		 int n1;
+		 int n2;
 		 
 	
 		 
