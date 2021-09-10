@@ -1,7 +1,5 @@
 package com.test.java.homework;
 
-import sun.jvm.hotspot.gc.parallel.PSYoungGen;
-
 public class No1_DataType {
 
 	public static void main(String[] args) {
