@@ -6,9 +6,14 @@ public class No1_DataType {
 		
 		//총 90개
 		
+		//byte------------
+	
+		//내 몸무게
 		byte myWeight;
-		myWeight = 65;
-		System.out.println("내 몸무게: " + myWeight + "kg 입니다");
+		myWeight = 40;
+		System.out.println("내 몸무게: " + myWeight + "kg 입니다.");
+	
+		//랑이
 	}
 
 }
