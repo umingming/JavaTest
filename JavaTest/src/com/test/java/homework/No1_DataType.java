@@ -13,12 +13,12 @@ public class No1_DataType {
 		//1.내 몸무게
 		byte myWeight;
 		myWeight = 40;
-		System.out.println("내 몸무게: " + myWeight + "kg 입니다.");
+		System.out.printf("내 몸무게: %dkg 입니다.\n", myWeight);
 	
 		//2.우리 가족
 		byte myFamily;
 		myFamily = 4;
-		System.out.println("우리 가족: " + myFamily + "명 입니다.");
+		System.out.printf("우리 가족: %d명 입니다.\n", myFamily);
 		
 		//3.내 생월
 		byte birthMonth;
