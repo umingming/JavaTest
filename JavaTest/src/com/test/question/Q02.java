@@ -22,16 +22,17 @@ public class Q02 {
 		//7. 두 번째 숫자 int로 변경
 		//8. 첫 번째 숫자 + 두 번째 숫자 = 결과값 출력하기
 		
+		 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("첫 번째 숫자: ");
-		String num1 = reader.readLine();
+		String input1 = reader.readLine();
 		System.out.print("두 번째 숫자: ");
-		String num2 = reader.readLine();
+		String input2 = reader.readLine();
 		
-		int intNum1 = Integer.parseInt(num1);
-		int intNum2 = Integer.parseInt(num2);
+		int num1 = Integer.parseInt(input1);
+		int num2 = Integer.parseInt(input2);
 		
-		System.out.printf("%s + %s = %d%n", num1, num2, (intNum1 + intNum2) );
+		System.out.printf("%,d + %,d = %,d%n", num1, num2, (num1 + num2) );
 		
 		
 	}
