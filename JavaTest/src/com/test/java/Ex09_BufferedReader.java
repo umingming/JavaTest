@@ -12,7 +12,7 @@ public class Ex09_BufferedReader {
 		 = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("문자 입력: ");
 		int code = reader.read();  //문자 코드값 변환
-		System.out.printf("%c%n",code);
+		System.out.printf("%d%n",code);
 		
 		reader.readLine();
 		
