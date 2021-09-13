@@ -29,6 +29,8 @@ public class Ex09_BufferedReader {
 		String age = reader.readLine();
 		System.out.printf("당신의 나이는 %s살 이군요%n", age);
 		
+//		float = double
+		float f1 = 3.14f;
 		
 		
 		

@@ -17,6 +17,25 @@ public class Ex11_Casting {
 		
 		System.out.println("b2: " + b2);
 		
+		byte m1 = 10;
+		short m2 = 10;
+		int m3 = 10;
+		long m4 = 10;
+		
+		int n1 = 1000;
+		float k1;
+		k1 = n1;
+
+		System.out.println("k1: " + k1);
+		int n2;
+		float k2 = 1000;
+		n2 = (int) k2;
+		System.out.println("k2: " + k2);
+		
+		
+		
+		
+		
 	}
 
 }
