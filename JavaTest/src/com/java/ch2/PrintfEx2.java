@@ -21,6 +21,9 @@ public class PrintfEx2 {
 		System.out.printf("[%20s]%n", url); //[   www.codechobo.com]
 		System.out.printf("[%-20s]%n", url); //[www.codechobo.com   ]
 		System.out.printf("[%.8s]%n", url); //[www.codechobo.com]
+		double d2 = 3.123456789;
+		System.out.printf("%f\n", d2);   	//3.123457 
+		System.out.printf("%.8f\n", d2);  	//3.12345679
 		
 	}
 
