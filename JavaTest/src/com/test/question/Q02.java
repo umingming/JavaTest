@@ -31,7 +31,7 @@ public class Q02 {
 		int intNum1 = Integer.parseInt(num1);
 		int intNum2 = Integer.parseInt(num2);
 		
-		System.out.printf("%s + %s = %d", num1, num2, (intNum1 + intNum2) );
+		System.out.printf("%s + %s = %d%n", num1, num2, (intNum1 + intNum2) );
 		
 		
 	}
