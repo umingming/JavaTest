@@ -13,7 +13,7 @@ public class Q02 {
 		//출력] 5 + 3 = 8
 
 		//설계
-		//1. BufferedLeader 생성.
+		//1. BufferedReader 생성.
 		//2. "첫 번째 숫자: " 출력
 		//3. 첫 번째 숫자 입력
 		//4. "두 번째 숫자: " 출력
