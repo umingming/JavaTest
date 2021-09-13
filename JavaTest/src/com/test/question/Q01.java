@@ -24,7 +24,7 @@ public class Q01 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String year = reader.readLine();
 		int intYear = Integer.parseInt(year);
-		int age = 2021 - 1995 + 1;
+		int age = 2021 - intYear + 1;
 		
 		System.out.printf("%s년생은 올해 %d살 입니다.%n", year, age);
 
