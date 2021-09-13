@@ -44,6 +44,19 @@ public class No_Casting {
 		
 		//3. boolean은 자바에서 형변환 불가능.
 		
+		double d = 1.0e100;
+		float f = (float)d;
+
+		System.out.println(f);
+		double dd = 1.0e50;
+		float ff = (float)dd;
+		System.out.println(ff);
+		float f2 = 9.1234567f;
+		double d1 = 9.1234567;
+		double d2 = (double)f2;
+		System.out.printf("f = %20.18f%n", f2);
+		System.out.printf("d = %20.18f%n", d1);
+		System.out.printf("d2 = %20.18f%n", d2);
 
 	}
 
