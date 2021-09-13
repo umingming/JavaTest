@@ -10,9 +10,25 @@ public class Ex09_BufferedReader {
 		
 		BufferedReader reader 
 		 = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("문자 입력: ");
+		System.out.print("문자 입력: ");
 		int code = reader.read();  //문자 코드값 변환
 		System.out.printf("%c%n",code);
+		
+		reader.readLine();
+		
+		code = reader.read();  //문자 코드값 변환
+		System.out.printf("%c%n",code);
+		
+		
+		System.out.print("이름 입력: ");
+		String name = reader.readLine();  //문자열 입력
+
+		System.out.printf("안녕하세요. %s님.%n", name);
+		
+		System.out.print("나이 입력: ");
+		String age = reader.readLine();
+		System.out.printf("당신의 나이는 %s살 이군요%n", age);
+		
 		
 		
 		
