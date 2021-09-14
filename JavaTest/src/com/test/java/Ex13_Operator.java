@@ -56,6 +56,22 @@ public class Ex13_Operator {
 		System.out.println(str1 == str4);
 		System.out.println(str1.equals(str4));
 		
+		n = 10;
+		n = n + 1;
+		n += 1;
+		++n;
+		
+		n = 10;
+		int sum = 0;     
+		sum = 20 + ++n; //20 + 11;
+		System.out.println("sum: " + sum); //31
+		
+		n = 10;
+		sum = 0;
+		sum = 20 + n++;
+		System.out.println("sum: " + sum); //30
+		
+		
 		
 		
 
