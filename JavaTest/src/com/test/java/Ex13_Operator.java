@@ -71,6 +71,19 @@ public class Ex13_Operator {
 		sum = 20 + n++;
 		System.out.println("sum: " + sum); //30
 		
+		int o = 10;
+		System.out.println(--o - o--);
+		
+		boolean flag = true;
+		String result = flag ? "참" : "거짓";
+		System.out.println(result);
+		
+		//나이 입력
+		int age = 10;
+		result = age >= 19 && age <= 60 ? "성공" : "실패";
+		System.out.printf("입력하신 나이 %d세는 회원 가입 %s입니다.%n", age, result);
+
+		
 		
 		
 		
