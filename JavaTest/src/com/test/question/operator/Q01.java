@@ -10,20 +10,20 @@ public class Q01 {
 
 //		설계>
 //		1. BufferedReader
-//		2. 태어난 년도: 출력
+//		2. 태어난 년도 : 출력
 //		3. 년도 입력
 //		4. 년도를 int로 변환
 //		5. 나이 계산
-//		6. 나이: 출력
+//		6. 나이 : 출력
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("태어난 년도: ");
+		System.out.print("태어난 년도 : ");
 		String input = reader.readLine();
 		
 		int year = Integer.parseInt(input);
 		int age = 2021 - year + 1;
 		
-		System.out.printf("나이: %d%n", age);
+		System.out.printf("나이 : %d%n", age);
 		
 
 	}

@@ -10,17 +10,17 @@ public class Q02 {
 	
 //		설계>
 //		1. BufferedReader
-//		2. 첫 번째 숫자: 출력
+//		2. 첫 번째 숫자 : 출력
 //		3. 첫 번째 숫자(input1) 입력
-//	    4. 두 번째 숫자: 출력
+//	    4. 두 번째 숫자 : 출력
 //	    5. 두 번째 숫자(input2) 입력
 //	    6. 입력 받은 숫자를 int로 변환
 //	    7. input1 +, -, *, /, % input2 = 출력(천단위, 나누기는 소수 첫째 자리까지 표기 )
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("첫 번째 숫자: ");
+		System.out.print("첫 번째 숫자 : ");
 		String input1 = reader.readLine();
-		System.out.print("두 번째 숫자: ");
+		System.out.print("두 번째 숫자 : ");
 		String input2 = reader.readLine();
 		
 		int num1 = Integer.parseInt(input1);
