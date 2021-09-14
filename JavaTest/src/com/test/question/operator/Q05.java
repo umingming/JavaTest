@@ -20,8 +20,10 @@ public class Q05 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("한달 수입 금액(원) : ");
 		String input = reader.readLine();
+		
 		int income = Integer.parseInt(input);
 		double tax = income * 3.3 / 100;
+		
 		System.out.printf("세후 금액(원) : %,d원%n", (int)(income - tax));
 		System.out.printf("세금(원) : %,d원%n", (int)tax);
 		

@@ -23,7 +23,7 @@ public class Q01 {
 		int year = Integer.parseInt(input);
 		int age = 2021 - year + 1;
 		
-		System.out.printf("나이 : %d%n", age);
+		System.out.printf("나이 : %d세%n", age);
 		
 
 	}

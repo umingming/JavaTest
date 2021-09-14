@@ -11,15 +11,18 @@ public class Q07 {
 //		설계>
 //		1. BufferedReader
 //		2. 섭씨(℃) : 출력
-//		3. 온도 입력
-//		4. 온도를 double로 변환
+//		3. 섭씨 온도 입력
+//		4. 섭씨 온도를 double로 변환
+//		5. 화씨 온도 계산
 //		5. 섭씨 ℃는 화씨 ℉입니다. 출력
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("섭씨(℃) : ");
 		String input = reader.readLine();
+		
 		double degreeC = Double.parseDouble(input);
 		double degreeF = degreeC * 1.8 + 32;
+		
 		System.out.printf("섭씨 %,.1f℃는 화씨 %,.1f℉입니다.%n", degreeC, degreeF);
 		
 	}

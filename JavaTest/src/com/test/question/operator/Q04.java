@@ -19,9 +19,11 @@ public class Q04 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("사용자가 페달을 밟은 횟수 : ");
 		String input = reader.readLine();
+		
 		int num = Integer.parseInt(input);
-		double distance = num * 2 * 3.14 * ( 13 * 0.254 );
-		System.out.printf("사용자가 총 %,d회 페달을 밟아 자전거가 총 %,dm를 달렸습니다.%n", num, (int)distance);
+		double distance = num * 3.14 * ( 26 * 0.0254 );
+		
+		System.out.printf("사용자가 총 %,d회 페달을 밟아 자전거가 총 %,.2fm를 달렸습니다.%n", num, distance);
 		
 	}
 

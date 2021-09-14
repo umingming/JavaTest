@@ -27,7 +27,7 @@ public class Q03 {
 		int width = Integer.parseInt(input1);
 		int height = Integer.parseInt(input2);
 		
-		System.out.printf("사각형의 넓이는 %,dcm㎠입니다.%n", width * height );
+		System.out.printf("사각형의 넓이는 %,d㎠입니다.%n", width * height );
 		System.out.printf("사각형의 둘레는 %,dcm입니다.%n", 2 * (width + height));
 		
 	}

@@ -17,6 +17,7 @@ public class Q06 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("문자 입력 : ");
 		int input = reader.read();
+		
 		System.out.printf("소문자 '%c'의 대문자는 '%c'입니다.%n", (char)input, (char)(input-32));
 
 	}
