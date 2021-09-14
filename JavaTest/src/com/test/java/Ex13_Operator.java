@@ -40,6 +40,21 @@ public class Ex13_Operator {
 		System.out.println(100 + 200 + "300");	//300300
 		System.out.println(100 + "200" + 300);	//100200300
 		System.out.println("100" + 200 + 300);	//100200300
+		System.out.println("100" + (200 + 300));	//100500
+		
+		System.out.println(true == true);
+		
+		String str1 = "홍길동";
+		String str2 = "홍길동";
+		String str3 = "아무개";
+		String str4 = "홍";
+		str4 = str4 + "길동";
+		
+		
+		System.out.println(str1 == str2);
+		System.out.println(str2 == str3);
+		System.out.println(str1 == str4);
+		System.out.println(str1.equals(str4));
 		
 		
 		
