@@ -30,6 +30,13 @@ public class Ex13_Operator {
 //		int sum = 60;
 //		sum;
 		
+		int n = 10;
+		//기존 n값에 1을 누적 ; 누적한다.
+		n = n + 1; //11
+		n %= 12;
+		System.out.println(n);
+		
+		
 		
 
 	}
