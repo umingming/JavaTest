@@ -83,6 +83,7 @@ public class Ex13_Operator {
 		result = age >= 19 && age <= 60 ? "성공" : "실패";
 		System.out.printf("입력하신 나이 %d세는 회원 가입 %s입니다.%n", age, result);
 
+		System.out.println(10<3 ? "초딩" : 0);
 		
 		
 		
