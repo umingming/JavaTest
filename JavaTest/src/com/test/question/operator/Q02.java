@@ -7,7 +7,7 @@ public class Q02 {
 
 	public static void main(String[] args) throws Exception{
 //		숫자 2개를 입력 받아 아래의 연산 과정과 연산 결과를 출력하시오.
-//		
+	
 //		설계>
 //		1. BufferedReader
 //		2. 첫 번째 숫자: 출력
