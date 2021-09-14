@@ -7,10 +7,7 @@ public class Q01 {
 
 	public static void main(String[] args) throws Exception{
 //		태어난 년도를 입력 받아 나이를 출력하시오.
-//		태어난 년도:
-//		나이:
-//		조건1. 우리나라 나이로 출력
-//		조건2. 현재 시각은 2021년
+
 //		설계>
 //		1. BufferedReader
 //		2. 태어난 년도: 출력
