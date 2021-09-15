@@ -34,7 +34,8 @@ public class Q08 {
 	private static int getApple(int sunnyDay, int cloudyDay) {
 		int height = sunnyDay * 5 + cloudyDay * 2;
 		int apple = (height - 100) / 10 + 1 ; 
-		return apple;
+		int getApple = apple > 0 ? apple : 0;
+		return getApple;
 	}
 
 }
