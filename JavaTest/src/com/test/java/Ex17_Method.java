@@ -20,8 +20,11 @@ public class Ex17_Method {
 		System.out.printf("%,d + %,d = %,d%n", a, b, a + b);
 		System.out.printf("%,d - %,d = %,d%n", a, b, a - b);
 		System.out.printf("%,d * %,d = %,d%n", a, b, a * b);
-		System.out.printf("%,d / %,d = %,.1f%n", a, b, (double)a / b);
+		System.out.printf("%,d / %,d = %,.f%n", a, b, (double)a / b);
 		System.out.printf("%,d %% %,d = %,d%n", a, b, a % b);
+		
+	}
+	public static void m4(String name, int age) {
 		
 	}
 }
