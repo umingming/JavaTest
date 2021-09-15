@@ -27,9 +27,11 @@ public class Q07 {
 		int num1 = Integer.parseInt(input1);
 		int num2 = Integer.parseInt(input2);
 		System.out.printf("총 소요 시간은 %d분입니다.%n", getTime(num1, num2));
+		System.out.println("======================");
+		System.out.println("평상(0), 출근(1), 퇴근(2)");
 		System.out.print("시간대 : ");
 		String input3 = reader.readLine();
-		int num3 = (input3.equals("평상") ? 3 : (input3.equals("출근") ? 4 : 5) );
+		int num3 = Integer.parseInt(input3);
 		System.out.printf("총 소요 시간은 %d분입니다.%n", getTime(num1, num2, num3));
 	}
 
@@ -39,7 +41,7 @@ public class Q07 {
 	}
 	
 	private static int getTime(int num1, int num2, int num3) {
-		int getTime = num1 * 2 + num2 * num3;
+		int getTime = num1 * 2 + num2 * (3 + num3);
 		return getTime;
 	}
 
