@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 public class Q08 {
 	
 	public static void main(String[] args) throws Exception{
-//		사과 나무 씨앗을 심을 날로부터 특정 시간이 흘렀을 때 사과 총 몇 개가 열리는지 구하느 ㄴ메소드를 선언하시오.
+//		사과 나무 씨앗을 심을 날로부터 특정 시간이 흘렀을 때 사과 총 몇 개가 열리는지 구하는 메소드를 선언하시오.
 		
 //		설계>
 //		1. BuffereReader
