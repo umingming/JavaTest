@@ -9,10 +9,10 @@ public class Q02 {
 		
 //		설계>
 //		1. Calendar.getInstance()로 현재시각 얻기
-//		2. add 메소드로 100일 더하기
+//		2. add로 100일 더하기
 //		3. 백일 : 0000-00-00 출력
 //		4. 현재 시각 초기화
-//		5. add 메소드로 1년 더하기
+//		5. add로 1년 더하기
 //		6. 첫돌 : 0000-00-00 출력
 		
 		Calendar birthday = Calendar.getInstance();
