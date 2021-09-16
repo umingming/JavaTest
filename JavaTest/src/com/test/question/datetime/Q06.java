@@ -15,9 +15,11 @@ public class Q06 {
 //		1. BufferedReader
 //		2. 음식을 받기 원하는 시각 시: 분 : 출력 후 입력 받기
 //		3. 입력 받은 값을 int로 변환
-//		4. Calendar 로 시각 수정
-//		5. 짜장면 전화 시간은 add 이용해 -10 후 짜장면 : 시 분 출력
-//		6. 치킨과 피자도 4번과 같이 반복
+//		4. time 메소드 생성
+//			>현재 시각을 입력받은 값(시, 분)들을 이용해 수정
+//			>입력 값 만큼 시각에서 빼줌 
+//			>메뉴 : 00시 00분 출력
+//		5. time(짜장면, 치킨, 피자)로 호출
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("음식을 받기 원하는 시각");
@@ -29,21 +31,18 @@ public class Q06 {
 		int hour = Integer.parseInt(input1);
 		int min = Integer.parseInt(input2);
 		
+		time(hour, min, 10, "짜장면");
+		time(hour, min, 18, "치킨");
+		time(hour, min, 25, "피자");
+	}
+
+	private static void time(int hour, int min, int call, String menu) {
 		Calendar time = Calendar.getInstance();
 		time.set(Calendar.HOUR_OF_DAY, hour);
 		time.set(Calendar.MINUTE, min);
-		time.add(Calendar.MINUTE, -10);
-		System.out.printf("짜장면 : %d시 %d분%n", time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE));
-		
-		time.set(Calendar.HOUR_OF_DAY, hour);
-		time.set(Calendar.MINUTE, min);
-		time.add(Calendar.MINUTE, -18);
-		System.out.printf("치킨 : %d시 %d분%n", time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE));
+		time.add(Calendar.MINUTE, -call);
 
-		time.set(Calendar.HOUR_OF_DAY, hour);
-		time.set(Calendar.MINUTE, min);
-		time.add(Calendar.MINUTE, -25);
-		System.out.printf("피자 : %d시 %d분%n", time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE));
+		System.out.printf("%s : %d시 %d분%n", menu, time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE));
 	}
 
 }
