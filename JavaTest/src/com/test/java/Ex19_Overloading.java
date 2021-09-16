@@ -56,7 +56,6 @@ public class Ex19_Overloading {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("숫자 입력: ");
 		String input = reader.readLine();
-		int num = Integer.parseInt(input);
-		return num;
+		return Integer.parseInt(input);
 	}
 }

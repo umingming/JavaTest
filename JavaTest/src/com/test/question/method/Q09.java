@@ -9,7 +9,6 @@ public class Q09 {
 		nowTime();
 		nowTime_AMPM();
 		
-
 	}
 
 	private static void nowTime() {

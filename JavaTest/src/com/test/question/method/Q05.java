@@ -26,9 +26,7 @@ public class Q05 {
 	}
 
 	private static String getNumber(int num) {
-		// TODO Auto-generated method stub
-		String result = num % 2 == 0 ? "짝수" : "홀수"; 
-		return result;
+		return num % 2 == 0 ? "짝수" : "홀수"; 
 	}
 
 }
