@@ -16,12 +16,7 @@ public class Q04 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("근무 년수 : ");
 		int year = Integer.parseInt(reader.readLine());
-		
-		ifCase(year);
-		switchCase(year)
-	}
 
-	private static void ifCase(int year) {
 		if (year <= 4) {
 			System.out.printf("%d년차 초급 개발자입니다.%n", year);
 			System.out.printf("앞으로 %d년 더 근무를 하면 중급 개발자가 됩니다.%n", 5 - year);
@@ -35,7 +30,6 @@ public class Q04 {
 			System.out.printf("당신은 %d년 전까지 초급 개발자였습니다.%n", year - 4);
 			System.out.printf("당신은 %d년 전까지 중급 개발자였습니다.%n", year - 9);
 		}
-		
 	}
 
 }

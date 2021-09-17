@@ -11,13 +11,41 @@ public class Q02 {
 //		설계>
 //		1. BufferedReader
 //		2. int로 점수를 입력 받음
-//		3. if문> 0~100 인지 유효성 검사
-//		4. if문> 점수에 따릉 등급 출력
+//		3. if문 메소드 생성
+//			> 0~100 인지 유효성 검사
+//			> 점수에 따른 등급 출력
+//		4. switch문 메소드 생성
+//			>점수에 따른 등급 출력
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("점수 : ");
 		int score = Integer.parseInt(reader.readLine());
 		
+		ifCase(score);
+		switchCase(score);
+	}//main
+
+	private static void switchCase(int score) {
+		switch(score / 10) {
+		case 0, 1, 2, 3, 4, 5 :
+			System.out.println("F");
+		break;
+		case 6 :
+			System.out.println("D");
+			break;
+		case 7 :
+			System.out.println("C");
+			break;
+		case 8 :
+			System.out.println("B");
+			break;
+		case 9, 10 :
+			System.out.println("A");
+		break;
+		}
+	}//switchCase
+
+	private static void ifCase(int score) {
 		if(score>=0 && score<=100) {
 			if (score >= 90) {
 				System.out.println("A");
@@ -33,7 +61,6 @@ public class Q02 {
 		} else {
 			System.out.println("점수가 유효하지 않습니다.");
 		}
-
-	}
+	}//ifCase
 
 }

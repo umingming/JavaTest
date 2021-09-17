@@ -17,8 +17,6 @@ public class Q08 {
 //		4. if문
 //			> 시간의 차가 30분 이내 > 무료 출력
 //			> 시간의 차가 30분 초과 > 10분 마다 2000원 부과하는 멘트 출력
-		
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 		int in = time("들어온 시간");
 		int out = time("나간 시간");
@@ -43,7 +41,6 @@ public class Q08 {
 		System.out.print("분 : ");
 		int min = Integer.parseInt(reader.readLine());
 		
-		int total = hour * 60 + min;
-		return total;
+		return hour * 60 + min;
 	}//time
 }

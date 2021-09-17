@@ -35,19 +35,13 @@ public class Q10 {
 
 	private static void switchCase(int year, int month, int date, int dayOfWeek) throws Exception {
 		switch(dayOfWeek) {
-		case 0 :
-		case 7 :
+		case 0, 7 :
 			System.out.println("입력하신 날짜는 '휴일'입니다.");
 			System.out.println("결과가 없습니다.");
 			break;
-		case 1 :
-		case 2 :
-		case 3 :
-		case 4 : 
-		case 5 :
-		case 6 :
+		case 1, 2, 3, 4, 5, 6 :
 			Calendar cal = Calendar.getInstance();
-			cal.set(year, month - 1, date);
+			cal.set(year, month, date);
 			cal.set(Calendar.DAY_OF_WEEK, 7);
 			System.out.println("입력하신 날짜는 '평일'입니다.");
 			System.out.println("해당 주의 토요일로 이동합니다.");
@@ -57,7 +51,7 @@ public class Q10 {
 	}//switchCase
 
 	private static void ifCase(int year, int month, int date, int dayOfWeek) throws Exception {
-		if(dayOfWeek == 0 && dayOfWeek == 7) {
+		if(dayOfWeek == 0 || dayOfWeek == 7) {
 			System.out.println("입력하신 날짜는 '휴일'입니다.");
 			System.out.println("결과가 없습니다.");
 			
@@ -74,7 +68,6 @@ public class Q10 {
 	private static int date(String date) throws Exception{
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.printf("%s : ", date);
-		int input = Integer.parseInt(reader.readLine());
-		return input;
+		return Integer.parseInt(reader.readLine());
 	}//date
 }

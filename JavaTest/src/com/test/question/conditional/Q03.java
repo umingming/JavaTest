@@ -11,29 +11,43 @@ public class Q03 {
 //		설계>
 //		1. BufferedReader
 //		2. 문자 하나를 입력 받기
-//		3. switch문으로 입력 문자에 따른 단어 출력
+//		3. switch문, if문 메소드 생성> 입력 문자에 따른 단어 출력
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("문자 : ");
 		String input = reader.readLine();
 		
+		ifCase(input);
+		switchCase(input);
+	}//main
+
+	private static void switchCase(String input) {
 		switch (input) {
-		case "f" : 
-		case "F" :
+		case "f", "F" :
 			System.out.println("Father");
 			break;
-		case "m" : 
-		case "M" :
+		case "m", "M" :
 			System.out.println("Mother");
 			break;
-		case "s" : 
-		case "S" :
+		case "s", "S" :
 			System.out.println("Sister");
 			break;
-		case "b" : 
-		case "B" :
+		case "b", "B" :
 			System.out.println("Brother");
 			break;
 		}
-	}
+	}//switchCase
+
+	private static void ifCase(String input) {
+
+		if(input.equals("f") || input.equals("F")) {
+			System.out.println("Father");
+		} else if(input.equals("m") || input.equals("M")) {
+			System.out.println("Mother");
+		} else if(input.equals("s") || input.equals("S")) {
+			System.out.println("Sister");
+		} else if(input.equals("b") || input.equals("B")) {
+			System.out.println("Brother");
+		}
+	}//ifCase
 }

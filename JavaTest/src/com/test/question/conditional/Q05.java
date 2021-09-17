@@ -64,8 +64,7 @@ public class Q05 {
 	private static String input(String str) throws Exception {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.printf("%s : ", str);
-		String input = reader.readLine();
-		return input;
+		return reader.readLine();
 	}
 
 }
