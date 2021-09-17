@@ -26,7 +26,7 @@ public class Q08 {
 			System.out.println("주차 요금은 무료 입니다.");
 		} else if (difference > 30){
 			System.out.printf("주차 요금은 %,d원 입니다."
-					, ( ( difference - 30 ) / 10 + 1) * 2000);
+					, ( ( difference - 30 ) / 10 ) * 2000);
 		} else {
 			System.out.println("시간을 다시 입력해주세요.");
 		}

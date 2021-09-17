@@ -16,6 +16,7 @@ public class Q02 {
 //			> 점수에 따른 등급 출력
 //		4. switch문 메소드 생성
 //			>점수에 따른 등급 출력
+			
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("점수 : ");

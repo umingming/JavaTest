@@ -14,7 +14,7 @@ public class Q10 {
 //			> BufferedReader
 //			> int로 입력 받고 리턴
 //		2. int 변수의 값으로 date(년, 월, 일) 호출 
-//		3. Calendar 이용해 날짜로 수정하기
+//		3. Calendar 이용해 날짜 수정하기
 //		4. DAY_OF_WEEK로 몇 번째 요일인지 구하기
 //		5. if문과 switch문 메소드 생성
 //			> 0 or 7 > 휴일

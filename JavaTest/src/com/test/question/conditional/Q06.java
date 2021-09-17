@@ -12,7 +12,7 @@ public class Q06 {
 //		1. BufferedReader
 //		2. int로 문자를 입력 받음.
 //		3. if문> 대문자->소문자, 소문자->대문자로 변환해 출력
-
+		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("문자 : ");
 		int ch = reader.read();
