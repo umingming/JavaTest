@@ -15,8 +15,11 @@ public class Ex23_if {
 		 */
 		//m1();
 		m3();
-		
-		
+		/*
+		일반적인 프로그래밍 언어
+		조건문의 조건식은 일반적으로  boolean 사용, boolean 이 아니어도 사용 가능함
+		자바는 무조건 boolean
+		 */
 
 	}
 
