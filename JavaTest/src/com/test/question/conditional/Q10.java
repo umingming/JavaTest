@@ -35,11 +35,11 @@ public class Q10 {
 
 	private static void switchCase(int year, int month, int date, int dayOfWeek) throws Exception {
 		switch(dayOfWeek) {
-		case 0, 7 :
+		case 1, 7 :
 			System.out.println("입력하신 날짜는 '휴일'입니다.");
 			System.out.println("결과가 없습니다.");
 			break;
-		case 1, 2, 3, 4, 5, 6 :
+		case 2, 3, 4, 5, 6 :
 			Calendar cal = Calendar.getInstance();
 			cal.set(year, month, date);
 			cal.set(Calendar.DAY_OF_WEEK, 7);
@@ -51,7 +51,7 @@ public class Q10 {
 	}//switchCase
 
 	private static void ifCase(int year, int month, int date, int dayOfWeek) throws Exception {
-		if(dayOfWeek == 0 || dayOfWeek == 7) {
+		if(dayOfWeek == 1 || dayOfWeek == 7) {
 			System.out.println("입력하신 날짜는 '휴일'입니다.");
 			System.out.println("결과가 없습니다.");
 			
