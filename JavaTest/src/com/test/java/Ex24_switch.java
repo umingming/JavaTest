@@ -8,13 +8,49 @@ public class Ex24_switch {
 	public static void main(String[] args) throws Exception{
 
 //		m1();
-		m2();
+//		m2();
+		m3();
+		
+		
 	}//main
+
+	private static void m3() {
+
+		//사용자가 월을 입력하면 해당월의 마지막 일이 언제인지?
+		int month = 11;
+		int lastDay ;
+
+		switch (month) {
+		case 1 :
+		case 3 :
+		case 5 :
+		case 7 :
+		case 8 :
+		case 10 :
+		case 12 :
+			lastDay = 31;
+			break;
+		case 2 :
+			lastDay = 28;
+			break;
+		case 4 :
+		case 6 :
+		case 9 :
+		case 11 :
+			lastDay = 30;
+		}//switch
+		
+		System.out.printf("입력한 %d월의 마지막 날짜는 %d일입니다.", month, lastDay);
+		
+		
+	}//m3
 
 	private static void m2() throws Exception{
 		
 		//자판기
 		//메뉴 출력 > 음료 선택 > 가격 출력
+		
+		//사이다 가격 700원 이상, 콜라와 항상 동일한 가격으로
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		
 		System.out.println("====================");
@@ -28,12 +64,8 @@ public class Ex24_switch {
 		
 		String sel = reader.readLine();
 		
-		if (sel.equals("1")) {
+		if (sel.equals("1")||sel.equals("2")) {
 			System.out.println("700원 입니다.");
-		} else if (sel.equals("2")) {
-			System.out.println("600원 입니다.");
-		} else if (sel.equals("2")) {
-			System.out.println("600원 입니다.");
 		} else if (sel.equals("3")) {
 		System.out.println("500원 입니다.");
 		}
@@ -42,8 +74,8 @@ public class Ex24_switch {
 		
 		switch(sel) {
 			case "1" :
-				System.out.println("700원 입니다.");
-				break;
+//				System.out.println("700원 입니다.");
+//				break;
 			case "2" :
 				System.out.println("600원 입니다.");
 				break;
