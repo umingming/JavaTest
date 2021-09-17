@@ -18,16 +18,10 @@ public class Ex24_switch {
 
 		//사용자가 월을 입력하면 해당월의 마지막 일이 언제인지?
 		int month = 11;
-		int lastDay ;
+		int lastDay = 0;
 
 		switch (month) {
-		case 1 :
-		case 3 :
-		case 5 :
-		case 7 :
-		case 8 :
-		case 10 :
-		case 12 :
+		case 1 : case 3 : case 5 : case 7 : case 8 : case 10 : case 12 :
 			lastDay = 31;
 			break;
 		case 2 :
