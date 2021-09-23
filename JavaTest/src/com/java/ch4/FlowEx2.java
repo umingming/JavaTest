@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 public class FlowEx2 {
 
 	public static void main(String[] args) throws Exception{
-		// TODO Auto-generated method stub
 		int input;
 		
 		System.out.print("숫자를 하나 입력하세요.>");

@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 public class FlowEx5 {
 
 	public static void main(String[] args) throws Exception{
-		// TODO Auto-generated method stub
 		int score = 0;
 		char grade = ' ', opt = '0';
 		

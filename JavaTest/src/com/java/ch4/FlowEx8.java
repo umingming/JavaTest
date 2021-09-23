@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 public class FlowEx8 {
 
 	public static void main(String[] args) throws Exception{
-		// TODO Auto-generated method stub
 		System.out.println("당신의 주민번호를 입력하세요. > ");
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

@@ -6,7 +6,6 @@ import java.util.Calendar;
 public class CalendarEx3 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		final int[] TIME_UNIT = { 3600, 60, 1 };
 		final String[] TIME_UNIT_NAME = { "시간 ", "분 ", "초 " };
 		

@@ -18,7 +18,6 @@ public class Ex22_DateTime {
 	}
 
 	private static void m6() {
-		// TODO Auto-generated method stub
 		//2시간 30분 + 10분 = 2시간 40분
 		
 		int hour = 3;
