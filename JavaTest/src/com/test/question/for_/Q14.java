@@ -35,8 +35,8 @@ public class Q14 {
 				/* Math.pow 사용
 				int num = Integer.parseInt(input);
 				int digit = (num - 
-							(num / (int)Math.pow(10, i+1)) * (int)Math.pow(10, i+1))
-							/ (int)Math.pow(10, i);
+					(num / (int)Math.pow(10, i+1)) * (int)Math.pow(10, i+1))
+					/ (int)Math.pow(10, i);
 				*/
 				if(digit % 2 == 0) {
 					even += digit;
