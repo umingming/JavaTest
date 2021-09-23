@@ -22,8 +22,8 @@ public class Q13 {
 			System.out.println("====================");
 			System.out.println("       자판기");
 			System.out.println("====================");
-			System.out.println("1. 콜라		: 700원");
-			System.out.println("2. 사이다		: 600원");
+			System.out.println("1. 콜라	: 700원");
+			System.out.println("2. 사이다	: 600원");
 			System.out.println("3. 비타500	: 500원");
 			System.out.println("--------------------");
 			System.out.print("금액 투입(원)	: ");
