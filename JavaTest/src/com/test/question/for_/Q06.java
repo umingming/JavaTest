@@ -31,10 +31,10 @@ public class Q06 {
 		for(int i=start+1; i<=end; i++) {
 			if(i % 2 == start % 2) {
 				sum += i;
-				process = process + " + " + i;
+				process += " + " + i;
 			} else {
 				sum -= i;
-				process = process + " - " + i;
+				process += " - " + i;
 			}
 		}
 		System.out.println(process + " = " + sum);

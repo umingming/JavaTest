@@ -30,12 +30,12 @@ public class Q05 {
 		
 		for(int i=start; i<=end; i++) {
 			sum += i;
-			process = process + i;
+			process += i;
 					
 			if(i == end) {
 				break;
 			}
-			process = process + " + ";
+			process += " + ";
 		}
 		
 		System.out.println(process + " = " + sum);

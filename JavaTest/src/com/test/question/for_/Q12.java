@@ -26,16 +26,16 @@ public class Q12 {
 			int num = Integer.parseInt(reader.readLine());
 			if(num < 10) {
 				switch(num){
-				case 1 : result = result + "일"; break;
-				case 2 : result = result + "이"; break;
-				case 3 : result = result + "삼"; break;
-				case 4 : result = result + "사"; break;
-				case 5 : result = result + "오"; break;
-				case 6 : result = result + "육"; break;
-				case 7 : result = result + "칠"; break;
-				case 8 : result = result + "팔"; break;
-				case 9 : result = result + "구"; break;
-				case 0 : result = result + "영"; break;
+				case 1 : result += "일"; break;
+				case 2 : result += "이"; break;
+				case 3 : result += "삼"; break;
+				case 4 : result += "사"; break;
+				case 5 : result += "오"; break;
+				case 6 : result += "육"; break;
+				case 7 : result += "칠"; break;
+				case 8 : result += "팔"; break;
+				case 9 : result += "구"; break;
+				case 0 : result += "영"; break;
 				}
 			} else { 
 				System.out.println("프로그램 중지");

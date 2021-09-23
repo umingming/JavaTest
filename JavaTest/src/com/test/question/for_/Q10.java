@@ -36,13 +36,13 @@ public class Q10 {
 			int num = Integer.parseInt(reader.readLine());
 			if(num % 2 == 0) {
 				sum += num;
-				process = process + " + " + num;
+				process += " + " + num;
 				if(sum > end) {
 					break;
 				}
 			} else {
 				sum -= num;
-				process = process + " - " + num;
+				process += " - " + num;
 			}
 		}
 		

@@ -28,12 +28,12 @@ public class Q07 {
 		
 		for(int i=1; ; i++) {
 			sum +=i;
-			process = process + i;
+			process += i;
 			
 			if(sum > end) {
 				break;
 			}
-			process = process + " + ";
+			process += " + ";
 		}
 		System.out.println(process + " = " + sum);
 	}
