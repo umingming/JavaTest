@@ -23,19 +23,45 @@ public class Q09 {
 
 		System.out.print("년도 입력 : ");
 		int year = Integer.parseInt(reader.readLine());
+		String result = "";
+		
+		switch (year % 4) {
+		case 0 :
+			switch (year % 100) {
+			case 0 : 
+				switch (year % 400) {
+				case 0 :
+					result = "윤년";
+					break;
+				default :
+					result = "평년";
+					break;
+				}
+				break;
+			default :
+				result = "윤년";
+				break;
+			}
+			break;
+		default : 
+			result = "평년";
+			break;
+		}
+		System.out.printf("%d는 '%s'입니다.%n", year, result);
 		
 		if (year % 4 == 0) {
 			if (year % 100 == 0 ) {
 				if (year % 400 == 0) {
-					System.out.printf("%d는 '윤년'입니다.%n", year);
+					result = "윤년";
 				} else {
-					System.out.printf("%d는 '평년'입니다.%n", year);
+					result = "평년";
 				}
 			} else {
-				System.out.printf("%d는 '윤년'입니다.%n", year);
+				result = "윤년";
 			}
 		} else {
- 		System.out.printf("%d는 '평년'입니다.%n", year);
+ 		result = "평년";
 		}
+		System.out.printf("%d는 '%s'입니다.%n", year, result);
 	}
 }
