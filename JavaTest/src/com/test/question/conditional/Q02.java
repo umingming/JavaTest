@@ -21,47 +21,50 @@ public class Q02 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("점수 : ");
 		int score = Integer.parseInt(reader.readLine());
+		String grade = null;
 		
-		ifCase(score);
-		switchCase(score);
+		switchCase(score, grade);
+		ifCase(score, grade);
 	}//main
 
-	private static void switchCase(int score) {
+	private static void switchCase(int score, String grade) {
 		switch(score / 10) {
-		case 0, 1, 2, 3, 4, 5 :
-			System.out.println("F");
-		break;
+		case 0 : case 1 : case 2 : case 3 : case 4 : case 5 :
+			grade = "F";
+			break;	
 		case 6 :
-			System.out.println("D");
+			grade = "D";
 			break;
 		case 7 :
-			System.out.println("C");
+			grade = "C";
 			break;
 		case 8 :
-			System.out.println("B");
+			grade = "B";
 			break;
-		case 9, 10 :
-			System.out.println("A");
-		break;
+		case 9 : case 10 :
+			grade = "A";
+			break;
 		}
+		System.out.printf("입력한 %d점은 성적 %s입니다.%n", score, grade);
 	}//switchCase
 
-	private static void ifCase(int score) {
+	private static void ifCase(int score, String grade) {
 		if(score>=0 && score<=100) {
 			if (score >= 90) {
-				System.out.println("A");
+				grade = "A";
 			} else if (score >= 80) {
-				System.out.println("B");
+				grade = "B";
 			} else if (score >= 70) {
-				System.out.println("C");
+				grade = "C";
 			} else if (score >= 60) {
-				System.out.println("D");
+				grade = "D";
 			} else {
-				System.out.println("F");
+				grade = "F";
 			}
 		} else {
-			System.out.println("점수가 유효하지 않습니다.");
+			grade = "점수가 유효하지 않습니다";
 		}
+		System.out.printf("입력한 %d점은 성적 %s입니다.%n", score, grade);
 	}//ifCase
 
 }
