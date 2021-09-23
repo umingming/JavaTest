@@ -10,7 +10,6 @@ public class Q08 {
 //		2. 윤년 메소드 생성
 //			>윤년 : year % 4 == 0 && year % 100 != 0 
 //				   year % 400 == 0
-//		    >평년 : 그 외
 //		3. for문
 //			>year은 1부터 현재 년도까지
 //			>if문
@@ -23,7 +22,7 @@ public class Q08 {
 //				>i가 4, 6, 9, 11이면 date + 30
 //				>i가 2면 if문
 //					>평년이면 + 28, 윤년이면 + 29
-//		4. date에 day 더해서 출력함.
+//		5. date에 day 더해서 출력함.
 		
 		int year = 2021;
 		int month = 9;
