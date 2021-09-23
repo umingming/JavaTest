@@ -8,7 +8,6 @@ public class Q14 {
 	public static void main(String[] args) throws Exception{
 //		최대 9자리 정수를 입력받아 각자리의 홀수 숫자합과 짝수 숫자합을 구하시오.
 //		-9자리가 넘어가면 동작 금지
-//		-Math.pow() 사용
 
 //		설계>
 //		1. BufferedReader
