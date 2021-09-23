@@ -22,7 +22,10 @@ public class Q08 {
 //				>i가 4, 6, 9, 11이면 date + 30
 //				>i가 2면 if문
 //					>평년이면 + 28, 윤년이면 + 29
-//		5. date에 day 더해서 출력함.
+//		5. date에 day 더하기
+//		6. 오늘이 무슨 요일인지 switch문 메소드 생성(date % 7)
+//			>0~6: 일~토
+//		7. 결과 출력
 		
 		int year = 2021;
 		int month = 9;
@@ -55,8 +58,24 @@ public class Q08 {
 			}
 		}
 		
-		System.out.printf("2021년 9월 23일은 %,d일째 되는 날입니다.", date + day);
+		date += day;
+		System.out.printf("2021년 9월 23일은 %,d일째 되는 날입니다.%n", date);
+		System.out.printf("2021년 9월 23일은 %s요일입니다.%n", dayOfWeek(date));
 	}//main
+
+	private static String dayOfWeek(int date) {
+		String dayOfWeek = "";
+		switch(date % 7) {
+		case 0 : dayOfWeek = "일"; break;
+		case 1 : dayOfWeek = "월"; break;
+		case 2 : dayOfWeek = "화"; break;
+		case 3 : dayOfWeek = "수"; break;
+		case 4 : dayOfWeek = "목"; break;
+		case 5 : dayOfWeek = "금"; break;
+		case 6 : dayOfWeek = "토"; break;
+		}
+		return dayOfWeek;
+	}//dayOfWeek
 
 	private static String leapYear(int year) {
 		String leapYear = "";
