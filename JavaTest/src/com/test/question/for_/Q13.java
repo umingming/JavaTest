@@ -47,7 +47,7 @@ public class Q13 {
 				break;
 			default :
 				System.out.println("판매 불가능합니다.");
-				System.out.printf("+잔돈 %,d원을 제공합니다.", amount);
+				System.out.printf("+잔돈 %,d원을 제공합니다.%n", amount);
 				break;
 			}
 			
