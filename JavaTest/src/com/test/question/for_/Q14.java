@@ -30,9 +30,10 @@ public class Q14 {
 		int odd = 0;
 		
 		if(length <= 9) {
-			int num = Integer.parseInt(input);
 			for(int i=0; i<length; i++) {
 				int digit = Integer.parseInt(input.charAt(i)+"");
+//				int num = Integer.parseInt(input);
+//				int digit = (num-(num/(int)Math.pow(10, i+1))*(int)Math.pow(10, i+1))/(int)Math.pow(10, i);
 				if(digit % 2 == 0) {
 					even += digit;
 				} else {
