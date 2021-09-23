@@ -30,6 +30,7 @@ public class Q14 {
 		int odd = 0;
 		
 		if(length <= 9) {
+			int num = Integer.parseInt(input);
 			for(int i=0; i<length; i++) {
 				int digit = Integer.parseInt(input.charAt(i)+"");
 				if(digit % 2 == 0) {

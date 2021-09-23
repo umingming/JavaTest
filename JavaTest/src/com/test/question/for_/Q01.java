@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.sun.tools.sjavac.server.SysInfo;
+
 public class Q01 {
 
 	public static void main(String[] args) throws IOException {
@@ -13,6 +15,7 @@ public class Q01 {
 //		1. BufferedReader 사용
 //		2. 이름과 횟수를 입력 받음.
 //		3. for문> 횟수만큼 "ㅇㅇㅇ님 안녕하세요~" 출력함
+		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String name = reader.readLine();
 		int num = Integer.parseInt(reader.readLine());
