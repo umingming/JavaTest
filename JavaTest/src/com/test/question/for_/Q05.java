@@ -26,20 +26,19 @@ public class Q05 {
 		int end = Integer.parseInt(reader.readLine());
 		
 		int sum = 0;
-		String strSum = "";
+		String process = "";
 		
 		for(int i=start; i<=end; i++) {
 			sum += i;
-			
-			strSum = strSum + i;
+			process = process + i;
 					
 			if(i == end) {
 				break;
 			}
-			strSum = strSum + " + ";
+			process = process + " + ";
 		}
 		
-		System.out.println(strSum + " = " + sum);
+		System.out.println(process + " = " + sum);
 	}
 
 }

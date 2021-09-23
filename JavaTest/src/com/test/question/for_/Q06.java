@@ -26,18 +26,18 @@ public class Q06 {
 		int end = Integer.parseInt(reader.readLine());
 	
 		int sum = start;
-		String strSum = sum + "";
+		String process = sum + "";
 		
 		for(int i=start+1; i<=end; i++) {
 			if(i % 2 == start % 2) {
 				sum += i;
-				strSum = strSum + " + " + i;
+				process = process + " + " + i;
 			} else {
 				sum -= i;
-				strSum = strSum + " - " + i;
+				process = process + " - " + i;
 			}
 		}
-		System.out.println(strSum + " = " + sum);
+		System.out.println(process + " = " + sum);
 	}
 
 }
