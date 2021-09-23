@@ -25,7 +25,7 @@ public class Q02 {
 		for(int i=start; i<=end; i+=add) {
 			System.out.println(i);
 		}
-
+		
 	}
 
 }

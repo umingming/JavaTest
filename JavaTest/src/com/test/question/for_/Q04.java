@@ -35,6 +35,7 @@ public class Q04 {
 				odd += num;
 			}
 		}
+		
 		System.out.printf("짝수의 합 : %,d%n", even);
 		System.out.printf("홀수의 합 : %,d%n", odd);
 	}

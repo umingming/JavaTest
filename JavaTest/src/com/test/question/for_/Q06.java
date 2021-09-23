@@ -38,7 +38,6 @@ public class Q06 {
 			}
 		}
 		System.out.println(strSum + " = " + sum);
-
 	}
 
 }

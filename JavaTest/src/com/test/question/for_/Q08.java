@@ -55,11 +55,13 @@ public class Q08 {
 					break;
 			}
 		}
+		
 		System.out.printf("2021년 9월 23일은 %,d일째 되는 날입니다.", date + day);
 	}//main
 
 	private static String leapYear(int year) {
 		String leapYear = "";
+		
 		if (year % 4 == 0) {
 			if (year % 100 == 0 ) {
 				if (year % 400 == 0) {

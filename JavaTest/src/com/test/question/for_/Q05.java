@@ -38,8 +38,8 @@ public class Q05 {
 			}
 			strSum = strSum + " + ";
 		}
+		
 		System.out.println(strSum + " = " + sum);
-
 	}
 
 }

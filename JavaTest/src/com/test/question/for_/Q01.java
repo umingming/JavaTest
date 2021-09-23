@@ -7,9 +7,6 @@ import java.io.InputStreamReader;
 public class Q01 {
 
 	public static void main(String[] args) throws IOException {
-		//02 증가치도 입력 받기.
-		//04 입력 받을 숫자도 입력 받기.
-		//12 메소드 만들기
 //		사용자의 이름과 인사할 횟수를 입력 받아 출력하시오.
 		
 //		설계>
@@ -24,7 +21,6 @@ public class Q01 {
 		for(int i=0; i<num; i++) {
 			System.out.printf("%s님 안녕하세요~%n", name);
 		}
-		
 
 	}
 

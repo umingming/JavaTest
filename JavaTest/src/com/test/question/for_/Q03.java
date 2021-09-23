@@ -20,11 +20,12 @@ public class Q03 {
 		System.out.print("숫자 : ");
 		int num = Integer.parseInt(reader.readLine());
 		int sum = 0;
+		
 		for(int i=0; i<=num; i++) {
 			sum += i;
 		}
+		
 		System.out.printf("1 ~ %,d = %,d", num, sum);
-
 	}
 
 }
