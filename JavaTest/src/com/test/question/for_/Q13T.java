@@ -3,7 +3,7 @@ package com.test.question.for_;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Q13 {
+public class Q13T {
 
 	public static void main(String[] args) throws Exception{
 //		자판기 프로그램 구현
@@ -20,34 +20,47 @@ public class Q13 {
 		menu();
 		for(;;) {
 			menu();
+			
+			System.out.println("--------------------");
 			System.out.print("금액 투입(원)	: ");
 			int amount = Integer.parseInt(reader.readLine());
+			
 			System.out.println("--------------------");
 			System.out.print("음료 선택(번호)	: ");
 			int choice = Integer.parseInt(reader.readLine());
 			
-			switch(choice) {
-			case 1 :
-				System.out.println("+콜라를 제공합니다.");
-				System.out.printf("+잔돈 %,d원을 제공합니다.%n", amount - 700);
-				break;
-			case 2 :
-				System.out.println("+사이다를 제공합니다.");
-				System.out.printf("+잔돈 %,d원을 제공합니다.%n", amount - 600);
-				break;
-			case 3 :
-				System.out.println("+비타500을 제공합니다.");
-				System.out.printf("+잔돈 %,d원을 제공합니다.%n", amount - 500);
-				break;
-			default :
-				System.out.println("판매 불가능합니다.");
-				System.out.printf("+잔돈 %,d원을 제공합니다.%n", amount);
-				break;
+			if(amount >= getItemPrice(choice)) {
+			System.out.printf("+%s를 제공합니다.%n", getItemName(choice));
+			System.out.printf("+잔돈 %,d원을 제공합니다.%n", amount - 700);
+			} else {
+				System.out.printf("+투입한 금액 %,d원은 %s 음료를 구입하기엔 잔액이 %,d원 부족합니다.%n", amount, getItemName(choice), getItemPrice(choice) - amount);
 			}
 			
 			System.out.println("\n계속하시려면 엔터를 입력하세요.");
-			String enter = reader.readLine();
+			reader.readLine();
 		}
+	}
+
+	private static int getItemPrice(int choice) {
+		if(choice == 1) {
+			return 700;
+		} else if (choice == 2) {
+			return 600;
+		} else if (choice == 3) {
+			return 500;
+		}
+		return 0;
+	}
+
+	private static String getItemName(int choice) {
+		if(choice == 1) {
+			return "콜라";
+		} else if (choice == 2) {
+			return "사이다";
+		} else if (choice == 3) {
+			return "비타500";
+		}
+		return null;
 	}
 
 	private static void menu() {
@@ -57,7 +70,6 @@ public class Q13 {
 		System.out.println("1. 콜라	: 700원");
 		System.out.println("2. 사이다	: 600원");
 		System.out.println("3. 비타500	: 500원");
-		System.out.println("--------------------");
 	}
 
 }
