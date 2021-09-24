@@ -6,14 +6,46 @@ public class Ex28_for {
 //		m1();
 //		m2();
 //		m3();
-		m4();
+//		m4();
+		m5();
+		
 
+	}
+
+	private static void m5() {
+		//별 찍기
+		for (int i=0; i<5; i++) {
+			for (int j=0; j<5; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		System.out.println();
+		
+		for (int i=0; i<5; i++) {
+			for (int j=i; j<5; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		System.out.println();
+		
+		for (int i=0; i<5; i++) {
+			for(int j=0; j<(4-i); j++) {
+				System.out.print(" ");
+			}
+			for (int j=0; j<=i; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 	private static void m4() {
 		for (int i=0; i<10; i++) {
-			for (int j=0; j>10; j++) {
-				if(i == 5) {
+			for (int j=0; j<10; j++) {
+				if(i == 5 || j == 3) {
 					break;
 				}
 				System.out.printf("i: %d, j: %d%n", i, j);
