@@ -29,43 +29,43 @@ public class Q08 {
 		
 		int year = 2021;
 		int month = 9;
-		int day = 23;
-		int date = 0;
+		int date = 23;
+		int day = 0;
 		
 		for(int i=1; i<year; i++) {
 			if (leapYear(i).equals("윤년")) {
-				date += 366;
+				day += 366;
 			} else {
-	 		date += 365;
+	 		day += 365;
 			}
 		}
 		
 		for(int i=1; i<month; i++) {
 			switch(i){
 				case 1, 3, 5, 7, 8, 10, 12 : 
-					date += 31;
+					day += 31;
 					break;
 				case 4, 6, 9, 11 : 
-					date += 30;
+					day += 30;
 					break;
 				case 2 :
 					if (leapYear(year).equals("윤년")) {
-						date += 29;
+						day += 29;
 					} else {
-			 		date += 28;
+						day += 28;
 					}
 					break;
 			}
 		}
 		
-		date += day;
-		System.out.printf("2021년 9월 23일은 %,d일째 되는 날입니다.%n", date);
-		System.out.printf("2021년 9월 23일은 %s요일입니다.%n", dayOfWeek(date));
+		day += date;
+		System.out.printf("2021년 9월 23일은 %,d일째 되는 날입니다.%n", day);
+		System.out.printf("2021년 9월 23일은 %s요일입니다.%n", dayOfWeek(day));
 	}//main
 
-	private static String dayOfWeek(int date) {
+	private static String dayOfWeek(int day) {
 		String dayOfWeek = "";
-		switch(date % 7) {
+		switch(day % 7) {
 		case 0 : dayOfWeek = "일"; break;
 		case 1 : dayOfWeek = "월"; break;
 		case 2 : dayOfWeek = "화"; break;
