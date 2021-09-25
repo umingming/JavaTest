@@ -9,8 +9,7 @@ public class Q04 {
 		/*
 		*
 		 *
-		  *
-		-행의 갯수 입력 받기
+		  * -행의 갯수 입력 받기
 		
 		설계>
 		1. BufferedReader
