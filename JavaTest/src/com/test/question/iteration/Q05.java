@@ -1,4 +1,4 @@
-package com.test.question.for_;
+package com.test.question.iteration;
 
 import java.io.BufferedReader;
 import java.io.IOException;

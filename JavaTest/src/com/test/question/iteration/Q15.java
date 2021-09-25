@@ -1,4 +1,4 @@
-package com.test.question.for_;
+package com.test.question.iteration;
 
 public class Q15 {
 
