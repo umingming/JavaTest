@@ -19,7 +19,7 @@ public class Q09 {
 		 */
 		
 		int sum = 1;
-		String process = 1 + "";
+		String process = "1";
 		
 		for(int i=1; ; i++) {
 			int add = 1;
