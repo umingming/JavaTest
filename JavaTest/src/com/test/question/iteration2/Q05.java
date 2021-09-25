@@ -7,6 +7,7 @@ public class Q05 {
 
 	public static void main(String[] args) throws Exception{
 		/*
+		아래와 같이 출력하시오.
 		  aa
 	 	 abba
 	    abccba -행의 갯수 입력 받기

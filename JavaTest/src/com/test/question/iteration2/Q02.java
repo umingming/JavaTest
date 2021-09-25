@@ -8,6 +8,7 @@ public class Q02 {
 
 	public static void main(String[] args) throws Exception{
 		/*
+		아래와 같이 출력하시오.
 		   *
 		  **
 		 ***
