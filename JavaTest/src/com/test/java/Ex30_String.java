@@ -15,9 +15,68 @@ public class Ex30_String {
 //		m8();
 //		m9();
 //		m10();
-		m11();
+//		m11();
+//		m12();
+//		m13();
+//		m14();
+//		m15();
 		
 
+	}
+
+	private static void m15() {
+		String txt = "안녕하세요. 홍길동입니다. 저를 홍길동이라고 부르세요.";
+		System.out.println(txt.replace("홍길동", "아무개"));
+		
+		String content = "게시판에 글을 작성합니다. 바보야!!";
+		String word = "바보";
+		
+		System.out.println(content.replace(word, "**"));
+		
+		txt = "     하나     둘     셋     ";
+		System.out.printf("[%s]%n", txt);
+		System.out.printf("[%s]%n", txt.replace(" ", ""));
+		
+	}
+
+	private static void m14() {
+		//lastindexOf()
+		//substring()
+		//length()
+		//파일면 추출> Ex10.java
+		//확장자 없는 파일면 추출> Ex10
+		//확장자 추출? .java
+		String path = "D:\\class\\java\\JavaTest\\src\\Ex10.java";
+		int index = path.lastIndexOf("\\");
+		String filename = path.substring(index + 1, path.length());
+		System.out.println(filename);
+		
+		index = path.lastIndexOf(".");
+		String filenameWithoutExt = filename.substring(0, index);
+		System.out.println(filenameWithoutExt);
+
+		String ext = filename.substring(index);
+		System.out.println(ext);
+	}
+
+	private static void m13() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void m12() {
+//		String txt = "홍길동님 안녕하세요?";
+//		System.out.println(txt.startsWith("홍"));
+//		System.out.println(txt.endsWith("?"));
+//		System.out.println(txt.charAt(txt.length() - 1) == '?');
+//		System.out.println(txt.indexOf('?') == txt.length() - 1);
+		String path = "D:\\class\\java\\.jpg\\dog.jpg";
+		
+		if (path.indexOf(".jpg") == path.length() - 4) {
+			System.out.println("이미지 파일 입니다.");
+		} else {
+			System.out.println("잘못");
+		}
 	}
 
 	private static void m11() {
