@@ -20,7 +20,7 @@ public class Q06 {
 				>아니면 false로 리턴
 		4. 생년, 생월, 생일 확인 메소드 생성
 			>if문 앞자리 확인 메소드가 true
-				>substring 0~1번째 글자 int로 변환, 0부터 100인지
+				>substring 글자 int로 변환, int값이 적합한지
 				>맞으면 true 리턴
 		6. 정상 주민 번호인지 확인 하는 메소드 생성
 		7. 정상이면 유효성 검사
@@ -44,18 +44,18 @@ public class Q06 {
 	private static boolean isValid(String jumin) {
 		jumin = jumin.trim();
 		if(isRightJumin(jumin)) {
-			int sum = Integer.parseInt(jumin.charAt(0)+"") * 2
-					+ Integer.parseInt(jumin.charAt(1)+"") * 3
-					+ Integer.parseInt(jumin.charAt(2)+"") * 4
-					+ Integer.parseInt(jumin.charAt(3)+"") * 5
-					+ Integer.parseInt(jumin.charAt(4)+"") * 6
-					+ Integer.parseInt(jumin.charAt(5)+"") * 7
-					+ Integer.parseInt(jumin.charAt(jumin.length()-7)+"") * 8
-					+ Integer.parseInt(jumin.charAt(jumin.length()-6)+"") * 9
-					+ Integer.parseInt(jumin.charAt(jumin.length()-5)+"") * 2
-					+ Integer.parseInt(jumin.charAt(jumin.length()-4)+"") * 3
-					+ Integer.parseInt(jumin.charAt(jumin.length()-3)+"") * 4
-					+ Integer.parseInt(jumin.charAt(jumin.length()-2)+"") * 5;
+			int sum = Integer.parseInt(jumin.charAt(0)+"") * 2 +
+					 Integer.parseInt(jumin.charAt(1)+"") * 3 +
+					 Integer.parseInt(jumin.charAt(2)+"") * 4 +
+					 Integer.parseInt(jumin.charAt(3)+"") * 5 + 
+					 Integer.parseInt(jumin.charAt(4)+"") * 6 +
+					 Integer.parseInt(jumin.charAt(5)+"") * 7 + 
+					 Integer.parseInt(jumin.charAt(jumin.length()-7)+"") * 8 +
+					 Integer.parseInt(jumin.charAt(jumin.length()-6)+"") * 9 +
+					 Integer.parseInt(jumin.charAt(jumin.length()-5)+"") * 2 +
+					 Integer.parseInt(jumin.charAt(jumin.length()-4)+"") * 3 +
+					 Integer.parseInt(jumin.charAt(jumin.length()-3)+"") * 4 +
+					 Integer.parseInt(jumin.charAt(jumin.length()-2)+"") * 5;
 			int remainder = sum % 11;
 			int result = 11 - remainder;
 			if (result >= 10) {
