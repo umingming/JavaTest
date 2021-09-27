@@ -15,7 +15,7 @@ public class Ex29_while {
 	}
 
 	private static void m4() {
-		int n = 1;
+		int n = 20;
 		
 		do {
 			System.out.println(n);
