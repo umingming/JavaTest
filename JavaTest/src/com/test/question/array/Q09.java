@@ -15,14 +15,12 @@ public class Q09 {
 		1. BufferedReader
 		2. 배열의 길이 입력
 		3. int 배열 선언
-		4. array, result 변수 선언
-		5. for문
+		4. for문
 			>배열에 1~10 난수 저장
-			>array에 추가
 		6. for문 길이
-			>if문 i % 2 != 0;
-				>num[i] += num[i-1]
-				>result 추가
+			>if문 i % 2 != 0?
+				>num[마지막 값] 저장
+				>num[2*i] + num[2*i+1] 저장
 		7. 결과 출력
 		 */
 		
@@ -38,8 +36,6 @@ public class Q09 {
 			nums[i] = (int)(Math.random() * 10) + 1;
 		}
 
-		System.out.println(Arrays.toString(nums));
-		
 		for(int i=0; i<result.length; i++) {
 			if(n % 2 != 0 && i == (result. length - 1)) {
 				result[i] = nums[n - 1];
@@ -48,6 +44,7 @@ public class Q09 {
 			}
 		}
 		
+		System.out.println(Arrays.toString(nums));
 		System.out.println(Arrays.toString(result));
 	}
 
