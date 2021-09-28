@@ -60,7 +60,6 @@ public class Ex30_String {
 	}
 
 	private static void m13() {
-		// TODO Auto-generated method stub
 		
 	}
 

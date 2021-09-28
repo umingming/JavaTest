@@ -56,7 +56,6 @@ public class Ex25_LocalVariable {
 	}
 
 	private static void m8() {
-		// TODO Auto-generated method stub
 		//q
 		for(int i=1; i<=6; i++) {
 //			break;

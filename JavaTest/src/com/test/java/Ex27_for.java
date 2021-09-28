@@ -5,7 +5,6 @@ import java.util.Calendar;
 public class Ex27_for {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Calendar now = Calendar.getInstance();
 		
 		int year = now.get(Calendar.YEAR);

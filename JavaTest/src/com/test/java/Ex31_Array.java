@@ -102,7 +102,6 @@ public class Ex31_Array {
 
 	private static void output(int[] nums1) {
 		
-		// TODO Auto-generated method stub
 		
 	}
 
