@@ -41,24 +41,33 @@ public class Q06 {
 		String result = "";
 		
 		for(int i=0; i<n; i++) {
-			for(;;) {
-				nums[i] = (int)(Math.random() * 20) + 1;
-				
-				if(nums[i] >= min && nums[i] <= max) {
-					break;
-				}
-			}
+			nums[i] = (int)(Math.random() * (max - min)) + min;
 			
-			for(int j=0; j<i; j++) {
-				if(nums[i] == nums[j]) {
-					for(;;) {
-						nums[i] = (int)(Math.random() * 20) + 1;
-						
-						if(nums[i] >= min && nums[i] <= max && nums[i] != nums[j]) {
-							break;
-						}
+//			for(int j=0; j<i; j++) {
+//				if(nums[i] == nums[j]) {
+//					for(;;) {
+//						nums[i] = (int)(Math.random() * 20) + 1;
+//						
+//						if(nums[i] >= min && nums[i] <= max && nums[i] != nums[j]) {
+//							break;
+//						}
+//					}
+//				}
+//			}
+			
+			for(;;) {
+				int overlap = 0;
+				for(int j=0; j<i; j++) {
+					if(nums[i] == nums[j]) {
+						overlap++;
 					}
 				}
+				
+				if(overlap == 0) {
+					break;
+				}
+				
+				nums[i] = (int)(Math.random() * (max - min)) + min;
 			}
 			
 			result += nums[i] + ", ";

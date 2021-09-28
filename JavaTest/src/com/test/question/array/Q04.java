@@ -19,7 +19,7 @@ public class Q04 {
 		
 		int[] nums = new int[20];
 		
-		int min = 10, max = 10;
+		int min = 20, max = 1;
 		String array = "";
 		
 		for(int i=0; i<20; i++) {
