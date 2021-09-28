@@ -2,9 +2,8 @@ package com.test.question.array;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
-public class Q09 {
+public class Q092 {
 
 	public static void main(String[] args) throws Exception{
 		/*
@@ -32,23 +31,24 @@ public class Q09 {
 		int n = Integer.parseInt(reader.readLine());
 
 		int[] nums = new int[n];
-		int[] result = new int[(int)Math.ceil(n / 2.0)];
+		String array = "", result = "";
 		
 		for(int i=0; i<n; i++) {
 			nums[i] = (int)(Math.random() * 10) + 1;
+			array += nums[i] + ", ";
 		}
 
-		System.out.println(Arrays.toString(nums));
-		
-		for(int i=0; i<result.length; i++) {
-			if(n % 2 != 0 && i == (result. length - 1)) {
-				result[i] = nums[n - 1];
-			} else {
-				result[i] += nums[2*i] + nums[2*i+1];
+		for(int i=0; i<n; i++) {
+			if(i % 2 != 0) {
+				nums[i] += nums[i-1];
+				result += nums[i] + ", ";
+			} else if(i % 2 == 0 && i == (n-1)) {
+				result += nums[i] + ", ";
 			}
 		}
 		
-		System.out.println(Arrays.toString(result));
+		System.out.printf("원본 : [%s]%n", array.subSequence(0, array.lastIndexOf(",")));
+		System.out.printf("결과 : [%s]%n", result.subSequence(0, result.lastIndexOf(",")));
 	}
 
 }

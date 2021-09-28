@@ -41,14 +41,13 @@ public class Q07 {
 			nums[i] = (int)(Math.random() * 100) + 1; //임의로 1~100 난수 선정
 		}
 		
-		System.arraycopy(nums, 0, result, 0, n);
-		result[n] = value;
-		System.arraycopy(nums, n, result, n + 1, nums.length - n - 1);
-		
 		System.out.printf("원본 : %s%n", Arrays.toString(nums));
 		
-		nums = result;
-		System.out.printf("결과 : %s%n", Arrays.toString(nums));
+		for(int i=9; i>n; i--) {
+			nums[i] = nums[i-1];
+		}
 		
+		nums[n] = value;
+		System.out.printf("결과 : %s%n", Arrays.toString(nums));
 	}
 }

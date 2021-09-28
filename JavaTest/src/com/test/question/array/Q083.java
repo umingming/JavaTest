@@ -3,7 +3,7 @@ package com.test.question.array;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Q08 {
+public class Q083 {
 
 	public static void main(String[] args) throws Exception {
 		/*
