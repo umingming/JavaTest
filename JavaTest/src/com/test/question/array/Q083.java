@@ -2,7 +2,6 @@ package com.test.question.array;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Q08 {
 
@@ -33,20 +32,27 @@ public class Q08 {
 		int n = Integer.parseInt(reader.readLine());
 
 		int[] nums = new int[5];
-		int[] result = new int[5];
+		String array = "", result = "";
 		
 		for(int i=0; i<5; i++) {
 			nums[i] = (int)(Math.random() * 10) + 1;
+			array += nums[i] + ", ";
 		}
 		
-		System.arraycopy(nums, 0, result, 0, n);
-		System.arraycopy(nums, n + 1, result, n, nums.length - n - 1);
+		for(int i=n; i<5; i++) {
+			if(i != 4) {
+				nums[i] = nums[i+1];
+			} else {
+				nums[i] = 0;
+			}
+		}
+			
+		for(int i=0; i<5; i++) {
+			result += nums[i] + ", ";
+		}
 		
-		System.out.printf("원본 : %s%n", Arrays.toString(nums));
-		
-		nums = result;
-		System.out.printf("결과 : %s%n", Arrays.toString(result));
-		
+		System.out.printf("원본 : %s%n", array.substring(0, array.lastIndexOf(",")));
+		System.out.printf("결과 : %s%n", result.substring(0, result.lastIndexOf(",")));
 		
 	}
 

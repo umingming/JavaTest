@@ -2,9 +2,8 @@ package com.test.question.array;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
-public class Q07 {
+public class Q073 {
 
 	public static void main(String[] args) throws Exception {
 		/*
@@ -35,20 +34,23 @@ public class Q07 {
 		int value = Integer.parseInt(reader.readLine());
 		
 		int[] nums = new int[10];
-		int[] result = new int[10];
+		String array = "", result = "";
 		
 		for(int i=0; i<10; i++) {
 			nums[i] = (int)(Math.random() * 100) + 1; //임의로 1~100 난수 선정
+			array += nums[i] + ", ";
+		}
+
+		for(int i=9; i>n; i--) {
+			nums[i] = nums[i-1];
 		}
 		
-		System.arraycopy(nums, 0, result, 0, n);
-		result[n] = value;
-		System.arraycopy(nums, n, result, n + 1, nums.length - n - 1);
+		nums[n] = value;
 		
-		System.out.printf("원본 : %s%n", Arrays.toString(nums));
-		
-		nums = result;
-		System.out.printf("결과 : %s%n", Arrays.toString(nums));
-		
+		for(int i=0; i<10; i++) {
+			result += nums[i] + ", ";
+		}
+		System.out.printf("원본 : [%s]%n", array.substring(0, array.lastIndexOf(",")));
+		System.out.printf("결과 : [%s]%n", result.substring(0, result.lastIndexOf(",")));
 	}
 }
