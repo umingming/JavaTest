@@ -43,18 +43,6 @@ public class Q06 {
 		for(int i=0; i<n; i++) {
 			nums[i] = (int)(Math.random() * (max - min)) + min;
 			
-//			for(int j=0; j<i; j++) {
-//				if(nums[i] == nums[j]) {
-//					for(;;) {
-//						nums[i] = (int)(Math.random() * 20) + 1;
-//						
-//						if(nums[i] >= min && nums[i] <= max && nums[i] != nums[j]) {
-//							break;
-//						}
-//					}
-//				}
-//			}
-			
 			for(;;) {
 				int overlap = 0;
 				for(int j=0; j<i; j++) {
