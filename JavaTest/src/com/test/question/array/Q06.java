@@ -16,12 +16,14 @@ public class Q06 {
 		3. 개수를 길이로 하는 int 배열 선언
 		4. result 변수 선언
 		5. for문 배열 길이 반복
-			>for문 무한 루프
-				>난수 저장
-				>if문 범위면 break
-			>for문 i 반복
+			>난수 저장
+			>for문 무한루프
+				>중복 변수 선언
+				>for문 i반복
 				>if문 num[i]가 num[j]와 같은지 확인
-					>for문 무한루프 안 같을 때까지 변수 저장
+					>같으면 중복 ++
+				>중복이 0이면 break
+				>난수 재저장
 			>result에 추가
 		6. result substring 사용해 출력
 		 */
