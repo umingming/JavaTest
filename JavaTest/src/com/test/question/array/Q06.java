@@ -2,6 +2,7 @@ package com.test.question.array;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Q06 {
 
@@ -14,8 +15,7 @@ public class Q06 {
 		1. BufferedReader
 		2. 최대, 최소, 개수 입력
 		3. 개수를 길이로 하는 int 배열 선언
-		4. result 변수 선언
-		5. for문 배열 길이 반복
+		4. for문 배열 길이 반복
 			>난수 저장
 			>for문 무한루프
 				>중복 변수 선언
@@ -24,8 +24,7 @@ public class Q06 {
 					>같으면 중복 ++
 				>중복이 0이면 break
 				>난수 재저장
-			>result에 추가
-		6. result substring 사용해 출력
+		5. 출력
 		 */
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -40,7 +39,6 @@ public class Q06 {
 		int n = Integer.parseInt(reader.readLine());
 
 		int[] nums = new int[n];
-		String result = "";
 		
 		for(int i=0; i<n; i++) {
 			nums[i] = (int)(Math.random() * (max - min)) + min;
@@ -59,12 +57,9 @@ public class Q06 {
 				
 				nums[i] = (int)(Math.random() * (max - min)) + min;
 			}
-			
-			result += nums[i] + ", ";
 		}
 		
-		result = result.substring(0, result.lastIndexOf(","));
-		System.out.println("[" + result +"]");
+		System.out.println(Arrays.toString(nums));
 	}
 
 }
