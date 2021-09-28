@@ -1,5 +1,6 @@
 package com.test.java;
 
+
 public class Ex31_Array {
 
 	public static void main(String[] args) {
@@ -18,7 +19,16 @@ public class Ex31_Array {
 	}
 
 	private static void m10() {
-		// TODO Auto-generated method stub
+		int[] nums = new int[5];
+		
+		int a = 10;
+		int[] b = new int[5];
+//		a = null;
+		b = null;
+		
+		String[] strs = new String[3];
+		System.out.println(strs[0]);
+		
 		
 	}
 
