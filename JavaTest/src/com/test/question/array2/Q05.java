@@ -19,10 +19,10 @@ public class Q05 {
 		3. 입력 받은 데이터로 이차원 배열 선언
 		2. n 변수 선언
 		3. for문 0 ~ nums.length-1
-			>if문 i<=2?
-				>for문 2+i ~ i+2
+			>if문 i<=nums.length/2?
+				>for문 nums[0].length/2-i ~ i+nums[0].length/2
 					>n저장 후 ++
-				>for문 i-2 ~ 6-i
+				>위의 for문에서 i -> nums.length-1-i
 					>n저장 후 ++
 		4. output 호출
 		*/
@@ -46,7 +46,7 @@ public class Q05 {
 				}
 				
 			} else {
-				for(int j=nums[0].length/2-i; j<=6; j++) {
+				for(int j=nums[0].length/2-(nums.length-1-i); j<=(nums.length-1-i)+nums[0].length/2; j++) {
 					nums[i][j] = n;
 					n++;
 				}

@@ -1,8 +1,11 @@
 package com.test.question.array2;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Q09 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		/*
 		1	2	3	4	5
 		16	17	18	19	6
@@ -11,17 +14,27 @@ public class Q09 {
 		13	12	11	10	9
 		
 		설계>
-		1. 5행 5열인 이차원 배열 선언
-		2. n, i, j, index 변수 선언
-		3. for문 0 ~ nums.length/2
+		1. BufferedReader
+		2. 행, 열 입력 받음 
+		3. 입력 받은 데이터로 이차원 배열 선언
+		4. n, i, j, index 변수 선언
+		5. for문 0 ~ nums.length/2
 			>for문 오른쪽
 			>for문 아래
 			>for문 왼쪽
 			>for문 위
-		4. output 호출
+		6. output 호출
 		*/
 		
-		int[][] nums = new int[5][5];
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.print("행의 길이 : ");
+		int row = Integer.parseInt(reader.readLine());
+
+		System.out.print("열의 길이 : ");
+		int col = Integer.parseInt(reader.readLine());
+		
+		int[][] nums = new int[row][col];
 		int num = 1, i = 0, j = 0;
 		int jIndex = 0;
 		int iIndex = 0;

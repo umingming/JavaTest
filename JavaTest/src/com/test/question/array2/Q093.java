@@ -1,6 +1,6 @@
 package com.test.question.array2;
 
-public class Q09 {
+public class Q093 {
 
 	public static void main(String[] args) {
 		/*
