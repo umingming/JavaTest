@@ -1,8 +1,11 @@
 package com.test.question.array2;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Q05 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		/*
 		0	0	1	0	0
 		0	2	3	4	0
@@ -11,7 +14,9 @@ public class Q05 {
 		0	0	13	0	0
 
 		설계>
-		1. 5행 5열인 이차원 배열 선언
+		1. BufferedReader
+		2. 행, 열 입력 받음 
+		3. 입력 받은 데이터로 이차원 배열 선언
 		2. n 변수 선언
 		3. for문 0 ~ nums.length-1
 			>if문 i<=2?
@@ -22,18 +27,26 @@ public class Q05 {
 		4. output 호출
 		*/
 		
-		int[][] nums = new int[5][5];
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.print("행의 길이 : ");
+		int row = Integer.parseInt(reader.readLine());
+
+		System.out.print("열의 길이 : ");
+		int col = Integer.parseInt(reader.readLine());
+		
+		int[][] nums = new int[row][col];
 		int n = 1;
 		
 		for(int i=0; i<nums.length; i++) {
-			if(i <= 2) {
-				for(int j=2-i; j<=i+2; j++) {
+			if(i <= nums.length/2) {
+				for(int j=nums[0].length/2-i; j<=i+nums[0].length/2; j++) {
 					nums[i][j] = n;
 					n++;
 				}
 				
 			} else {
-				for(int j=i-2; j<=6-i; j++) {
+				for(int j=nums[0].length/2-i; j<=6; j++) {
 					nums[i][j] = n;
 					n++;
 				}
