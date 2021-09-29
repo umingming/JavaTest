@@ -40,23 +40,25 @@ public class Q06 {
 
 		int[] nums = new int[n];
 		
-		for(int i=0; i<n; i++) {
-			nums[i] = (int)(Math.random() * (max - min + 1)) + min;
+		for(int i=0; i<nums.length; i++) {
+			int num = (int)(Math.random() * (max - min + 1)) + min;
 			
-			for(;;) {
-				int overlap = 0;
-				for(int j=0; j<i; j++) {
-					if(nums[i] == nums[j]) {
-						overlap++;
-					}
-				}
-				
-				if(overlap == 0) {
+			boolean isDuplicate = false;
+			
+			for(int j=0; j<i; j++) {
+				if(nums[j] == num) {
+					isDuplicate = true;
 					break;
 				}
-				
-				nums[i] = (int)(Math.random() * (max - min + 1)) + min;
 			}
+			
+			if(!isDuplicate) {
+				//유일한 숫자
+				nums[i]	= num;
+			} else {
+				i--;
+			}
+			System.out.println(Arrays.toString(nums));
 		}
 		
 		System.out.println(Arrays.toString(nums));
