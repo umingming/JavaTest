@@ -1,22 +1,24 @@
 package com.test.question.array2;
 
-public class Q04 {
+public class Q05 {
 
 	public static void main(String[] args) {
 		/*
-		1	2	3	4	5
-		6	7	8	9	0
-		10	11	12	0	0
-		13	14	0	0	0
-		15	0	0	0	0
-		
+		0	0	1	0	0
+		0	2	3	4	0
+		5	6	7	8	9
+		0	10	11	12	0
+		0	0	13	0	0
+
 		설계>
-		1. 길이가 5인 이차원 배열 선언
+		1. 5행 5열인 이차원 배열 선언
 		2. n 변수 선언
 		3. for문 0 ~ nums.length-1
-			>for문 0 ~ nums[0].length-1-i
-				>n값 저장
-				>n++	
+			>if문 i<=2?
+				>for문 2+i ~ i+2
+					>n저장 후 ++
+				>for문 i-2 ~ 6-i
+					>n저장 후 ++
 		4. output 호출
 		*/
 		
@@ -24,9 +26,17 @@ public class Q04 {
 		int n = 1;
 		
 		for(int i=0; i<nums.length; i++) {
-			for(int j=0; j<nums[0].length-i; j++) {
-				nums[i][j] = n;
-				n++;
+			if(i <= 2) {
+				for(int j=2-i; j<=i+2; j++) {
+					nums[i][j] = n;
+					n++;
+				}
+				
+			} else {
+				for(int j=i-2; j<=6-i; j++) {
+					nums[i][j] = n;
+					n++;
+				}
 			}
 		}
 		

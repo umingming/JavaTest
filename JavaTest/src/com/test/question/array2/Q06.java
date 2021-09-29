@@ -1,31 +1,36 @@
 package com.test.question.array2;
 
-public class Q02 {
+public class Q06 {
 
 	public static void main(String[] args) {
 		/*
-		25	24	23	22	21
-		20	19	18	17	16
-		15	14	13	12	11
-		10	9	8	7	6
-		5	4	3	2	1
+		1	2	3	4	10
+		5	6	7	8	26
+		9	10	11	12	42
+		13	14	15	16	58
+		28	32	26	40	136
 
 		설계>
 		1. 5행 5열인 이차원 배열 선언
 		2. n 변수 선언
-		3. for문 nums.length-1 ~ 0
-			>for문 nums[0].length-1 ~ 0
-				>n값 저장
-				>n++	
+		3. for문 0 ~ nums.length-2
+			>for문 0 ~ nums[0].length-2
+				>nums[i][nums[0].length-1]+=n
+				>nums[nums.length-1][j]+=n
+				>nums[nums.length-1][nums[0].length-1]+=n
+				>n저장 후 ++
 		4. output 호출
 		*/
 		
 		int[][] nums = new int[5][5];
 		int n = 1;
 		
-		for(int i=nums.length-1; i>=0; i--) {
-			for(int j=nums[0].length-1; j>=0; j--) {
+		for(int i=0; i<nums.length-1; i++) {
+			for(int j=0; j<nums[0].length-1; j++) {
 				nums[i][j] = n;
+				nums[nums.length-1][j] += n;
+				nums[i][nums[0].length-1] += n;
+				nums[nums.length-1][nums[0].length-1] += n;
 				n++;
 			}
 		}

@@ -11,7 +11,7 @@ public class Q03 {
 		5	10	15	20	25
 
 		설계>
-		1. 길이가 5인 이차원 배열 선언
+		1. 5행 5열인 5인 이차원 배열 선언
 		2. n 변수 선언
 		3. for문 0 ~ nums[0].length
 			>for문 0 ~ nums.length
