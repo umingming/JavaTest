@@ -1,4 +1,4 @@
-package com.test.question.string;
+package com.test.java.string;
 
 public class Q05 {
 
@@ -16,19 +16,19 @@ public class Q05 {
 		3. num 출력
 		 */
 		
-		String content = "안녕~ 길동아~ 잘가~ 길동아~";
+		String content = "안녕~ 길동아~ 잘가~ 길동아~ 길동이 바뵤";
 		String word = "길동";
 		int index = -1;
-		int num = 0;
+		int count = 0;
 		
-		for(int i=0; i<content.length(); i++) {
-			int indexWord = content.indexOf(word, i);
-			if(index != indexWord && indexWord != -1) {
-				num++;
+		while(index != -1) {
+			index = content.indexOf(word, index);
+			if(index > -1) {
+				count++;
+				index += word.length();
 			} 
-			index = indexWord;
 		}
-		System.out.printf("'%s'를 총 %d회 발견했습니다.", word, num);
+		System.out.printf("'%s'를 총 %d회 발견했습니다.", word, count);
 	}
 
 }

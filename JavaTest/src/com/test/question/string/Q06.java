@@ -33,7 +33,9 @@ public class Q06 {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 		System.out.print("주민등록번호 : ");
-		String jumin = reader.readLine();
+		String jumin = reader.readLine().replace("-", "").trim();
+		
+		
 		if(isValid(jumin)) {
 			System.out.println("올바른 주민등록번호입니다.");
 		} else {
@@ -42,30 +44,21 @@ public class Q06 {
 	}
 
 	private static boolean isValid(String jumin) {
-		jumin = jumin.trim();
 		if(isRightJumin(jumin)) {
-			int sum = Integer.parseInt(jumin.charAt(0)+"") * 2 +
-					 Integer.parseInt(jumin.charAt(1)+"") * 3 +
-					 Integer.parseInt(jumin.charAt(2)+"") * 4 +
-					 Integer.parseInt(jumin.charAt(3)+"") * 5 + 
-					 Integer.parseInt(jumin.charAt(4)+"") * 6 +
-					 Integer.parseInt(jumin.charAt(5)+"") * 7 + 
-					 Integer.parseInt(jumin.charAt(jumin.length()-7)+"") * 8 +
-					 Integer.parseInt(jumin.charAt(jumin.length()-6)+"") * 9 +
-					 Integer.parseInt(jumin.charAt(jumin.length()-5)+"") * 2 +
-					 Integer.parseInt(jumin.charAt(jumin.length()-4)+"") * 3 +
-					 Integer.parseInt(jumin.charAt(jumin.length()-3)+"") * 4 +
-					 Integer.parseInt(jumin.charAt(jumin.length()-2)+"") * 5;
-			int remainder = sum % 11;
-			int result = 11 - remainder;
-			if (result >= 10) {
-				result -= 10;
-				if(result == Integer.parseInt(jumin.substring(jumin.length()-1))) {
+			int sum = 0;
+			for(int i=0; i<jumin.length()-1; i++) {
+				sum += Integer.parseInt(jumin.charAt(i)+"") * (i % 8 + 2);
+			}
+			sum %= 11;
+			sum = 11 - sum;
+			if (sum >= 10) {
+				sum -= 10;
+				if(sum == Integer.parseInt(jumin.substring(jumin.length()-1))) {
 					return true;
 				} 
 				return false;
 			} else {
-				if(result == Integer.parseInt(jumin.substring(jumin.length()-1))) {
+				if(sum == Integer.parseInt(jumin.substring(jumin.length()-1))) {
 					return true;
 				} 
 				return false;
@@ -75,8 +68,7 @@ public class Q06 {
 	}
 
 	private static boolean isRightJumin(String jumin) {
-		jumin = jumin.trim();
-		if(jumin.length() == 13 || jumin.length() == 14) {
+		if(jumin.length() == 13) {
 			if(isRightLast(jumin) && isRightYear(jumin) && isRightMonth(jumin) && isRightdate(jumin)) {
 				return true;
 			}
@@ -86,7 +78,6 @@ public class Q06 {
 	}
 
 	private static boolean isRightFirst(String jumin) {
-		jumin = jumin.trim();
 		for(int i=0; i<6; i++) {
 			char ch = jumin.charAt(i);
 			if(ch < '0' ||ch > '9') {
@@ -97,8 +88,7 @@ public class Q06 {
 	}
 	
 	private static boolean isRightLast(String jumin) {
-		jumin = jumin.trim();
-		for(int i=jumin.length()-7; i<jumin.length(); i++) {
+		for(int i=6; i<jumin.length(); i++) {
 			char ch = jumin.charAt(i);
 			if(ch < '0' ||ch > '9') {
 				return false;
@@ -108,7 +98,6 @@ public class Q06 {
 	}
 	
 	private static boolean isRightdate(String jumin) {
-		jumin = jumin.trim();
 		if(isRightFirst(jumin)) {
 			int date = Integer.parseInt(jumin.substring(4, 6));
 			
@@ -121,7 +110,6 @@ public class Q06 {
 	}
 	
 	private static boolean isRightMonth(String jumin) {
-		jumin = jumin.trim();
 		if(isRightFirst(jumin)) {
 			int month = Integer.parseInt(jumin.substring(2, 4));
 			
@@ -134,7 +122,6 @@ public class Q06 {
 	}
 
 	private static boolean isRightYear(String jumin) {
-		jumin = jumin.trim();
 		if(isRightFirst(jumin)) {
 			int year = Integer.parseInt(jumin.substring(0, 2));
 			
