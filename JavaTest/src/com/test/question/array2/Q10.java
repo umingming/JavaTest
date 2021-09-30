@@ -15,14 +15,14 @@ public class Q10 {
 		1. BufferedReader
 		2. 배열의 길이 입력
 		3. i = length-1, j = length/2
-		4. for문 1 ~ length*length
-			>if i,j length ? i,j+-length
-			>if (i,j) != 0? 
-				>i+1, j-2
-				>if i,j lenght? i,j-+length
-			>(i,j) = n
-			>i==, j++
-		4. output 호출
+		4. for문 1 ~ length*length(요소의 개수)
+			>if i,j 값이 범위 안? 아니면 i-=length, j+=length
+			>if (i,j)에 값이 있는지?  
+				>있으면 요소의 위치를 이전으로 이동 후 왼쪽으로 한 칸
+				>아까 if문에서 값이 수정됐을 경우 다시 원래대로
+			>조정이 끝난 (i,j)에 n값 저장
+			>i--, j++(오른쪽 위 대각선 방향으로 위치 옮김)
+		5. output 호출
 		*/
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
