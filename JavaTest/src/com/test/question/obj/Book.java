@@ -35,19 +35,18 @@ public class Book {
 	
 	public void setTitle(String title) {
 		if(title.length() <= 50) {
-			int rightChar = 0;
-
 			for(int i=0; i<title.length(); i++) {
 				if((title.charAt(i) >= '0' && title.charAt(i) <= '9') || 
 				(title.charAt(i) >= '가' && title.charAt(i) <= '힣') || 
 				(title.charAt(i) >= 'A' && title.charAt(i) <= 'Z') || 
 				(title.charAt(i) >= 'a' && title.charAt(i) <= 'z') ||
 				(title.charAt(i) == ' ')) {
-					rightChar++;
+					this.title = title;
+				} else {
+					this.title = "잘못된 제목";
+					break;
 				}
 			}
-			
-			this.title = (rightChar == title.length()) ? title : "잘못된 제목";
 		}
 	}
 	
