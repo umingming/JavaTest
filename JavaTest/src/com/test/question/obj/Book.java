@@ -99,12 +99,12 @@ public class Book {
 	
 	public String info() {
 		String info = "제목 : " + getTitle()
-			+ "\n가격 : " + getPrice()
-			+ "\n저자 : " + getAuthor()
-			+ "\n페이지수 : " + getPage()
-			+ "\n출판사 : " + this.publisher
-			+ "\n발행년도 : " + getPubYear()
-			+ "\nISBN : " + getIsbn();
+				+ "\n가격 : " + getPrice()
+				+ "\n저자 : " + getAuthor()
+				+ "\n페이지수 : " + getPage()
+				+ "\n출판사 : " + this.publisher
+				+ "\n발행년도 : " + getPubYear()
+				+ "\nISBN : " + getIsbn();
 		return info;
 	}
 }
