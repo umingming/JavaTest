@@ -67,8 +67,8 @@ public class Bugles {
 		
 		Calendar creationTime = Calendar.getInstance();
 		creationTime.set(Integer.parseInt(date.substring(0, 4)),
-					Integer.parseInt(date.substring(4, 6)) - 1,
-					Integer.parseInt(date.substring(6)));
+				Integer.parseInt(date.substring(4, 6)) - 1,
+				Integer.parseInt(date.substring(6)));
 		
 		this.creationTime = creationTime;
 	}//setCreationTime
