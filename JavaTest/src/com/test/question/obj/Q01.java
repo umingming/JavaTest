@@ -4,7 +4,7 @@ public class Q01 {
 
 	public static void main(String[] args) {
 		Book book = new Book();
-		book.setTitle("Java의! 정석");
+		book.setTitle("!Java의 정석");
 		System.out.println(book.getTitle());
 		
 		book.setPrice(30000);
