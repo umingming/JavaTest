@@ -41,7 +41,7 @@ public class Employee {
 			}
 		}
 		return true;
-	}
+	}//유효한 이름인지 확인
 
 	public String getName() {
 		return this.name;
@@ -51,7 +51,7 @@ public class Employee {
 		if(!(department.equals("영업부") || department.equals("기획부") || 
 				department.equals("홍보부") || department.equals("총무부"))) {
 			return;
-		}
+		}//유효성 검사
 		this.department = department;
 	}
 	
@@ -64,7 +64,7 @@ public class Employee {
 		if(!(position.equals("부장") || position.equals("과장") ||
 				position.equals("대리") || position.equals("사원"))) {
 			return;
-		}
+		}//유효성 검사
 		this.position = position;
 	}
 
@@ -100,7 +100,7 @@ public class Employee {
 			}
 		}
 		return true;
-	}
+	}//번호 확인
 
 	public String getTel() {
 		return this.tel;
@@ -109,7 +109,7 @@ public class Employee {
 	public void setBoss(Employee boss) {
 		if(!(boss != null && boss.department.equals(this.department))) {
 			return;
-		}
+		}//유효성 검사
 		this.boss = boss;
 	}
 
