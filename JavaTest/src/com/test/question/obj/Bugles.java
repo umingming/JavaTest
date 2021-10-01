@@ -29,6 +29,7 @@ public class Bugles {
 	private int weight;
 	private Calendar creationTime;
 	private int expiration;
+	private int daysOfEdible;
     
 	public void setWeight(int weight) {
 		if(!(weight == 300 || weight == 500 || weight == 850)) {
@@ -38,15 +39,15 @@ public class Bugles {
 		switch(weight) {
 		case 300 : 
 			this.price = 850;
-			this.expiration = 7;
+			this.daysOfEdible = 7;
 			break;
 		case 500 : 
 			this.price = 1200;
-			this.expiration = 10;
+			this.daysOfEdible = 10;
 			break;
 		case 850 : 
 			this.price = 850;
-			this.expiration = 15;
+			this.daysOfEdible = 15;
 			break;
 		}
     	
@@ -87,13 +88,15 @@ public class Bugles {
 	}//CreationTime에 기입할 날짜가 유효한지
 	
 	public int getExpiration() {
-		this.creationTime.add(Calendar.DATE, this.expiration);
+		this.creationTime.add(Calendar.DATE, this.daysOfEdible);
 		
 		Calendar today = Calendar.getInstance();
 		long todayTick = today.getTimeInMillis();
 		long creationTimeTick = this.creationTime.getTimeInMillis();
 		
-		return (int)((creationTimeTick-todayTick) / 1000 / 60 / 60 / 24);
+		this.expiration = (int)((creationTimeTick-todayTick) / 1000 / 60 / 60 / 24);
+		
+		return this.expiration;
 	}//getExpriration
 	
 	public void eat() {
