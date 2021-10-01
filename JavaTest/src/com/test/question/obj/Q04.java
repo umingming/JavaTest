@@ -4,7 +4,7 @@ public class Q04 {
 
 	public static void main(String[] args) {
 		Employee e1 = new Employee();
-		e1.setName("홍길동");
+		e1.setName("홍길동3");
 		e1.setDepartment("홍보부");
 		e1.setPosition("대리");
 		e1.setTel("010-1234-5678");

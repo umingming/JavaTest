@@ -14,7 +14,9 @@ public class Employee {
 			>010인지 substring.equals
 			>-를 제외한 나머지 8자리가 숫자인지 for, charAt
 		>set/get직속상사 같은 부서 다른 직원.
-	3. info 메소드
+	3. info 메소드 
+		>인적사항 출력
+		>상사가 없는가? 있으면 상사 이름, 부서, 직위 출력
 	 */
 
 	private String name;
@@ -89,7 +91,6 @@ public class Employee {
 		}
 		
 		tel = tel.replace("-", "");
-		
 		if(!(tel.length() == 11)) {
 			return false;
 		}

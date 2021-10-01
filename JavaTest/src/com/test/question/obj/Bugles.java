@@ -52,11 +52,11 @@ public class Bugles {
 		}
     	
 		this.weight = weight;
-	}//setWeight
+	}
     
 	public int getPrice() {
 		return this.price;
-	}//getPrice
+	}
     
 	public void setCreationTime(String date) {
 		date = date.replace("-", "");
@@ -71,7 +71,7 @@ public class Bugles {
 				Integer.parseInt(date.substring(6)));
 		
 		this.creationTime = creationTime;
-	}//setCreationTime
+	}
     
 	private boolean isValidDate(String date) {
 		if(date.length() != 8) {
@@ -97,7 +97,7 @@ public class Bugles {
 		this.expiration = (int)((creationTimeTick-todayTick) / 1000 / 60 / 60 / 24);
 		
 		return this.expiration;
-	}//getExpriration
+	}
 	
 	public void eat() {
 		if(this.expiration < 0) {
