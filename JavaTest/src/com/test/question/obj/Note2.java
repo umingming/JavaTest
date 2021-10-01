@@ -27,45 +27,60 @@ public class Note {
 	private int page;
 	private String owner;
 	private int price;
-	private String volume;
 
 	public void setSize(String size) {
-		if(!(size.equals("A3") || size.equals("A4") || size.equals("A5")
-				|| size.equals("B3") || size.equals("B4") || size.equals("B5"))) {
-			return;
+		if(size.length() <= 2 && isValidSize(size)) {
+			this.size = size;
 		}
-		this.size = size;
+	}
+	
+	private boolean isValidSize(String size) {
+		if(size.charAt(0) == 'A' || size.charAt(0) == 'B') {
+			if(size.charAt(1) >= '3' && size.charAt(1) <= '5') {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void setColor(String color) {
-		if(!(color.equals("검정색") || color.equals("노란색") || color.equals("파란색") || color.equals("흰색"))){
-			return;
+		if(isValidColor(color)) {
+			this.color = color;
 		}
-		this.color = color;
+	}
+	
+	private boolean isValidColor(String color) {
+		String[] validColor = {"검정색", "흰색", "노란색", "파란색"};
+		for(int i=0; i<validColor.length; i++) {
+			if(color.equals(validColor[i])) {
+				return true;
+			}
+		}	
+		return false;
 	}
 
 	public void setPage(int page) {
-		if(page < 10 || page > 200) {
-			return;
+		if(page >= 10 && page <= 200) {
+			this.page = page;
 		}
-		
+	}
+	
+	private String getVolum(int page) {
 		if(page >= 10 && page <= 50) {
-			this.volume = "얇은";
+			return "얇은";
 		} else if(page >= 51 && page <= 100) {
-			this.volume = "보통";
+			return "보통";
 		} else if(page >= 101 && page <= 200) {
-			this.volume = "두꺼운";
+			return "두꺼운";
+		} else {
+			return "";
 		}
-		
-		this.page = page;
 	}
 
 	public void setOwner(String owner) {
-		if(owner.length() < 2 || owner.length() > 5 || !isValidName(owner)) {
-			return;
+		if(owner.length() >= 2 && owner.length() <= 5 && isValidName(owner)) {
+			this.owner = owner;
 		} 
-		
-		this.owner = owner;
 	}
 
 	private boolean isValidName(String name) {
@@ -126,7 +141,7 @@ public class Note {
 		if(this.owner != null) {
 			temp += "소유자 : " + this.owner
 					+ "\n특성 : " + this.color + " " 
-					+ this.volume + " " 
+					+ getVolum(this.page) + " " 
 					+ this.size + "노트"
 					+ "\n가격 : " + getTotalPrice();
 		} else {
