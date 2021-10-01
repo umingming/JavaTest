@@ -25,55 +25,55 @@ public class Bugles {
 		>먹을 수 있는 가? 유통기한이 -면 못먹음
 	 */
 	
-    private int price;
-    private int weight;
-    private Calendar creationTime;
-    private int expirationOfProduct;
-    private int expiration;
+	private int price;
+	private int weight;
+	private Calendar creationTime;
+	private int expirationOfProduct;
+	private int expiration;
     
-    public void setWeight(int weight) {
-    	if(!(weight == 300 || weight == 500 || weight == 850)) {
-    		return;
-    	}//유효성 검사
+	public void setWeight(int weight) {
+		if(!(weight == 300 || weight == 500 || weight == 850)) {
+			return;
+		}//유효성 검사
     	
-    	switch(weight) {
-    	case 300 : 
-    		this.price = 850;
-    		this.expirationOfProduct = 7;
-    		break;
-    	case 500 : 
-    		this.price = 1200;
-    		this.expirationOfProduct = 10;
-    		break;
-    	case 850 : 
-    		this.price = 850;
-    		this.expirationOfProduct = 15;
-    		break;
-    	}
+		switch(weight) {
+		case 300 : 
+			this.price = 850;
+			this.expirationOfProduct = 7;
+			break;
+		case 500 : 
+			this.price = 1200;
+			this.expirationOfProduct = 10;
+			break;
+		case 850 : 
+			this.price = 850;
+			this.expirationOfProduct = 15;
+			break;
+		}
     	
-    	this.weight = weight;
-    }//setWeight
+		this.weight = weight;
+	}//setWeight
     
-    public int getPrice() {
+	public int getPrice() {
 		return this.price;
 	}//getPrice
     
-    public void setCreationTime(String date) {
-    	date = date.replace("-", "");
-    	
-    	if(!isValidDate(date)) {
-    		return;
-    	}//유효성 검사
-    	
-    	Calendar creationTime = Calendar.getInstance();
-    	creationTime.set(Integer.parseInt(date.substring(0, 4)),
-    			Integer.parseInt(date.substring(4, 6)) - 1,
-    			Integer.parseInt(date.substring(6)));
-
-    	this.creationTime = creationTime;
-    }//setCreationTime
+	public void setCreationTime(String date) {
+		date = date.replace("-", "");
+		
+		if(!isValidDate(date)) {
+			return;
+		}//유효성 검사
+		
+		Calendar creationTime = Calendar.getInstance();
+		creationTime.set(Integer.parseInt(date.substring(0, 4)),
+		Integer.parseInt(date.substring(4, 6)) - 1,
+		Integer.parseInt(date.substring(6)));
+		
+		this.creationTime = creationTime;
+	}//setCreationTime
     
-	private boolean isValidDate(String date) {
+    private boolean isValidDate(String date) {
 		if(date.length() != 8) {
 			return false;
 		}
@@ -106,6 +106,5 @@ public class Bugles {
 			System.out.println("과자를 맛있게 먹습니다.\n");
 		}
 	}//eat
-	
 
 }
