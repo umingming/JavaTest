@@ -73,7 +73,7 @@ public class Bugles {
 		this.creationTime = creationTime;
 	}//setCreationTime
     
-    private boolean isValidDate(String date) {
+	private boolean isValidDate(String date) {
 		if(date.length() != 8) {
 			return false;
 		}
@@ -86,7 +86,7 @@ public class Bugles {
 		
 		return true;
 	}//isValidDate
-
+	
 	public int getExpiration() {
 		this.creationTime.add(Calendar.DATE, expirationOfProduct);
 		
