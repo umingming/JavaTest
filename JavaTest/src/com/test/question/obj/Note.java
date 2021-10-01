@@ -5,9 +5,7 @@ public class Note {
 	설계>
 	1. 멤버 변수(private) ; 크기, 색상, 페이지, 소유자이름, 가격
 	2. Setter/Getter 메소드
-		>set크기 
-			>크기확인 메소드로 0번째가 A,B? 1번째가 3~5? 아니면 false
-			>if문 두 글자 이내, 올바른 크기가 기입됐으면 this.size=size
+		>set크기 올바른 사이즈? A3~5, B3~5
 		>set색상 검, 흰, 노, 파
 		>set페이지 10~200 
 			>10~50 얇은, 51~100 보통, 101~200 두꺼운
@@ -33,32 +31,32 @@ public class Note {
 		if(!(size.equals("A3") || size.equals("A4") || size.equals("A5")
 				|| size.equals("B3") || size.equals("B4") || size.equals("B5"))) {
 			return;
-		}
+		}//유효성 검사
 		this.size = size;
-	}
+	}//setSize
 	
 	public void setColor(String color) {
 		if(!(color.equals("검정색") || color.equals("노란색") || color.equals("파란색") || color.equals("흰색"))){
 			return;
-		}
+		}//유효성 검사
 		this.color = color;
-	}
+	}//setColor
 
 	public void setPage(int page) {
 		if(page < 10 || page > 200) {
 			return;
-		}
+		}//유효성 검사
 		
 		if(page >= 10 && page <= 50) {
 			this.volume = "얇은";
-		} else if(page >= 51 && page <= 100) {
+		} else if(page <= 100) {
 			this.volume = "보통";
-		} else if(page >= 101 && page <= 200) {
+		} else if(page <= 200) {
 			this.volume = "두꺼운";
-		}
+		}//업무
 		
 		this.page = page;
-	}
+	}//setPage
 
 	public void setOwner(String owner) {
 		if(owner.length() < 2 || owner.length() > 5 || !isValidName(owner)) {
@@ -66,7 +64,7 @@ public class Note {
 		} 
 		
 		this.owner = owner;
-	}
+	}//setOwner
 
 	private boolean isValidName(String name) {
 		for(int i=0; i<name.length(); i++) {
@@ -75,7 +73,7 @@ public class Note {
 			}
 		}
 		return false;
-	}
+	}//isValidName
 	
 	private String getTotalPrice() {
 		int totalPrice = 500 + getAddPriceSize(size)
@@ -88,7 +86,7 @@ public class Note {
 		}
 		
 		return result;
-	}
+	}//getTotalPrice
 
 	private int getAddPriceSize(String size) {
 		int addPriceSize = 0;
@@ -100,7 +98,7 @@ public class Note {
 		case "B5" : addPriceSize += 100; break;
 		}
 		return addPriceSize;
-	}
+	}//getAddPriceSize
 	
 	private int getAddPriceColor(String color) {
 		int addPriceColor = 0;
@@ -110,7 +108,7 @@ public class Note {
 		case "파란색" : addPriceColor += 200; break;
 		}
 		return addPriceColor;
-	}
+	}//getAddPriceColor
 
 	private int getAddPricePage(int page) {
 		int addPricePage = 0;
@@ -119,7 +117,7 @@ public class Note {
 			addPricePage += 10;
 		}
 		return addPricePage;
-	}
+	}//getAddPricePage
 	
 	public String info() {
 		String temp = "■■■■■■ 노트 정보 ■■■■■■\n";
@@ -135,6 +133,6 @@ public class Note {
 		
 		temp += "\n■■■■■■■■■■■■■■■■■■■■■■\n";
 		return temp;
-	}
+	}//info
 	
 }

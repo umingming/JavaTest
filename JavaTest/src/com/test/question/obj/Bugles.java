@@ -34,7 +34,7 @@ public class Bugles {
     public void setWeight(int weight) {
     	if(!(weight == 300 || weight == 500 || weight == 850)) {
     		return;
-    	}
+    	}//유효성 검사
     	
     	switch(weight) {
     	case 300 : 
@@ -52,25 +52,26 @@ public class Bugles {
     	}
     	
     	this.weight = weight;
-    }
+    }//setWeight
     
     public int getPrice() {
 		return this.price;
-	}
+	}//getPrice
     
     public void setCreationTime(String date) {
     	date = date.replace("-", "");
     	
     	if(!isValidDate(date)) {
     		return;
-    	}
+    	}//유효성 검사
     	
     	Calendar creationTime = Calendar.getInstance();
     	creationTime.set(Integer.parseInt(date.substring(0, 4)),
     			Integer.parseInt(date.substring(4, 6)) - 1,
     			Integer.parseInt(date.substring(6)));
+
     	this.creationTime = creationTime;
-    }
+    }//setCreationTime
     
 	private boolean isValidDate(String date) {
 		if(date.length() != 8) {
@@ -84,7 +85,7 @@ public class Bugles {
 		}
 		
 		return true;
-	}
+	}//isValidDate
 
 	public int getExpiration() {
 		this.creationTime.add(Calendar.DATE, expirationOfProduct);
@@ -96,7 +97,7 @@ public class Bugles {
 		this.expiration = (int)((creationTimeTick-todayTick) / 1000 / 60 / 60 / 24);
 		
 		return this.expiration;
-	}
+	}//getExpriration
 	
 	public void eat() {
 		if(this.expiration < 0) {
@@ -104,7 +105,7 @@ public class Bugles {
 		} else {
 			System.out.println("과자를 맛있게 먹습니다.\n");
 		}
-	}
+	}//eat
 	
 
 }
