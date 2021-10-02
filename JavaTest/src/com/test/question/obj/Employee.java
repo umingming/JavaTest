@@ -18,6 +18,7 @@ public class Employee {
 		>인적사항 출력
 		>상사가 없는가? 있으면 상사 이름, 부서, 직위 출력
 	 */
+	
 
 	private String name;
 	private String department;
