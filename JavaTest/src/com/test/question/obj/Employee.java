@@ -3,6 +3,7 @@ package com.test.question.obj;
 public class Employee {
 	/*
 	설계>
+	
 	1. 멤버 변수 선언(private) 이름, 부서, 직책, 연락처, 직속상사
 	2. Setter/Getter 메소드
 		>set/get이름 
