@@ -33,13 +33,13 @@ public class Q07 {
 		for(int i=0; i<length; i++) {
 			num = "" + input.charAt(i);
 			
-			if((i % 3 == length % 3) && length != 3) {
-				result += "," + num;
+			if((i % 3 == (length-1) % 3) && length != 3) {
+				result += num + "," ;
 			} else {
 				result += num;
 			}
 		}
-		System.out.printf("결과 : %s", result);
+		System.out.printf("결과 : %s", result.substring(0, result.lastIndexOf(",")));
 	}
 
 }
