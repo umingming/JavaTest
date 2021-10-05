@@ -44,6 +44,6 @@ public class Student {
 				", 학년 : " + this.grade + 
 				", 반 : " + this.classNumber + 
 				", 번호 : " + this.number + ")"; 
-		return temp;
+		return temp; //0 -> 미정으로
 	}
 }
