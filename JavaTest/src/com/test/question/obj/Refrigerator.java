@@ -50,7 +50,7 @@ public class Refrigerator {
 			if(items[i].getName().equals(name)) {
 				item = items[i];
 				items[i] = null;
-				System.out.println(); //유통기한 출력시 개행하기 위해
+				System.out.println(); //유통기한 출력시 개행
 				break;
 			}
 		}
