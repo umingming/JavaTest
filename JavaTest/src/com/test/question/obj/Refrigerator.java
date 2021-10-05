@@ -9,17 +9,16 @@ public class Refrigerator {
 	2. add 메소드
 		>for문 100
 			>if문 items[i]가 비어있는지? 저장하고 break;
-				>calendar의 경우 replace로 - 제거하고 숫자들로 진행
 		>넣은 음식 출력
 	3. item get메소드
+		>item 객체 생성 
 		>for문 100
 			>if문 items[i] 이름과 같은지? null 저장 break;
-			
+		>item 리턴
 	4. count 메소드
 		>count 변수 선언
 		>for문 100
  			>if items[i]가 있는지? count++
- 			
  	5. list 메소드
  		>for문 100
  			>if문 안 비어있는지? 해당 음식 정보 출력
@@ -40,9 +39,8 @@ public class Refrigerator {
 	}
 	
 	public Item get(String name) {
-		int i=0;
-		Item item = null;
-		for(i=0; i<items.length; i++) {
+		Item item = null; 
+		for(int i=0; i<items.length; i++) {
 			if(items[i].getName().equals(name)) {
 				item = items[i];
 				items[i] = null;

@@ -22,7 +22,6 @@ public class Q06 {
 
 		Item item4 = r.get("깍두기");//냉장고에서 꺼내기
 		System.out.printf("%s의 유통기한 : %tF\n", item4.getName(), item4.getExpiration());
-//		System.out.printf("%s의 유통기한 : \n", item4.getName());
 
 		System.out.printf("냉장고 안의 총 아이템 개수 : %d개\n", r.count());
 
