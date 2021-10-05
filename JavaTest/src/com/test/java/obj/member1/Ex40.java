@@ -23,7 +23,33 @@ public class Ex40 {
 		family.setSonHometown("수원");
 		
 		Family2 family2 = new Family2();
-		family2.setMother().name("이유미");
+
+		Information mother = new Information();
+		mother.setName("유재분");
+		mother.setAge(55);
+		mother.setHometown("이천");
+
+		Information father = new Information();
+		father.setName("이상태");
+		father.setAge(56);
+		father.setHometown("파주");
+		
+		Information daughter = new Information();
+		daughter.setName("이유미");
+		daughter.setAge(27);
+		daughter.setHometown("수원");
+		
+		Information son = new Information();
+		son.setName("이민섭");
+		son.setAge(23);
+		son.setHometown("수원");
+		
+		family2.setMother(mother);
+		family2.setFather(father);
+		family2.setDaughter(daughter);
+		family2.setSon(son);
+		
+		System.out.println(family2.getMother().getName());
 
 		
 	}
