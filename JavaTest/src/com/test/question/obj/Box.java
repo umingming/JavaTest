@@ -37,7 +37,7 @@ public class Box {
 			int thickness = (int)(Math.random() * 20) + 1;
 			macaron.setThickness(thickness);
 			
-			list[i] = macaron;
+			this.list[i] = macaron;
 		}
 		System.out.println("마카롱을 10개 만들었습니다.\n");
 	}
