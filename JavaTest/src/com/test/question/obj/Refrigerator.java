@@ -104,7 +104,7 @@ class Item {
 				Integer.parseInt(date.substring(6)));
 		
 		this.expiration = expiration;
-	}//매개변수 String으로 메소드 오버로딩
+	}//매개변수가 String일 경우 Calendar로 변환해 저장
 	
 	public void setExpiration(Calendar date) {
 		this.expiration = expiration;
