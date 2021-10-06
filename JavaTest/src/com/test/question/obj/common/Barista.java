@@ -6,18 +6,25 @@ public class Barista {
 	1. 클래스 생성
 		>커피 클래스
 			>원두, 물, 얼음, 우유, 원자재별 단가, 매출액, 판매 개수 static 변수 선언
-			>static 메소드로 단가, 판매액 초기화
+			>static 메소드로 단가초기화
+			>setter/getter메소드
+				>set원자재, 판매 개수; 매개값을 추가함.
+				>get판매액; 원자재 * 단가 리턴
 		>에스프레소, 라떼, 아메리카노 클래스 
 			>private 변수 선언
+			>setter 메소드; 매개값 저장함.
 			>drink 메소드; 커피를 마신다. 출력
 	2. 바리스타 클래스
 		>make 에스프레소, 라떼, 아메리카노 클래스
-			>매개값을 static 변수에 추가함.
+			>객체 생성
+			>set메소드 이용해 매개값을 static 변수에 저장
+			>객체 리턴
 		>make 에스프레소, 라떼, 아메리카노 배열 클래스
 			>count값을 길이로 하는 배열 생성
-			>매개값을 static 변수에 추가함.
+			>for문 객체 생성, 값 저장
+			>객체 리턴
 		>결과 메소드
-			>판매 결과 static 값 이용해 출력
+			>판매 결과 get메소드 이용해 출력
 				>소비량, 매출액의 경우 천 단위 표기
 	 */
 	
@@ -76,7 +83,7 @@ public class Barista {
 	}
 	
 	public void result() {
-		System.out.println("=================================");
+		System.out.println("\n=================================");
 		System.out.println("판매 결과");
 		System.out.println("=================================");
 		
@@ -99,7 +106,7 @@ public class Barista {
 		System.out.println("매출액");
 		System.out.println("---------------------------------");
 		System.out.printf("원두 : %,d원%n", Coffee.getBeanTotalPrice());
-		System.out.printf("물 : %,d원%n", Coffee.getWaterTotalPrice());
+		System.out.printf("물 : %,d원%n", (int)Coffee.getWaterTotalPrice());
 		System.out.printf("얼음 : %,d원%n", Coffee.getIceTotalPrice());
 		System.out.printf("우유 : %,d원%n", Coffee.getMilkTotalPrice());
 	}
@@ -126,8 +133,15 @@ class Coffee {
 	private static int espresso;
 	private static int bean;
 
+	static {
+		Coffee.beanUnitPrice = 1;
+		Coffee.waterUnitPrice = 0.2; 
+		Coffee.iceUnitPrice = 3; 
+		Coffee.milkUnitPrice = 4; 
+	}
+
 	public static int getBean() {
-		return bean;
+		return Coffee.bean;
 	}
 
 	public static void setBean(int bean) {
@@ -135,7 +149,7 @@ class Coffee {
 	}
 
 	public static int getWater() {
-		return water;
+		return Coffee.water;
 	}
 
 	public static void setWater(int water) {
@@ -143,7 +157,7 @@ class Coffee {
 	}
 
 	public static int getIce() {
-		return ice;
+		return Coffee.ice;
 	}
 
 	public static void setIce(int ice) {
@@ -151,79 +165,31 @@ class Coffee {
 	}
 
 	public static int getMilk() {
-		return milk;
+		return Coffee.milk;
 	}
 
 	public static void setMilk(int milk) {
 		Coffee.milk += milk;
 	}
 
-	public static int getBeanUnitPrice() {
-		return beanUnitPrice;
-	}
-
-	public static void setBeanUnitPrice(int beanUnitPrice) {
-		Coffee.beanUnitPrice = beanUnitPrice;
-	}
-
-	public static double getWaterUnitPrice() {
-		return waterUnitPrice;
-	}
-
-	public static void setWaterUnitPrice(double waterUnitPrice) {
-		Coffee.waterUnitPrice = waterUnitPrice;
-	}
-
-	public static int getIceUnitPrice() {
-		return iceUnitPrice;
-	}
-
-	public static void setIceUnitPrice(int iceUnitPrice) {
-		Coffee.iceUnitPrice = iceUnitPrice;
-	}
-
-	public static int getMilkUnitPrice() {
-		return milkUnitPrice;
-	}
-
-	public static void setMilkUnitPrice(int milkUnitPrice) {
-		Coffee.milkUnitPrice = milkUnitPrice;
-	}
-
 	public static int getBeanTotalPrice() {
-		return beanTotalPrice;
-	}
-
-	public static void setBeanTotalPrice(int beanTotalPrice) {
-		Coffee.beanTotalPrice = beanTotalPrice;
+		return Coffee.bean * Coffee.beanUnitPrice;
 	}
 
 	public static double getWaterTotalPrice() {
-		return waterTotalPrice;
-	}
-
-	public static void setWaterTotalPrice(double waterTotalPrice) {
-		Coffee.waterTotalPrice = waterTotalPrice;
+		return Coffee.water * Coffee.waterUnitPrice;
 	}
 
 	public static int getIceTotalPrice() {
-		return iceTotalPrice;
-	}
-
-	public static void setIceTotalPrice(int iceTotalPrice) {
-		Coffee.iceTotalPrice = iceTotalPrice;
+		return Coffee.ice * Coffee.iceUnitPrice;
 	}
 
 	public static int getMilkTotalPrice() {
-		return milkTotalPrice;
-	}
-
-	public static void setMilkTotalPrice(int milkTotalPrice) {
-		Coffee.milkTotalPrice = milkTotalPrice;
+		return Coffee.milk * Coffee.milkUnitPrice;
 	}
 
 	public static int getAmericano() {
-		return americano;
+		return Coffee.americano;
 	}
 
 	public static void setAmericano(int americano) {
@@ -231,7 +197,7 @@ class Coffee {
 	}
 
 	public static int getLatte() {
-		return latte;
+		return Coffee.latte;
 	}
 
 	public static void setLatte(int latte) {
@@ -239,33 +205,17 @@ class Coffee {
 	}
 
 	public static int getEspresso() {
-		return espresso;
+		return Coffee.espresso;
 	}
 
 	public static void setEspresso(int espresso) {
 		Coffee.espresso += espresso;
 	}
 
-	static {
-		Coffee.beanUnitPrice = 1;
-		Coffee.waterUnitPrice = 0.2; 
-		Coffee.iceUnitPrice = 3; 
-		Coffee.milkUnitPrice = 4; 
-		
-		Coffee.beanTotalPrice = bean * beanUnitPrice;
-		Coffee.waterTotalPrice = water * waterUnitPrice; 
-		Coffee.iceTotalPrice = ice * iceUnitPrice; 
-		Coffee.milkTotalPrice = milk * milkUnitPrice; 
-	}
-	
 }
 
 class Espresso {
 	private int bean;
-
-	public int getBean() {
-		return bean;
-	}
 
 	public void setBean(int bean) {
 		this.bean = bean;
@@ -282,16 +232,8 @@ class Latte {
 	private int bean;
 	private int milk;
 
-	public int getBean() {
-		return bean;
-	}
-
 	public void setBean(int bean) {
 		this.bean = bean;
-	}
-
-	public int getMilk() {
-		return milk;
 	}
 
 	public void setMilk(int milk) {
@@ -302,7 +244,8 @@ class Latte {
 		Coffee.setBean(this.bean);
 		Coffee.setMilk(this.milk);
 		Coffee.setLatte(1);
-		System.out.printf("원두 %dg, 우유 %dml로 만들어진 라테를 마십니다.%n");
+		System.out.printf("원두 %dg, 우유 %dml로 만들어진 라테를 마십니다.%n"
+				, this.bean, this.milk);
 	}
 }
 
@@ -311,24 +254,12 @@ class Americano {
 	private int water;
 	private int ice;
 
-	public int getBean() {
-		return bean;
-	}
-
 	public void setBean(int bean) {
 		this.bean = bean;
 	}
 
-	public int getWater() {
-		return water;
-	}
-
 	public void setWater(int water) {
 		this.water = water;
-	}
-
-	public int getIce() {
-		return ice;
 	}
 
 	public void setIce(int ice) {
@@ -340,6 +271,7 @@ class Americano {
 		Coffee.setWater(this.water);
 		Coffee.setIce(this.ice);
 		Coffee.setAmericano(1);
-		System.out.printf("원두 %dg, 물 %dml, 얼음 %d개로 만들어진 아메리카노를 마십니다.%n");
+		System.out.printf("원두 %dg, 물 %dml, 얼음 %d개로 만들어진 아메리카노를 마십니다.%n"
+				, this.bean, this.water, this.ice);
 	}
 }

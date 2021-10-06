@@ -77,10 +77,6 @@ public class Packer {
 class Pencil{
 	private String hardness;
 
-	public String getHardness() {
-		return this.hardness;
-	}
-
 	public void setHardness(String hardness) {
 		if(!(hardness.equals("4B") 
 				|| hardness.equals("3B") 
@@ -105,10 +101,6 @@ class Pencil{
 class Eraser{
 	private String size;
 
-	public String getSize() {
-		return this.size;
-	}
-
 	public void setSize(String size) {
 		if(!(size.equals("Large") 
 				|| size.equals("Medium") 
@@ -127,10 +119,6 @@ class Eraser{
 class BallPointPen{
 	private double thickness;
 	private String color;
-
-	public double getThickness() {
-		return thickness;
-	}
 	
 	public void setThickness(double thickness) {
 		if(!(thickness == 0.3 
@@ -141,10 +129,6 @@ class BallPointPen{
 			return;
 		}
 		this.thickness = thickness;
-	}
-	
-	public String getColor() {
-		return color;
 	}
 	
 	public void setColor(String color) {
@@ -167,10 +151,6 @@ class Ruler{
 	private int length;
 	private String shape;
 
-	public int getLength() {
-		return length;
-	}
-
 	public void setLength(int length) {
 		if(!(length == 30
 				|| length == 50
@@ -178,10 +158,6 @@ class Ruler{
 			return;
 		}
 		this.length = length;
-	}
-
-	public String getShape() {
-		return shape;
 	}
 
 	public void setShape(String shape) {

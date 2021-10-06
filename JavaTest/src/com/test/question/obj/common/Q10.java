@@ -47,7 +47,6 @@ public class Q10 {
 
 		//결산
 		barista.result();
-		}
 
 	}
 
