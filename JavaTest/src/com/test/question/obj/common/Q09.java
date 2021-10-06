@@ -8,7 +8,7 @@ public class Q09 {
 
 		//연필
 		Pencil p1 = new Pencil();
-		p1.setHardness("HB");
+		p1.setHardness("3");
 		packer.packing(p1);
 
 		Pencil p2 = new Pencil();

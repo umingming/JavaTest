@@ -21,8 +21,12 @@ public class Packer {
 	
 	public void packing(Pencil pencil) {
 		System.out.printf("포장 전 검수 : %s입니다.%n", pencil.info());
-		Packer.pencilCount++;
-		System.out.println("포장을 완료했습니다.");
+		if(!pencil.isVaild()) {
+			System.out.println("포장을 실패했습니다.");
+		} else {
+			Packer.pencilCount++;
+			System.out.println("포장을 완료했습니다.");
+		}
 	}
 
 	public void packing(Eraser eraser) {
@@ -77,8 +81,12 @@ public class Packer {
 class Pencil{
 	private String hardness;
 
-	public void setHardness(String hardness) {
-		if(!(hardness.equals("4B") 
+	public String getHardness() {
+		return hardness;
+	}
+
+	public boolean isVaild(){
+		if(hardness.equals("4B") 
 				|| hardness.equals("3B") 
 				|| hardness.equals("2B") 
 				|| hardness.equals("B") 
@@ -86,9 +94,12 @@ class Pencil{
 				|| hardness.equals("H") 
 				|| hardness.equals("2H") 
 				|| hardness.equals("3H") 
-				|| hardness.equals("4H"))) {
-			return;
+				|| hardness.equals("4H")) {
+			return true;
 		}
+		return false;
+	}
+	public void setHardness(String hardness) {
 		this.hardness = hardness;
 	}
 	
