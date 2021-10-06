@@ -129,36 +129,39 @@ class Coffee {
 		Coffee.milkUnitPrice = 4; 
 	}//단가 초기화
 
+	Coffee(int bean) {
+		Coffee.bean += bean;
+		Coffee.espresso++;
+	}
+	
+	Coffee(int bean, int milk) {
+		Coffee.bean += bean;
+		Coffee.milk += bean;
+		Coffee.latte++;
+	}
+	
+	Coffee(int bean, int water, int ice) {
+		Coffee.bean += bean;
+		Coffee.water += water;
+		Coffee.ice += ice;
+		Coffee.americano++;
+	}
+	
+	
 	public static int getBean() {
 		return Coffee.bean;
-	}
-
-	public static void setBean(int bean) {
-		Coffee.bean += bean;
 	}
 
 	public static int getWater() {
 		return Coffee.water;
 	}
 
-	public static void setWater(int water) {
-		Coffee.water += water;
-	}
-
 	public static int getIce() {
 		return Coffee.ice;
 	}
 
-	public static void setIce(int ice) {
-		Coffee.ice += ice;
-	}
-
 	public static int getMilk() {
 		return Coffee.milk;
-	}
-
-	public static void setMilk(int milk) {
-		Coffee.milk += milk;
 	}//원자재
 
 	public static int getBeanTotalPrice() {
@@ -181,24 +184,12 @@ class Coffee {
 		return Coffee.americano;
 	}
 
-	public static void setAmericano(int americano) {
-		Coffee.americano += americano;
-	}
-
 	public static int getLatte() {
 		return Coffee.latte;
 	}
 
-	public static void setLatte(int latte) {
-		Coffee.latte += latte;
-	}
-
 	public static int getEspresso() {
 		return Coffee.espresso;
-	}
-
-	public static void setEspresso(int espresso) {
-		Coffee.espresso += espresso;
 	}//판매개수
 
 }//Coffee
@@ -211,8 +202,7 @@ class Espresso {
 	}
 
 	void drink() {
-		Coffee.setBean(this.bean);
-		Coffee.setEspresso(1);
+		Coffee coffee = new Coffee(this.bean);
 		System.out.printf("원두 %dg으로 만들어진 에스프레소를 마십니다.%n", this.bean);
 	}
 }//Espresso
@@ -227,9 +217,7 @@ class Latte {
 	}
 	
 	void drink() {
-		Coffee.setBean(this.bean);
-		Coffee.setMilk(this.milk);
-		Coffee.setLatte(1);
+		Coffee coffee = new Coffee(this.bean, this.milk);
 		System.out.printf("원두 %dg, 우유 %dml로 만들어진 라테를 마십니다.%n"
 				, this.bean, this.milk);
 	}
@@ -247,10 +235,7 @@ class Americano {
 	}
 	
 	void drink() {
-		Coffee.setBean(this.bean);
-		Coffee.setWater(this.water);
-		Coffee.setIce(this.ice);
-		Coffee.setAmericano(1);
+		Coffee coffee = new Coffee(this.bean, this.water, this.ice);
 		System.out.printf("원두 %dg, 물 %dml, 얼음 %d개로 만들어진 아메리카노를 마십니다.%n"
 				, this.bean, this.water, this.ice);
 	}
