@@ -3,17 +3,15 @@ package com.test.question.obj.common;
 public class Packer {
 	/*
 	설계>
-	1. 클래스 생성 
-		>연필; 상태 
-		>지우개; 사이즈
-		>볼펜; 두께, 색 
-		>자; 길이, 형태 
+	1. 클래스 생성; 연필, 지우개, 볼펜, 자
+		>if문 적합한지? this로 변수 저장
+		>info 메소드 String 리턴
 	2. 멤버 변수 선언(static); 각 사무용품 포장 개수 
 	3. packing 메소드
-		>if문 유효한 제품이 아닌지? return
+		>info메소드 사용해 출력 	>출력문 단순화시키는 방법은 없을까
 		>count++
 	4. 카운트 메소드
-		>swith문 사용해 int값에 따른 결과 출력
+		>swith문 사용해 int값에 따른 결과 출력 >0일 때 하나하나 나열해서 출력하는 게 답인가
 	 */
 	
 	private static int pencilCount;
