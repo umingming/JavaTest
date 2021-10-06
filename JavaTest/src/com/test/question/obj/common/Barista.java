@@ -12,18 +12,17 @@ public class Barista {
 				>get판매액; 원자재 * 단가 리턴
 		>에스프레소, 라떼, 아메리카노 클래스 
 			>private 변수 선언
-			>setter 메소드; 매개값 저장함.
+			>매개변수를 가진 생성자 생성해 this.멤버변수에 매개값 저장함.
 			>drink 메소드
 				>원자재, 판매개수 멤버 변수를 set메소드를 이용해 정적 변수에 추가함. 
 				>커피를 마신다. 출력
 	2. 바리스타 클래스
 		>make 에스프레소, 라떼, 아메리카노 메소드
 			>객체 생성
-			>set메소드 이용해 매개값을 static 변수에 저장
 			>객체 리턴
 		>make 에스프레소, 라떼, 아메리카노 배열 메소드
 			>count값을 길이로 하는 배열 생성
-			>for문 객체 생성, 값 저장
+			>for문 객체 생성
 			>객체 리턴
 		>결과 메소드
 			>판매 결과 get메소드 이용해 출력
@@ -31,8 +30,7 @@ public class Barista {
 	 */
 	
 	public Espresso makeEspresso(int bean) {
-		Espresso espresso = new Espresso();
-		espresso.setBean(bean);
+		Espresso espresso = new Espresso(bean);
 		return espresso;
 	}
 
@@ -40,16 +38,13 @@ public class Barista {
 		Espresso[] espressoes = new Espresso[count];
 		
 		for(int i=0; i<espressoes.length; i++) {
-			espressoes[i] = new Espresso();
-			espressoes[i].setBean(bean);
+			espressoes[i] = new Espresso(bean);
 		}
 		return espressoes;
 	}
 	
 	public Latte makeLatte(int bean, int milk) {
-		Latte latte = new Latte();
-		latte.setBean(bean);
-		latte.setMilk(milk);
+		Latte latte = new Latte(bean, milk);
 		return latte;
 	}
 	
@@ -57,18 +52,13 @@ public class Barista {
 		Latte[] lattes = new Latte[count];
 		
 		for(int i=0; i<lattes.length; i++) {
-			lattes[i] = new Latte();
-			lattes[i].setBean(bean);
-			lattes[i].setMilk(milk);
+			lattes[i] = new Latte(bean, milk);
 		}
 		return lattes;
 	}
 	
 	public Americano makeAmericano(int bean, int water, int ice) {
-		Americano americano = new Americano();
-		americano.setBean(bean);
-		americano.setWater(water);
-		americano.setIce(ice);
+		Americano americano = new Americano(bean, water, ice);
 		return americano;
 	}
 	
@@ -76,10 +66,7 @@ public class Barista {
 		Americano[] americanos = new Americano[count];
 		
 		for(int i=0; i<americanos.length; i++) {
-			americanos[i] = new Americano();
-			americanos[i].setBean(bean);
-			americanos[i].setWater(water);
-			americanos[i].setIce(ice);
+			americanos[i] = new Americano(bean, water, ice);
 		}
 		return americanos;
 	}
@@ -218,8 +205,8 @@ class Coffee {
 
 class Espresso {
 	private int bean;
-
-	public void setBean(int bean) {
+	
+	Espresso(int bean) {
 		this.bean = bean;
 	}
 
@@ -234,11 +221,8 @@ class Latte {
 	private int bean;
 	private int milk;
 
-	public void setBean(int bean) {
+	Latte(int bean, int milk) {
 		this.bean = bean;
-	}
-
-	public void setMilk(int milk) {
 		this.milk = milk;
 	}
 	
@@ -256,15 +240,9 @@ class Americano {
 	private int water;
 	private int ice;
 
-	public void setBean(int bean) {
+	Americano(int bean, int water, int ice) {
 		this.bean = bean;
-	}
-
-	public void setWater(int water) {
 		this.water = water;
-	}
-
-	public void setIce(int ice) {
 		this.ice = ice;
 	}
 	
