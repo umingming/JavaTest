@@ -6,9 +6,9 @@ public class Barista {
 	1. 클래스 생성
 		>커피 클래스
 			>원두, 물, 얼음, 우유, 원자재별 단가, 매출액, 판매 개수 static 변수 선언
-			>static 메소드로 단가초기화
+			>static 메소드로 단가 초기화
 			>setter/getter메소드
-				>set원자재, 판매 개수; 매개값을 추가함.
+				>set/get원자재, 판매 개수; 매개값을 추가해 리턴함.
 				>get판매액; 원자재 * 단가 리턴
 		>에스프레소, 라떼, 아메리카노 클래스 
 			>private 변수 선언
@@ -111,7 +111,7 @@ public class Barista {
 		System.out.printf("우유 : %,d원%n", Coffee.getMilkTotalPrice());
 	}
 	
-}
+}//Barista
 
 class Coffee {
 	private static int water;
@@ -138,7 +138,7 @@ class Coffee {
 		Coffee.waterUnitPrice = 0.2; 
 		Coffee.iceUnitPrice = 3; 
 		Coffee.milkUnitPrice = 4; 
-	}
+	}//단가 초기화
 
 	public static int getBean() {
 		return Coffee.bean;
@@ -170,7 +170,7 @@ class Coffee {
 
 	public static void setMilk(int milk) {
 		Coffee.milk += milk;
-	}
+	}//원자재
 
 	public static int getBeanTotalPrice() {
 		return Coffee.bean * Coffee.beanUnitPrice;
@@ -186,7 +186,7 @@ class Coffee {
 
 	public static int getMilkTotalPrice() {
 		return Coffee.milk * Coffee.milkUnitPrice;
-	}
+	}//매출액
 
 	public static int getAmericano() {
 		return Coffee.americano;
@@ -210,9 +210,9 @@ class Coffee {
 
 	public static void setEspresso(int espresso) {
 		Coffee.espresso += espresso;
-	}
+	}//판매개수
 
-}
+}//Coffee
 
 class Espresso {
 	private int bean;
@@ -226,7 +226,7 @@ class Espresso {
 		Coffee.setEspresso(1);
 		System.out.printf("원두 %dg으로 만들어진 에스프레소를 마십니다.%n", this.bean);
 	}
-}
+}//Espresso
 
 class Latte {
 	private int bean;
@@ -247,7 +247,7 @@ class Latte {
 		System.out.printf("원두 %dg, 우유 %dml로 만들어진 라테를 마십니다.%n"
 				, this.bean, this.milk);
 	}
-}
+}//Latte
 
 class Americano {
 	private int bean;
@@ -274,4 +274,4 @@ class Americano {
 		System.out.printf("원두 %dg, 물 %dml, 얼음 %d개로 만들어진 아메리카노를 마십니다.%n"
 				, this.bean, this.water, this.ice);
 	}
-}
+}//Americano

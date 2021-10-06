@@ -4,14 +4,14 @@ public class Packer {
 	/*
 	설계>
 	1. 클래스 생성; 연필, 지우개, 볼펜, 자
-		>if문 적합한지? this로 변수 저장
+		>if문 유효성? this로 변수 저장
 		>info 메소드 String 리턴
 	2. 멤버 변수 선언(static); 각 사무용품 포장 개수 
 	3. packing 메소드
-		>info메소드 사용해 출력 	>출력문 단순화시키는 방법은 없을까
+		>info메소드 사용해 출력 	
 		>count++
 	4. 카운트 메소드
-		>swith문 사용해 int값에 따른 결과 출력 >0일 때 하나하나 나열해서 출력하는 게 답인가
+		>swith문 사용해 int값에 따른 결과 출력 
 	 */
 	
 	private static int pencilCount;
@@ -69,10 +69,10 @@ public class Packer {
 			break;
 		}
 		
-		System.out.println();
+		System.out.println();//개행
 	}
 	
-}
+}//Packer
 
 class Pencil{
 	private String hardness;
@@ -96,7 +96,7 @@ class Pencil{
 		return String.format("%s 진하기 연필", this.hardness);
 	}
 	
-}
+}//Pencil
 
 class Eraser{
 	private String size;
@@ -114,7 +114,7 @@ class Eraser{
 		return String.format("%s 사이즈 지우개", this.size);
 	}
 	
-}
+}//Eraser
 
 class BallPointPen{
 	private double thickness;
@@ -145,7 +145,7 @@ class BallPointPen{
 		return String.format("%s 색상 %.1fmm 볼펜", this.color, this.thickness);
 	}
 	
-}
+}//BallPointPen
 
 class Ruler{
 	private int length;
@@ -173,5 +173,5 @@ class Ruler{
 		return String.format("%dcm %s", this.length, this.shape);
 	}
 
-}
+}//Ruler
 
