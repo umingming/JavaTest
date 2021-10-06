@@ -10,7 +10,7 @@ public class Ex49_static {
 //		p1.setColor("검정");
 //		
 //		Pen p2 = new Pen("젤리펜", "빨강");
-		
+		/*
 		int count = 0;
 		
 		Pen p1 = new Pen("153", "검정");
@@ -23,6 +23,18 @@ public class Ex49_static {
 		count++;
 		
 		System.out.println("펜의 개수 : " + count);
+		*/
+		Pen p1 = new Pen("153", "검정");
+//		Pen.count++;
+		
+		Pen p2 = new Pen("153", "검정");
+//		Pen.count++;
+		
+		Pen p3 = new Pen("153", "검정");
+//		Pen.count++;
+		
+		System.out.println("펜의 개수 : " + Pen.count);
+		
 		
 	}
 
@@ -31,6 +43,11 @@ public class Ex49_static {
 class Pen { 
 	private String model;
 	private String color;
+	public static int count;
+	
+	static {
+		Pen.count = 3;
+	}
 	
 	public Pen() {
 		this.model = "";
@@ -41,6 +58,8 @@ class Pen {
 		super();
 		this.model = model;
 		this.color = color;
+		Pen.count = 10;
+		Pen.count++;
 	}
 
 	public String getModel() {
