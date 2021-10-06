@@ -45,7 +45,11 @@ public class Time {
 			this.minute = minute;
 		}
 		
-		this.hour = hour;
+		/*
+		this.hour = (second / 60 + minute ) / 60 + hour;
+		this.minute = (second / 60 + minute) % 60;
+		this.second = second % 60;
+		*/
 	}
 	
 	public Time(int minute, int second) {
