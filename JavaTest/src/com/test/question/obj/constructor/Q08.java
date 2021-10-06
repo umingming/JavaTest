@@ -10,7 +10,7 @@ public class Q08 {
 		Time t2 = new Time(2, 30, 45); 
 		System.out.println(t2.info());
 
-		Time t3 = new Time(1, 70, 30);
+		Time t3 = new Time(-1, 70, 30);
 		System.out.println(t3.info());
 
 		Time t4 = new Time(30, 10); 

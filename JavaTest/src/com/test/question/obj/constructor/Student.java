@@ -25,6 +25,7 @@ public class Student {
 	
 	public Student(String name, int age, int grade, int classNumber, int number) {
 		if(!isValid(name) || age < 0 || grade < 0 || classNumber < 0 || number < 0) {
+			System.out.println("다시 입력해주세요.");
 			return;
 		}//유효성
 		

@@ -27,6 +27,7 @@ public class Time {
 	
 	public Time(int hour, int minute, int second) {
 		if(hour < 0 || minute < 0 || second < 0) {
+			System.out.println("잘못된 입력입니다.");
 			return;
 		}//유효성
 		
