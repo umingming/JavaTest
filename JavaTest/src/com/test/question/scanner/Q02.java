@@ -11,7 +11,8 @@ public class Q02 {
 	2. 메인 메소드
 		>Scanner
 		>nextLine으로 입력값 input에 저장
-	3. 확인 메소드
+		>확인, 결과 메소드
+	3. 배열 메소드
 		>input.split으로 String 배열 생성해 요소에 값 저장
 		>for문 배열 길이 반복
 			>카운트 메소드
@@ -35,18 +36,18 @@ public class Q02 {
 		System.out.print("입력: ");
 		input = scan.nextLine();
 		
-		check();
+		arr();
 		result();
 
 	}//main
 
-	private static void check() {
+	private static void arr() {
 		String[] str = input.split(" ");
 		
 		for(int i=0; i<str.length; i++) {
 			count(str[i]);
 		}
-	}//확인
+	}//array
 
 	private static void count(String str) {
 		boolean isNum = true;
