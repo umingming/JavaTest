@@ -21,6 +21,7 @@ public class Packer {
 	
 	public void packing(Pencil pencil) {
 		System.out.printf("포장 전 검수 : %s입니다.%n", pencil.info());
+		
 		if(!pencil.isVaild()) {
 			System.out.println("포장을 실패했습니다.");
 		} else {
