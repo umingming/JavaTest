@@ -32,6 +32,7 @@ public class Q02 {
 	private static int mixCount;
 
 	public static void main(String[] args) {
+		System.out.println((int)'!');
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.print("입력: ");
