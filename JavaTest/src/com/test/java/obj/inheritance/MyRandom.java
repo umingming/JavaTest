@@ -2,7 +2,7 @@ package com.test.java.inheritance;
 
 import java.util.Random;
 
-public class MyRandom extends Random {
+public class MyRandom {
 	
 	public int nextTinyInt() {
 		Random rnd = new Random();
