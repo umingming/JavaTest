@@ -50,6 +50,7 @@ class Time {
 		return "Time [hour=" + hour + ", min=" + min + "]";
 	}
 	
+	
 //	public String toString() {
 //		return String.format("%2d:%2d", this.hour, this.min);
 //	}
