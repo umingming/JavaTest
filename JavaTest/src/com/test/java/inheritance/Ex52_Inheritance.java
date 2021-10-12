@@ -14,25 +14,75 @@ public class Ex52_Inheritance {
 		3. 색상; red, yellow, blue, orange, 
 		 */
 //		work1();
-		work2();
+//		work2();
+		work3();
+		
 
+	}
+
+	private static void work3() {
+		MyRandom myrnd = new MyRandom();
+		
+		System.out.println(myrnd.nextInt());
+		System.out.println(myrnd.nextInt());
+		System.out.println(myrnd.nextInt());
+		System.out.println(myrnd.nextInt());
+		System.out.println(myrnd.nextInt());
+		
+		System.out.println(myrnd.nextTinyInt());
+		System.out.println(myrnd.nextTinyInt());
+		System.out.println(myrnd.nextTinyInt());
+		System.out.println(myrnd.nextTinyInt());
+		System.out.println(myrnd.nextTinyInt());
+		
+		System.out.println(myrnd.nextColor());
+		System.out.println(myrnd.nextColor());
+		System.out.println(myrnd.nextColor());
+		System.out.println(myrnd.nextColor());
+		System.out.println(myrnd.nextColor());
+		
+		
 	}
 
 	private static void work2() {
 		Random rnd = new Random();
+		MyRandom myrnd = new MyRandom();
+		
 		System.out.println(rnd.nextInt());
 		System.out.println(rnd.nextInt());
 		System.out.println(rnd.nextInt());
 		System.out.println(rnd.nextInt());
 		System.out.println(rnd.nextInt());
 		
+		System.out.println(myrnd.nextTinyInt());
+		System.out.println(myrnd.nextTinyInt());
+		System.out.println(myrnd.nextTinyInt());
+		System.out.println(myrnd.nextTinyInt());
+		System.out.println(myrnd.nextTinyInt());
+		
+		System.out.println(myrnd.nextColor());
+		
 	}
 
 	private static void work1() {
 		Random rnd = new Random();
 		System.out.println(rnd.nextInt());			//1
+		System.out.println(rnd.nextInt());			//1
+		System.out.println(rnd.nextInt());			//1
+		System.out.println(rnd.nextInt());			//1
+		System.out.println(rnd.nextInt());			//1
+
 		System.out.println(rnd.nextInt(10) + 1);	//2
+		System.out.println(rnd.nextInt(10) + 1);	//2
+		System.out.println(rnd.nextInt(10) + 1);	//2
+		System.out.println(rnd.nextInt(10) + 1);	//2
+		System.out.println(rnd.nextInt(10) + 1);	//2
+
 		String[] colors = {"red", "yellow", "blue", "orange", "green"};
+		System.out.println(colors[rnd.nextInt(colors.length)]);
+		System.out.println(colors[rnd.nextInt(colors.length)]);
+		System.out.println(colors[rnd.nextInt(colors.length)]);
+		System.out.println(colors[rnd.nextInt(colors.length)]);
 		System.out.println(colors[rnd.nextInt(colors.length)]);
 		
 	}
