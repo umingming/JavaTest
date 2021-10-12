@@ -2,7 +2,7 @@ package com.test.java.inheritance;
 
 import java.util.Random;
 
-public class MyRandom extends Random {
+public class UtilRandom extends Random{
 	
 	public int nextTinyInt() {
 		Random rnd = new Random();
@@ -15,14 +15,4 @@ public class MyRandom extends Random {
 		return colors[rnd.nextInt(colors.length)];
 	}
 	
-//	public int nextInt() {
-//		Random rnd = new Random();
-//		return rnd.nextInt();
-//	}
-//
-//	public boolean nextBoolean() {
-//		Random rnd = new Random();
-//		return rnd.nextBoolean();
-//	}
-
 }

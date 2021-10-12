@@ -15,9 +15,40 @@ public class Ex52_Inheritance {
 		 */
 //		work1();
 //		work2();
-		work3();
+//		work3();
+		work4();
 		
 
+	}
+
+	private static void work4() {
+		UtilRandom utilrnd = new UtilRandom();
+		
+		System.out.println(utilrnd.nextInt());
+		System.out.println(utilrnd.nextInt());
+		System.out.println(utilrnd.nextInt());
+		System.out.println(utilrnd.nextInt());
+		System.out.println(utilrnd.nextInt());
+		
+		System.out.println(utilrnd.nextTinyInt());
+		System.out.println(utilrnd.nextTinyInt());
+		System.out.println(utilrnd.nextTinyInt());
+		System.out.println(utilrnd.nextTinyInt());
+		System.out.println(utilrnd.nextTinyInt());
+		
+		System.out.println(utilrnd.nextColor());
+		System.out.println(utilrnd.nextColor());
+		System.out.println(utilrnd.nextColor());
+		System.out.println(utilrnd.nextColor());
+		System.out.println(utilrnd.nextColor());
+		
+		System.out.println(utilrnd.nextBoolean());
+		System.out.println(utilrnd.nextBoolean());
+		System.out.println(utilrnd.nextBoolean());
+		System.out.println(utilrnd.nextBoolean());
+		System.out.println(utilrnd.nextBoolean());
+		
+		
 	}
 
 	private static void work3() {
@@ -60,6 +91,10 @@ public class Ex52_Inheritance {
 		System.out.println(myrnd.nextTinyInt());
 		System.out.println(myrnd.nextTinyInt());
 		
+		System.out.println(myrnd.nextColor());
+		System.out.println(myrnd.nextColor());
+		System.out.println(myrnd.nextColor());
+		System.out.println(myrnd.nextColor());
 		System.out.println(myrnd.nextColor());
 		
 	}
