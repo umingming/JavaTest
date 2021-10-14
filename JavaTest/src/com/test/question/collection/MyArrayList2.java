@@ -4,17 +4,17 @@ public class MyArrayList2 {
 	/* 
 	ArrayList 사용자 정의 클래스
 	
-	설계>
-	1. 멤버 변수; index, String 배열 선언
-	2. 기본 생성자; 배열의 길이 4, index는 0으로 초기화함.
-	3. void add; 배열에 요소를 추가함
-		>full 메소드
-			>if문 배열이 가득 차 있는지?
-				>temp 배열 선언
-				>for문 배열의 길이
-					>temp 배열에 요소 복사
-				>this.배열에 temp값 저장
-		>index번째 요소에 string값 넣음
+	plan>
+	1. member variable; Declare index, array String  
+	2. basic constructor; initailize length of array to 4, index to 0
+	3. void add; add element to an array
+		>full method
+			>if Is an array empty?
+				>Declare temp array
+				>for loop a length of array
+					>temp array is copied by an element of origin array 
+				>store this.array for temp
+		>store value to an element of index 
 		>index++
 	4. String get(int index); 원하는 위치의 요소 가져옴
 		>if문 index가 this.index보다 작은지?
