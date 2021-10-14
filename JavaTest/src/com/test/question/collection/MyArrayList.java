@@ -52,6 +52,7 @@ public class MyArrayList {
 		this.index = 0;
 	}
 	
+	
 	void add(String s) {
 		full();
 		list[index] = s;
