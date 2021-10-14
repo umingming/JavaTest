@@ -3,6 +3,7 @@ package com.test.question.collection;
 public class Q01 {
 
 	public static void main(String[] args) {
+		
 		//배열 생성
 		MyArrayList list = new MyArrayList();
 

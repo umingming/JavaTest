@@ -1,6 +1,6 @@
 package com.test.question.collection;
 
-public class MyArrayList {
+public class MyArrayList2 {
 	/* 
 	ArrayList 사용자 정의 클래스
 	
@@ -70,7 +70,7 @@ public class MyArrayList {
 	}
 	
 	String get(int index) {
-		if(index > -1 && index < this.index) {
+		if(index < this.index) {
 			return list[index];
 		}
 		return null;
@@ -81,9 +81,7 @@ public class MyArrayList {
 	}
 	
 	void set(int index, String value) {
-		if(index > -1 && index < this.index) {
-			list[index] = value;
-		}
+		list[index] = value;
 	}
 	
 	void remove(int index) {
@@ -123,5 +121,4 @@ public class MyArrayList {
 	void clear() {
 		this.index = 0;
 	}
-	
 }
