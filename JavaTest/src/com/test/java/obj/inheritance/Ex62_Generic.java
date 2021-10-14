@@ -1,5 +1,7 @@
 package com.test.java.obj.inheritance;
 
+import java.net.Inet4Address;
+
 public class Ex62_Generic {
 
 	public static void main(String[] args) {
@@ -9,29 +11,34 @@ public class Ex62_Generic {
 		2. String값 1개를 중심으로 여러가지 작업을 하는 클래스를 정의하시오.
 		*/
 		
-		WrapperInt n1 = new WrapperInt(10);
-		System.out.println(n1);
+//		WrapperInt n1 = new WrapperInt(10);
+//		System.out.println(n1);
+//		
+//		WrapperString s1 = new WrapperString("이유미");
+//		System.out.println(s1);
+//
+//		WrapperBoolean b1 = new WrapperBoolean(true);
+//		System.out.println(b1);
+//		
+////		m1();
+//		m2();
+//		
+//		WrappObject n2 = new WrappObject(20);
+//		System.out.println(n2);
+//		System.out.println((int)n2.getData() * 2);
+//		
+//		WrappObject s2 = new WrappObject("아무개");
+//		System.out.println(s2);
+//		System.out.println(((String)s2.getData()).length());
+//		
+//		WrappObject b2 = new WrappObject(false);
+//		System.out.println(b2);
+//		System.out.println((Boolean)b2.getData()? "참" : "거짓");
 		
-		WrapperString s1 = new WrapperString("이유미");
-		System.out.println(s1);
-
-		WrapperBoolean b1 = new WrapperBoolean(true);
-		System.out.println(b1);
+		Wrapper<Integer> n = new Wrapper<Integer>(30);
+		System.out.println(n);
+		System.out.println(n.getData() * 2);
 		
-//		m1();
-		m2();
-		
-		WrappObject n2 = new WrappObject(20);
-		System.out.println(n2);
-		System.out.println((int)n2.getData() * 2);
-		
-		WrappObject s2 = new WrappObject("아무개");
-		System.out.println(s2);
-		System.out.println(((String)s2.getData()).length());
-		
-		WrappObject b2 = new WrappObject(false);
-		System.out.println(b2);
-		System.out.println((Boolean)b2.getData()? "참" : "거짓");
 
 	}
 
@@ -152,5 +159,26 @@ class WrappObject {
 		this.data = data;
 	}
 	
+	
+}
+
+class Wrapper<T>{
+	private T data;
+
+	public Wrapper(T data) {
+		super();
+		this.data = data;
+	}
+
+	public T getData() {
+		return data;
+	}
+
+	public void setData(T data) {
+		this.data = data;
+	}
+	public String toString() {
+		return this.data + "";
+	}
 	
 }
