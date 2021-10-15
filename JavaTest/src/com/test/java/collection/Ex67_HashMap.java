@@ -1,5 +1,7 @@
 package com.test.java.collection;
 
+import java.util.HashMap;
+
 public class Ex67_HashMap {
 
 	public static void main(String[] args) {
@@ -29,6 +31,24 @@ public class Ex67_HashMap {
 
 	private static void m1() {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		
+		map.put("국어", 100);
+		map.put("국어", 90);
+		map.put("영어", 90);
+		map.put("수학", 80);
+		
+		System.out.println(map.size());
+		
+		System.out.println(map.get("사회"));
+		
+		System.out.println(map.containsKey("국어"));
+		System.out.println(map.containsKey(100));
+		
+		map.remove("사회");
+		System.out.println(map);
+		
+		map.clear();
+		System.out.println(map);  //{}
 		
 		
 	}
