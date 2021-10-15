@@ -16,6 +16,12 @@ public class Q02 {
 		System.out.println(map.get("영어"));
 		System.out.println(map.get("수학"));
 
+		//추가
+		map.put("사회", "합격");
+		map.put("과학", "불합격");
+		map.put("미술", "보류");
+		System.out.println(map);
+
 		//개수
 		System.out.println(map.size());
 
