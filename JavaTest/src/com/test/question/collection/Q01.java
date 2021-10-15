@@ -21,7 +21,7 @@ public class Q01 {
 		//읽기
 		System.out.println("list.get(0): " + list.get(0));
 		System.out.println("list.get(1): " + list.get(1));
-		System.out.println("list.get(2): " + list.get(2));
+		System.out.println("list.get(2): " + list.get(7));
 		System.out.println();
 		
 		//개수

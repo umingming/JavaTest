@@ -47,16 +47,31 @@ public class MyArrayList2 {
 	private String[] list;
 	private int index;
 	
-	public MyArrayList() {
+	public MyArrayList2() {
 		this.list = new String[4];
 		this.index = 0;
 	}
 	
 	
 	void add(String s) {
-		full();
+		if(isFull()) {
+			doubleList();
+		}
 		list[index] = s;
 		index++;
+	}
+	
+	void doubleList() {
+		String[] temp = new String[this.list.length * 2];
+		for(int i=0; i<list.length; i++) {
+			temp[i] = list[i];
+		}
+		this.list = temp;
+	}
+	
+	boolean isFull() {
+		if(list.length == this.index) { return true; }
+		return false;
 	}
 	
 	void full() {
@@ -73,7 +88,7 @@ public class MyArrayList2 {
 		if(index < this.index) {
 			return list[index];
 		}
-		return null;
+		throw new ArrayIndexOutOfBoundsException();
 	}
 	
 	int size() {

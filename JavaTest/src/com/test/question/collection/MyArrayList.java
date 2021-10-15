@@ -142,7 +142,7 @@ public class MyArrayList {
 		temp += String.format("\r\n]");
 		temp += "\r\n";
 		
-		return "MyArrayList [list=" + Arrays.toString(list) + ", index=" + index + "]";
+		return temp;
 	}
 	
 	
