@@ -123,7 +123,7 @@ public class MyArrayList {
 	}
 	
 	void clear() {
-		this.list = new String[4];
+//		this.list = new String[4];
 		this.index = 0;
 	}
 
