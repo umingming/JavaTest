@@ -1,5 +1,7 @@
 package com.test.question.collection;
 
+import java.util.Arrays;
+
 public class MyArrayList {
 	/* 
 	ArrayList 사용자 정의 클래스
@@ -121,7 +123,27 @@ public class MyArrayList {
 	}
 	
 	void clear() {
+		this.list = new String[4];
 		this.index = 0;
 	}
+
+
+	@Override
+	public String toString() {
+		String temp = "";
+		
+		temp += "\r\n";
+		temp += String.format("length: %d%n", this.list.length);
+		temp += String.format("index: %d%n", this.index);
+		temp += String.format("[\r\n");
+		for(int i=0; i<this.list.length; i++) {
+			temp += String.format("%d : %s%n", i, list[i]);
+		}
+		temp += String.format("\r\n]");
+		temp += "\r\n";
+		
+		return "MyArrayList [list=" + Arrays.toString(list) + ", index=" + index + "]";
+	}
+	
 	
 }

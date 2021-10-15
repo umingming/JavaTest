@@ -66,5 +66,7 @@ public class Q01 {
 		list.clear();
 		System.out.println("배열 clear");
 		System.out.println("list.size(): " + list.size());
+		
+		System.out.println(list);
 	}
 }
