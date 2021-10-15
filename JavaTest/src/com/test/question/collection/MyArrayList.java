@@ -75,7 +75,7 @@ public class MyArrayList {
 		if(index > -1 && index < this.index) {
 			return list[index];
 		}
-		return null;
+		throw new ArrayIndexOutOfBoundsException();
 	}
 	
 	int size() {
@@ -85,6 +85,8 @@ public class MyArrayList {
 	void set(int index, String value) {
 		if(index > -1 && index < this.index) {
 			list[index] = value;
+		} else {
+			throw new ArrayIndexOutOfBoundsException();
 		}
 	}
 	

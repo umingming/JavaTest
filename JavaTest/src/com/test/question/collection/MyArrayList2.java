@@ -85,10 +85,17 @@ public class MyArrayList2 {
 	}
 	
 	String get(int index) {
-		if(index < this.index) {
-			return list[index];
+		if(!checkIndex(index)) {
+			throw new ArrayIndexOutOfBoundsException();
 		}
-		throw new ArrayIndexOutOfBoundsException();
+		return list[index];
+	}
+	
+	private boolean checkIndex(int index) {
+		if(index > -1  && index < this.index) {
+			return true;
+		}
+		return false;
 	}
 	
 	int size() {
@@ -96,17 +103,26 @@ public class MyArrayList2 {
 	}
 	
 	void set(int index, String value) {
+		if(!checkIndex(index)) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
 		list[index] = value;
 	}
 	
 	void remove(int index) {
+		if(!checkIndex(index)) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		this.index--;
 		for(int i=index; i<this.index; i++) {
 			list[i] = list[i+1];
 		}
-		this.index--;
 	}
 	
 	void add(int index, String value) {
+		if(!checkIndex(index)) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
 		full();
 		for(int i=this.index; i>index; i--) {
 			list[i] = list[i-1];
