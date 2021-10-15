@@ -4,7 +4,7 @@ public class Q02 {
 
 	public static void main(String[] args) {
 		//배열 생성
-		MyHashMap map = new MyHashMap();
+		MyHashMap2 map = new MyHashMap2();
 
 		//추가
 		map.put("국어", "합격");
