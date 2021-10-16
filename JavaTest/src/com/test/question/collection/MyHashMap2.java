@@ -4,44 +4,44 @@ import java.util.Arrays;
 
 public class MyHashMap2 {
 	/*
-	HashMap을 추가 클래스 정의없이 구현
+	Implement the HashMap without other classes.
 	
-	설계>
-	1. 멤버 변수 선언; key, value 배열, keyIndex, index 변수 선언
-	2. 생성자; 배열의 길이는 4, keyIndex는 -1, index는 0으로 초기화함.
-	3. void put(String key, Sting value); 추가/수정
-		>if문 key값이 있는지?(containsKey 메소드 호출)
-			>value 배열의 keyIndex번째 요소에 value값 저장
-			>doubleList() 호출
-				>index번째 배열에 매개값 저장		
+	plan>
+	1. declare field; key, value array, keyIndex, index variable
+	2. constructor; a length of the array is 4, keyIndex is initialized to -1, index is to 0
+	3. void put(String key, Sting value); add/edit
+		>if It has "key"?(call containsKey)
+			>an element of keyIndex stores "value"
+			>call doubleList()
+				>the element of index store mediated values		
 				>index++
-	4. void doubleList(); 요소가 가득 찼으면 배열을 두 배로 늘림.
-		>index와 key 배열의 길이가 같은지? (key와 value의 길이는 같으므로 하나의 배열만 비교)
-			>원래 배열의 2배인 tempValue, tempKey 배열 생성
-			>for문 원래 배열의 길이 반복
-				>temp에 요소 대입
-			>두 배열을 temp로 초기화함.
+	4. void doubleList(); if the array is full, double the lenth
+		>is the length of key same as index? (because the length of array key is same as the length of array value
+			>Define temp arrays doubled to origin arrays
+			>for repeat the number of length
+				>temp arrays store that elements
+			>origin arrays are initialized to temps.
 	5. boolean containsKey(String key)
-		>for문 key 배열의 길이 반복
-			>if문 배열 중 key가 있는지?
-				>keyIndex에 i 저장
+		>for repeat the number of length
+			>if the array has key?
+				>keyIndex store i 
 				>return true
 	6. String get(String key)
 		>if containsKey ?
-			>value배열 keyIndex번째 요소 리턴함. 
+			>return the elements of keyIndex 
 	7. int size();
-		>index를 리턴함.
+		>return index
 	8. void remove(String key)
 		>if containsKey ?
-			>제거해야 하므로 this.index를 감소시킴.
-			>for문 keyIndex부터 this.index 전까지
-				>배열[i] = 배열[i+1]
+			>this.index--
+			>for from keyIndex to this.index 
+				>array[i] = array[i+1]
 	9. boolean containsValue(String value)
-		>for문 배열의 길이
-			>if문 배열 중 value가 있는지?
+		>for repeat the num of length
+			>if the array has "value"?
 				>return true
 	10. void clear()
-		>index에 0저장.
+		>index store zero.
 	 */
 	
 	private String[] key;
