@@ -32,8 +32,34 @@ public class Ex71_File {
 //		m13();
 //		m14();
 //		m15();
-		m16();
+//		m16();
+//		m17();
+		m18();
 		
+	}
+
+	private static void m18() {
+		//정렬, sort
+		
+	}
+
+	private static void m17() {
+		int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+		for(int num : nums) {
+//			System.out.println(getNumber(num));
+			System.out.printf("%3d%n", num);
+		}
+		
+	}
+
+	private static String getNumber(int num) {
+		if (num < 10) {
+			return "00" + num;
+		} else if (num < 100) {
+			return "0" + num;
+		} else {
+			return "" + num;
+		}
 	}
 
 	private static void m16() {
