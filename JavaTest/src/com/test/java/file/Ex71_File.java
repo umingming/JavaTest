@@ -17,7 +17,7 @@ public class Ex71_File {
 		
 		 */
 		
-//		m1();
+		m1();
 //		m2();
 //		m3();
 //		m4();
@@ -34,7 +34,7 @@ public class Ex71_File {
 //		m15();
 //		m16();
 //		m17();
-		m18();
+//		m18();
 		
 	}
 
@@ -325,15 +325,25 @@ public class Ex71_File {
 	private static void m1() {
 		String path = "C:\\class\\java\\file\\data.txt";
 		File file = new File(path);
-		System.out.println(file.exists());
+//		System.out.println(file.exists());
+//		System.out.println(file.lastModified());
+//		
+//		Calendar c2 = Calendar.getInstance();
+//		c2.setTimeInMillis(file.lastModified());
+//		System.out.printf("%tF %tT", c2, c2);
+//		System.out.println(file.canRead());
+		
+		System.out.println(file.getName());
+		System.out.println(file.isFile());
+		System.out.println(file.isDirectory());
+		System.out.println(file.length());
 		System.out.println(file.lastModified());
-		
-		Calendar c2 = Calendar.getInstance();
-		c2.setTimeInMillis(file.lastModified());
-		System.out.printf("%tF %tT", c2, c2);
 		System.out.println(file.canRead());
-		
-		
+		System.out.println(file.canWrite());
+		System.out.println(file.isHidden());
+		System.out.println(file.getParent());
+		System.out.println(file.getAbsolutePath());
+		System.out.println(file.getPath());
 	}
 
 }
