@@ -2,6 +2,8 @@ package com.test.java.file;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Set;
 
 public class Ex71_File {
 	private static int count;
@@ -29,7 +31,21 @@ public class Ex71_File {
 //		m12();
 //		m13();
 //		m14();
-		m15();
+//		m15();
+		m16();
+		
+	}
+
+	private static void m16() {
+		HashMap<String,Integer> score = new HashMap<String, Integer>();
+		score.put("국어", 100);
+		score.put("영어", 90);
+		score.put("수학", 80);
+		
+		Set<String> set = score.keySet();
+		for(String key : set) {
+			System.out.println(key + ":" + score.get(key));
+		}
 		
 	}
 
