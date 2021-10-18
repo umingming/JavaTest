@@ -72,11 +72,12 @@ public class MyHashMap {
 	
 	private void doubleList() {
 		if(this.index == list.length) {
-			Item[] temp = new Item[list.length * 2];
-			for(int i=0; i<this.index; i++) {
-				temp[i] = this.list[i];
-			}
-			this.list = temp;
+			this.list = Arrays.copyOf(this.list, list.length * 2);
+//			Item[] temp = new Item[list.length * 2];
+//			for(int i=0; i<this.index; i++) {
+//				temp[i] = this.list[i];
+//			}
+//			this.list = temp;
 		}
 	}
 
