@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Calendar;
 
 public class Ex71_File {
+	private static int count;
+	private static int dcount;
 	
 	public static void main(String[] args) {
 		/*
@@ -32,7 +34,30 @@ public class Ex71_File {
 	}
 
 	private static void m15() {
-		// TODO Auto-generated method stub
+		String path = "C:\\Users\\u_011\\eclipse";
+		File dir = new File(path);
+		if(dir.exists()) {
+			countFile(dir);
+		}
+		
+		System.out.println(count);
+		
+		
+	}
+
+	private static void countFile(File dir) {
+			File[] list = dir.listFiles();
+			for(File subfile : list) {
+				if(subfile.isFile()) {
+					count++;
+				}
+			}
+			for(File subdir : list) {
+				if(subdir.isDirectory()) {
+					dcount++;
+					countFile(subdir);
+				}
+			}
 		
 	}
 
