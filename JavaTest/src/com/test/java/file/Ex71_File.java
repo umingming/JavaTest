@@ -17,7 +17,183 @@ public class Ex71_File {
 //		m2();
 //		m3();
 //		m4();
-		m5();
+//		m5();
+//		m6();
+//		m7();
+//		m8();
+//		m9();
+//		m10();
+//		m11();
+//		m12();
+//		m13();
+//		m14();
+		m15();
+		
+	}
+
+	private static void m15() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void m14() {
+		
+		String path = "C:\\Users\\u_011\\eclipse";
+		File dir = new File(path);
+		int count = 0;
+		if(dir.exists()) {
+			File[] list = dir.listFiles();  //부모 폴더의 목록
+			for(File subfile : list) {
+				if(subfile.isFile()) {
+					count++;
+				}
+			}
+			
+			for(File subdir : list) {
+				
+				if(subdir.isDirectory()) {
+					File[] sublist = subdir.listFiles();  //자식 폴더의 목록
+					for(File subsubfile : sublist) {
+						if(subsubfile.isFile()) {
+							count++;
+						}
+					}
+					
+					for(File subsubdir : sublist) {
+						if(subsubdir.isDirectory()) {
+							File[] subsubsublist = subsubdir.listFiles();
+							for(File subsubsubfile : subsubsublist) {
+								if(subsubsubfile.isFile()) {
+									count++;
+								}
+							}
+							
+							for(File subsubsubdir : subsubsublist) {
+								if(subsubsubdir.isDirectory()) {
+									
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		System.out.println(count);
+		
+		
+	}
+
+	private static void m13() {
+		String[] list = {"사과", "바나나", "포도", "파인애플", "딸기"};
+		for(String item : list) {
+			System.out.println(item);
+		}
+	}
+	private static void m12() {
+		String path = "C:\\Users\\u_011\\eclipse";
+		File dir = new File(path);
+		
+		if(dir.exists()) {
+//			String[] list = dir.list();
+//			
+//			for(int i=0; i<list.length; i++) {
+//				System.out.println(list[i]);
+//				File file = new File(path + "\\" + list[i]);
+//				System.out.println(file.isFile() + "," + file.isDirectory());
+//			}
+//			File[] list = dir.listFiles();
+//			for(int i=0; i<list.length; i++) {
+//				System.out.println(list[i].getName() + ":" + list[i].isDirectory());
+//			}
+			File[] list = dir.listFiles();
+			for(int i=0; i<list.length; i++) {
+				if(list[i].isDirectory()) {
+					System.out.println(list[i].getName());
+				}
+			}
+			for(int i=0; i<list.length; i++) {
+				if(list[i].isFile()) {
+					System.out.println(list[i].getName());
+				}
+			}
+		}
+		
+	}
+
+	private static void m11() {
+		File file = new File("C:\\class\\java\\file\\todo");
+		if(file.exists()) {
+			System.out.println(file.delete());
+		}
+	}
+
+	private static void m10() {
+		String path = "C:\\class\\java\\file\\user";
+		String path2 = "C:\\class\\java\\file\\move\\user";
+		File dir = new File(path);
+		if(dir.exists()) {
+			File dir2 = new File(path2);
+			dir.renameTo(dir2);
+		}
+		
+		
+	}
+
+	private static void m9() {
+		String path = "C:\\class\\java\\file\\member";
+		String path2 = "C:\\class\\java\\file\\user";
+		File dir = new File(path);
+		if(dir.exists()) {
+			File dir2 = new File(path2);
+			dir.renameTo(dir2);
+		}
+		
+	}
+
+	private static void m8() {
+		Calendar c = Calendar.getInstance();
+		c.set(2021, 0, 1);
+		for(int i=0; i<365; i++) {
+			File dir = new File("C:\\class\\java\\file\\todo\\" 
+		+ String.format("%tF", c));
+			dir.mkdir();
+			
+			System.out.printf("%tF 완료%n", c);
+			c.add(Calendar.DATE, 1);
+		}
+		
+		System.out.println(c.getActualMaximum(Calendar.MONTH));
+		System.out.println(c.getActualMaximum(Calendar.DATE));
+		System.out.println(c.getActualMaximum(Calendar.DAY_OF_YEAR));
+		
+	}
+
+	private static void m7() {
+		String[] member = {"홍길동", "아무개", "하하하", "호호호", "후후후"};
+		for(int i=0; i<member.length; i++) {
+			String path = String.format("C:\\class\\java\\file\\member\\[개인폴더]%s님",
+					member[i]);
+			File dir = new File(path);
+			dir.mkdirs();
+			System.out.println(member[i] + "님 개인폴더 생성 완료");
+		}
+		
+	}
+
+	private static void m6() {
+		/*
+		폴더 조작
+		
+		 */
+		String path = "C:\\class\\java\\file\\AAA";
+		File dir = new File(path);
+		if(!dir.exists()) {
+			System.out.println(dir.mkdir());
+		} else {
+			System.out.println("이미 폴더가 존재합니다.");
+		}
+		
+		
 		
 	}
 
