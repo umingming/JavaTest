@@ -5,7 +5,25 @@ import java.util.Arrays;
 public class Bubble {
 
 	public static void main(String[] args) {
-		m1();
+//		m1();
+		m2();
+	}
+
+	private static void m2() {
+		String[] names = {"박효주", "이유미", "이민섭", "양소라", "김상만"};
+		for(int i=0; i<names.length-1; i++) {
+			for(int j=0; j<names.length-1-i; j++) {
+				if(names[j].compareTo(names[j+1]) > 0) {
+					String temp = names[j+1];
+					names[j+1] = names[j];
+					names[j] = temp;
+				}
+			}
+		}
+		
+		System.out.println(Arrays.toString(names));
+		
+		
 	}
 
 	private static void m1() {
