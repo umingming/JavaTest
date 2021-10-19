@@ -1,13 +1,82 @@
 package com.test.java.collection;
 
 import java.util.Arrays;
+import java.util.Calendar;
 
+class Memeber {
+	private String name;
+	private int age;
+	private Calendar birthday;
+	
+	public int compareTo(Memeber user) {
+		long tick = (birthday.getTimeInMillis() 
+				- user.getBirthday().getTimeInMillis()) / 1000000;
+		return (int)tick;
+	}
+	
+	public Memeber(String name, int age, int year, int month, int date) {
+		this.name = name;
+		this.age = age;
+		
+		Calendar c = Calendar.getInstance();
+		c.set(year, month-1, date);
+		this.birthday = c;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+	
+	public Calendar getBirthday() {
+		return birthday;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%s %d살 %tF%n", 
+				this.name, this.age, this.birthday);
+	}
+	
+	
+	
+	
+	
+}
 public class Bubble {
 
 	public static void main(String[] args) {
 //		m1();
-		m2();
+//		m2();
+		m3();
 	}
+
+	private static void m3() {
+		Memeber[] users = new Memeber[5];
+		users[0] = new Memeber("박효주", 28, 1994, 4, 30);
+		users[1] = new Memeber("이유미", 27, 1995, 1, 12);
+		users[2] = new Memeber("이민섭", 24, 1999, 5, 29);
+		users[3] = new Memeber("김상만", 32, 1990, 12, 30);
+		users[4] = new Memeber("정의창", 30, 1992, 7, 19);
+		
+		for(int i=0; i<users.length-1; i++) {
+			for(int j=0; j<users.length-1-i; j++) {
+				if(users[j].compareTo(users[j+1]) > 0) {
+					Memeber temp = users[j+1];
+					users[j+1] = users[j];
+					users[j] = temp;
+				}
+			}
+		}
+		
+		System.out.println(Arrays.toString(users));
+		
+		
+	}
+	
 
 	private static void m2() {
 		String[] names = {"박효주", "이유미", "이민섭", "양소라", "김상만"};
