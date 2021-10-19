@@ -1,7 +1,9 @@
 package com.test.java.collection;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 
 class Memeber implements Comparable<Memeber>{
 	private String name;
@@ -54,15 +56,19 @@ public class Bubble {
 	}
 
 	private static void m4() {
-		Memeber[] users = new Memeber[5];
-		users[0] = new Memeber("박효주", 28, 1994, 4, 30);
-		users[1] = new Memeber("이유미", 27, 1995, 1, 12);
-		users[2] = new Memeber("이민섭", 24, 1999, 5, 29);
-		users[3] = new Memeber("김상만", 32, 1990, 12, 30);
-		users[4] = new Memeber("정의창", 30, 1992, 7, 19);
+		ArrayList<Memeber> users = new ArrayList<Memeber>(5);
+		users.add(new Memeber("박효주", 28, 1994, 4, 30));
+		users.add(new Memeber("이유미", 27, 1995, 1, 12));
+		users.add(new Memeber("이민섭", 24, 1999, 5, 29));
+		users.add(new Memeber("김상만", 32, 1990, 12, 30));
+		users.add(new Memeber("정의창", 30, 1992, 7, 19));
 		
-		Arrays.sort(users);
-		System.out.println(Arrays.toString(users));
+		Collections.sort(users);
+		
+		for(int i=0; i<users.size(); i++) {
+			System.out.println(users.get(i));
+		}
+		
 		
 	}
 
