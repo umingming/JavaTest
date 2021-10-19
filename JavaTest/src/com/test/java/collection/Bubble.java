@@ -3,15 +3,13 @@ package com.test.java.collection;
 import java.util.Arrays;
 import java.util.Calendar;
 
-class Memeber {
+class Memeber implements Comparable<Memeber>{
 	private String name;
 	private int age;
 	private Calendar birthday;
 	
 	public int compareTo(Memeber user) {
-		long tick = (birthday.getTimeInMillis() 
-				- user.getBirthday().getTimeInMillis()) / 1000000;
-		return (int)tick;
+		return this.name.compareTo(user.getName());
 	}
 	
 	public Memeber(String name, int age, int year, int month, int date) {
@@ -51,7 +49,21 @@ public class Bubble {
 	public static void main(String[] args) {
 //		m1();
 //		m2();
-		m3();
+//		m3();
+		m4();
+	}
+
+	private static void m4() {
+		Memeber[] users = new Memeber[5];
+		users[0] = new Memeber("박효주", 28, 1994, 4, 30);
+		users[1] = new Memeber("이유미", 27, 1995, 1, 12);
+		users[2] = new Memeber("이민섭", 24, 1999, 5, 29);
+		users[3] = new Memeber("김상만", 32, 1990, 12, 30);
+		users[4] = new Memeber("정의창", 30, 1992, 7, 19);
+		
+		Arrays.sort(users);
+		System.out.println(Arrays.toString(users));
+		
 	}
 
 	private static void m3() {
