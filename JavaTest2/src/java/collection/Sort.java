@@ -1,9 +1,8 @@
-package src.com.java.collection;
+package java.collection;
 
 public class Sort {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
