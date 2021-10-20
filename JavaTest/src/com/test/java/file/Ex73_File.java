@@ -173,7 +173,7 @@ public class Ex73_File {
 		while((line = reader.readLine()) != null) {
 			String[] temp = line.split(",");
 			
-			if(temp[3].indexOf(word) > -1) {
+			if(temp[1].indexOf(word) > -1) {
 				System.out.printf("%4s\t%s\t%4s\t%s%n"
 									, temp[0]
 									, temp[1]
