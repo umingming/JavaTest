@@ -7,33 +7,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Q07 {
+	/*
+	직원들의 지각 횟수와 조퇴 횟수를 카운트해서 출력하시오.
+	-출근: 9am, 퇴근: 6pm
+	
+	설계>
+	1. BufferedReader, Ar
+	rayList, HashMap 객체 생성
+	2. line을 null로 초기화
+	3. while문 line이 null이 아닐 때까지 반복
+		>split으로 line을 요소화해 String temp 배열 생성함.
+		>temp 배열을 ":"기준으로 나눠 time 배열 만들기
+		>startMin과 endMin 변수 선언 후 time 배열을 이용해 초기화함.
+			>String -> int, 시간에 해당되는 값은 * 60
+		>if문 ArrayList 객체가 이름을 포함 안 하는지?
+			>객체에 추가함
+		>if 지각인지?
+			>if key에 이름을 포함하는지?
+				>지각 객체에 key는 이름, value는 get + 1 넣음 
+		>if 조퇴인지? 지각과 같음
+	4. Stream 종료
+	5. for문 ArrayList 크기 반복
+		>count변수를 0으로 초기화함.
+		>if문 i번째 요소에 해당하는 key가 있는지?
+			>count에 값 저장함.
+	 	>결과 출력
+	 */
 
 	public static void main(String[] args) {
-		/*
-		직원들의 지각 횟수와 조퇴 횟수를 카운트해서 출력하시오.
-		-출근: 9am, 퇴근: 6pm
-		
-		설계>
-		1. BufferedReader, ArrayList, HashMap 객체 생성
-		2. line을 null로 초기화
-		3. while문 line이 null이 아닐 때까지 반복
-			>split으로 line을 요소화해 String temp 배열 생성함.
-			>temp 배열을 ":"기준으로 나눠 time 배열 만들기
-			>startMin과 endMin 변수 선언 후 time 배열을 이용해 초기화함.
-				>String -> int, 시간에 해당되는 값은 * 60
-			>if문 ArrayList 객체가 이름을 포함 안 하는지?
-				>객체에 추가함
-			>if 지각인지?
-				>if key에 이름을 포함하는지?
-					>지각 객체에 key는 이름, value는 get + 1 넣음 
-			>if 조퇴인지? 지각과 같음
-		4. Stream 종료
-		5. for문 ArrayList 크기 반복
-			>count변수를 0으로 초기화함.
-			>if문 i번째 요소에 해당하는 key가 있는지?
-				>count에 값 저장함.
-		 	>결과 출력
-		 */
 		
 		try {
 			BufferedReader reader 
