@@ -1,6 +1,7 @@
 package com.test.question.fileio;
 
 import java.io.FileReader;
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class Q06 {
@@ -20,7 +21,7 @@ public class Q06 {
 	public static void main(String[] args) {
 		
 		try {
-			FileReader reader = new FileReader(Path.Q06);
+			FileReader reader = new FileReader("C:\\class\\java\\file\\check.txt");
 			Stack<Integer> stack = new Stack<Integer>();
 			
 			int ch = 0;
@@ -41,6 +42,8 @@ public class Q06 {
 				System.out.println("올바르지 않은 소스입니다.");
 			}
 			
+		} catch (EmptyStackException ee) {
+			System.out.println("올바르지 않은 소스입니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

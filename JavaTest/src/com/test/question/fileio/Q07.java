@@ -46,18 +46,15 @@ public class Q07 {
 			
 			while((line = reader.readLine()) != null) {
 				String[] temp = line.split(",");
-				String[] startTime = temp[2].split(":");
-				String[] endTime = temp[2].split(":");
 				
-				int startMin = Integer.parseInt(startTime[0]) * 60
-								+ Integer.parseInt(startTime[1]);
-				int endMin = Integer.parseInt(endTime[0]) * 60
-								+ Integer.parseInt(endTime[1]);
-							
 				if(!list.contains(temp[1])) {
 					list.add(temp[1]);
 				}
 				
+				String[] startTime = temp[2].split(":");
+				int startMin = Integer.parseInt(startTime[0]) * 60
+								+ Integer.parseInt(startTime[1]);
+
 				if(startMin > 9 * 60) {
 					if(late.containsKey(temp[1])) {
 						late.put(temp[1], late.get(temp[1]) + 1);
@@ -66,6 +63,10 @@ public class Q07 {
 					}
 				}
 				
+				String[] endTime = temp[2].split(":");
+				int endMin = Integer.parseInt(endTime[0]) * 60
+								+ Integer.parseInt(endTime[1]);
+							
 				if(endMin < 18 * 60) {
 					if(early.containsKey(temp[1])) {
 						early.put(temp[1], early.get(temp[1]) + 1);
