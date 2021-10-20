@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import javax.print.DocFlavor.STRING;
+
 public class Ex73_File {
 	
 	private static Scanner scan;
@@ -98,10 +100,59 @@ public class Ex73_File {
 		String line = null;
 		
 		while((line = reader.readLine()) != null) {
+			if(num.equals(line.split(",")[0])) {
+				break;
+			}
 			
 		}
 		
+		String[] temp = line.split(",");
+		
+		System.out.println("기존 이름: " + temp[1]);
+		System.out.print("수정 이름(수정하지 않으려면 그냥 enter): ");
+		String name = scan.nextLine();
+		if(name.equals("")) {
+			name = temp[1];
+		}
+		
+		System.out.println("기존 나이: " + temp[2]);
+		System.out.print("수정 나이(수정하지 않으려면 그냥 enter): ");
+		String age = scan.nextLine();
+		if(age.equals("")) {
+			age = temp[2];
+		}
+		
+		System.out.println("기존 주소: " + temp[3]);
+		System.out.print("수정 주소(수정하지 않으려면 그냥 enter): ");
+		String address = scan.nextLine();
+		if(address.equals("")) {
+			address = temp[3];
+		}
+		
 		reader.close();
+		
+		reader = new BufferedReader(new FileReader(MyPath.DATA));
+		
+		String txt = "";
+		line = null;
+		
+		while((line = reader.readLine()) != null) {
+			if(num.equals(line.split(",")[0])) {
+				txt += String.format("%s,%s,%s,%s%n"
+									, num
+									, name
+									, age
+									, address);
+			}else {
+				txt += line + "\r\n";
+			}
+		}
+		
+		reader.close();
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(MyPath.DATA));
+		writer.write(txt);
+		writer.close();
 		
 		pause("회원을 수정했습니다.");
 	}
