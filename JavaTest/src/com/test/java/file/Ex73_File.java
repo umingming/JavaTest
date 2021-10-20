@@ -66,15 +66,15 @@ public class Ex73_File {
 			
 			try {
 				if(sel.equals("1")) {
-					add();
+					add(); //새로운 데이터 추가하기, Create
 				} else if(sel.equals("2")) {
-					list();
+					list();  //데이터 읽기, Read
 				} else if(sel.equals("3")) {
-					delete();
+					delete();  //데이터 삭제하기, Delete
 				} else if(sel.equals("4")) {
-					search();
+					search();  //데이터 검색하기, Search
 				} else if(sel.equals("5")) {
-					edit();
+					edit();  //데이터 수정하기, Update
 				} else {
 					loop = false;
 				}
@@ -280,7 +280,7 @@ public class Ex73_File {
 	}//Refactor -> Extract method
 
 	private static void menu() {
-		System.out.println("===============================");
+		System.out.println("✏🔎");
 		System.out.println("            회원 관리");
 		System.out.println("\t1. 회원 추가하기");
 		System.out.println("\t2. 회원 목록보기");
