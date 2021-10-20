@@ -17,9 +17,10 @@ public class Q07 {
 		1. BufferedReader, ArrayList, HashMap 객체 생성
 		2. line을 null로 초기화
 		3. while문 line이 null이 아닐 때까지 반복
-			>split으로 line을 요소화해 String 배열 생성함.
-			>start와 end 변수 선언 후 2,3번째 요소를 조정해 초기화함.
-				>String을 int로 바꾸고 subString 사용
+			>split으로 line을 요소화해 String temp 배열 생성함.
+			>temp 배열을 ":"기준으로 나눠 time 배열 만들기
+			>startMin과 endMin 변수 선언 후 time 배열을 이용해 초기화함.
+				>String -> int, 시간에 해당되는 값은 * 60
 			>if문 ArrayList 객체가 이름을 포함 안 하는지?
 				>객체에 추가함
 			>if 지각인지?
@@ -45,16 +46,19 @@ public class Q07 {
 			
 			while((line = reader.readLine()) != null) {
 				String[] temp = line.split(",");
-				int start = Integer.parseInt(temp[2].substring(0,temp[2].indexOf(":"))) * 60
-							+ Integer.parseInt(temp[2].substring(temp[2].indexOf(":")+1));
-				int end = Integer.parseInt(temp[3].substring(0,temp[3].indexOf(":"))) * 60
-						+ Integer.parseInt(temp[3].substring(temp[3].indexOf(":")+1));
+				String[] startTime = temp[2].split(":");
+				String[] endTime = temp[2].split(":");
+				
+				int startMin = Integer.parseInt(startTime[0]) * 60
+								+ Integer.parseInt(startTime[1]);
+				int endMin = Integer.parseInt(endTime[0]) * 60
+								+ Integer.parseInt(endTime[1]);
 							
 				if(!list.contains(temp[1])) {
 					list.add(temp[1]);
 				}
 				
-				if(start > 9 * 60) {
+				if(startMin > 9 * 60) {
 					if(late.containsKey(temp[1])) {
 						late.put(temp[1], late.get(temp[1]) + 1);
 					} else {
@@ -62,7 +66,7 @@ public class Q07 {
 					}
 				}
 				
-				if(end < 18 * 60) {
+				if(endMin < 18 * 60) {
 					if(early.containsKey(temp[1])) {
 						early.put(temp[1], early.get(temp[1]) + 1);
 					} else {
