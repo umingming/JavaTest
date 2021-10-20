@@ -13,7 +13,7 @@ public class Q02 {
 		- 0->영
 		
 		설계>
-		1. String 변수를 숫자 파일이 있는 경로와 수정할 파일의 경로로 초기화함.
+		1. String 변수를 수정할 파일의 경로로 초기화함.
 		2. line 변수를 선언 후 null로 초기화함.
 		3. BufferedReader, BufferedWriter 객체 생성
 		4. while (line이 null이 아닐 때까지 반복함)
@@ -24,12 +24,11 @@ public class Q02 {
 		6. stream 종료
 		 */
 		try {
-			String path = Path.Q02;
 			String newPath = Path.path + "\\숫자_변환.dat";
 			String line = null;
 			
 			BufferedReader reader 
-				= new BufferedReader(new FileReader(path));
+				= new BufferedReader(new FileReader(Path.Q02));
 			BufferedWriter writer 
 			= new BufferedWriter(new FileWriter(newPath));
 			

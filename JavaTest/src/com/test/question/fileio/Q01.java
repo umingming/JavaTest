@@ -13,7 +13,7 @@ public class Q01 {
 		유재석 -> 메뚜기
 		
 		설계>
-		1. String 변수 선언 후 이름수정 파일의 경로와 이름수정_변환의 경로로 초기화
+		1. String 변수 선언 후 이름수정_변환의 경로로 초기화
 		2. String 변수 선언 후 null 로 초기화 
 		3. BufferedReader 객체 생성(FileReader를 매개로 사용)
 		4. BufferedWriter 객체 생성
@@ -25,13 +25,12 @@ public class Q01 {
 		 */
 		
 		try {
-			String path = Path.Q01;
 			String newPath = Path.path + "\\이름수정_변환.dat";
 			String line = null;
 			String txt = "";
 			
 			BufferedReader reader 
-				= new BufferedReader(new FileReader(path));
+				= new BufferedReader(new FileReader(Path.Q01));
 			BufferedWriter writer 
 			= new BufferedWriter(new FileWriter(newPath));
 			
