@@ -48,21 +48,19 @@ public class Q02 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	private static String getKor(String line) {
-		line = line.replace("0", "영");
-		line = line.replace("1", "일");
-		line = line.replace("2", "이");
-		line = line.replace("3", "삼");
-		line = line.replace("4", "사");
-		line = line.replace("5", "오");
-		line = line.replace("6", "육");
-		line = line.replace("7", "칠");
-		line = line.replace("8", "팔");
-		line = line.replace("9", "구");
+		String temp = line.replace("0", "영");
+		temp = line.replace("1", "일");
+		temp = line.replace("2", "이");
+		temp = line.replace("3", "삼");
+		temp = line.replace("4", "사");
+		temp = line.replace("5", "오");
+		temp = line.replace("6", "육");
+		temp = line.replace("7", "칠");
+		temp = line.replace("8", "팔");
+		temp = line.replace("9", "구");
 		return line;
 	}
-
 }

@@ -82,5 +82,4 @@ public class Q03 {
 		}
 		return false;
 	}//합격 확인
-
 }

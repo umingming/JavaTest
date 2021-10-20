@@ -46,9 +46,5 @@ public class Q04 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		
-
 	}
-
 }
