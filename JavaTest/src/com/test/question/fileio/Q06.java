@@ -39,7 +39,7 @@ public class Q06 {
 			if(stack.size() == 0) {
 				System.out.println("올바른 소스입니다.");
 			} else {
-				System.out.println("올바르지 않은 소스입니다.");
+				throw new EmptyStackException();
 			}
 			
 		} catch (EmptyStackException ee) {

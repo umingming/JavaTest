@@ -59,8 +59,6 @@ public class Ex73_File {
 		
 		while(loop) {
 			menu();
-			Scanner scan = new Scanner(System.in);
-			
 			System.out.print("선택 : ");
 			String sel = scan.nextLine();
 			
@@ -173,7 +171,7 @@ public class Ex73_File {
 		while((line = reader.readLine()) != null) {
 			String[] temp = line.split(",");
 			
-			if(temp[1].indexOf(word) > -1) {
+			if(line.split(",")[1].indexOf(word) > -1) {
 				System.out.printf("%4s\t%s\t%4s\t%s%n"
 									, temp[0]
 									, temp[1]
@@ -209,7 +207,8 @@ public class Ex73_File {
 		
 		reader.close();
 		
-		BufferedWriter writer = new BufferedWriter(new FileWriter(MyPath.DATA));
+		BufferedWriter writer 
+		= new BufferedWriter(new FileWriter(MyPath.DATA));
 		
 		writer.write(txt);
 
