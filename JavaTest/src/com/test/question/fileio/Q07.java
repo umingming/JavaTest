@@ -12,8 +12,7 @@ public class Q07 {
 	-출근: 9am, 퇴근: 6pm
 	
 	설계>
-	1. BufferedReader, Ar
-	rayList, HashMap 객체 생성
+	1. BufferedReader, ArrayList, HashMap 객체 생성
 	2. line을 null로 초기화
 	3. while문 line이 null이 아닐 때까지 반복
 		>split으로 line을 요소화해 String temp 배열 생성함.
