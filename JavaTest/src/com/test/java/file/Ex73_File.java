@@ -16,7 +16,21 @@ public class Ex73_File {
 	
 	static {
 		scan = new Scanner(System.in);
-		num = 0;
+		
+		try {
+			BufferedReader reader 
+			= new BufferedReader(new FileReader(MyPath.DATA));
+		
+			String line = null;
+			while((line = reader.readLine()) != null) {
+				String[] temp = line.split(",");
+				num = Integer.parseInt(temp[0]);
+			}
+			
+			reader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -72,24 +86,85 @@ public class Ex73_File {
 
 	}//main
 
-	private static void edit() {
+	private static void edit() throws Exception {
 		header("회원 수정하기");
+		
+		System.out.println("수정할 회원 번호 : ");
+		String num = scan.nextLine();
+		
+		BufferedReader reader 
+		= new BufferedReader(new FileReader(MyPath.DATA));
+		
+		String line = null;
+		
+		while((line = reader.readLine()) != null) {
+			
+		}
+		
+		reader.close();
 		
 		pause("회원을 수정했습니다.");
 	}
 
-	private static void search() {
+	private static void search() throws Exception {
 		header("회원 검색하기");
+		//1.검색어 입력
+		//2.목록 출력+ 검색에 부합되는 항목
 		
+		BufferedReader reader 
+		= new BufferedReader(new FileReader(MyPath.DATA));
+		
+		String word = scan.nextLine();
+		
+		System.out.println("[번호]\t[이름]\t[나이]\t[주소]");
+		String line = null;
+		
+		while((line = reader.readLine()) != null) {
+			String[] temp = line.split(",");
+			
+			if(temp[3].indexOf(word) > -1) {
+				System.out.printf("%4s\t%s\t%4s\t%s%n"
+									, temp[0]
+									, temp[1]
+									, temp[2]
+									, temp[3]);
+			}
+		}
+		
+		reader.close(); 
+		
+		System.out.print("검색어: ");
 		pause("회원을 검색했습니다.");
 	}
 
-	private static void delete() {
+	private static void delete() throws Exception {
+		//한 줄만 삭제하는 건 없다... 복사하고 다시 그 라인만 빼고 저장하는 것.
 		header("회원 삭제하기");
 		
+		System.out.print("삭제할 회원 번호: ");
+		String num = scan.nextLine();
+		
+		BufferedReader reader 
+		= new BufferedReader(new FileReader(MyPath.DATA));
+		
+		String txt = "";
+		String line = null;
+		
+		while((line  = reader.readLine()) != null) {
+			if(!num.equals(line.split(",")[0])) {
+				txt += line + "\r\n";
+			}
+		}
+		
+		reader.close();
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(MyPath.DATA));
+		
+		writer.write(txt);
+
+		writer.close();
+		
 		pause("회원을 삭제했습니다.");
-		
-		
 	}
 
 	private static void list() throws Exception {//main으로 처리 미루기
@@ -117,7 +192,6 @@ public class Ex73_File {
 
 	private static void add() {
 		header("회원 추가하기");
-		num++;
 		
 		System.out.print("이름: ");
 		String name = scan.nextLine();
@@ -131,13 +205,11 @@ public class Ex73_File {
 		try {
 			BufferedWriter writer 
 					= new BufferedWriter(new FileWriter(MyPath.DATA, true));
-			
+			num++;
 			writer.write(String.format("%s,%s,%s,%s,%n"
 									, num, name, age, address));
 			
 			writer.close();
-			
-			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
