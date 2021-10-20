@@ -23,6 +23,7 @@ public class Q02 {
 			>replace 이용해 숫자들을 한글로 바꿈.
 		6. stream 종료
 		 */
+		
 		try {
 			String newPath = Path.path + "\\숫자_변환.dat";
 			String line = null;
