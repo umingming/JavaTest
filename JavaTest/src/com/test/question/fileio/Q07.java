@@ -26,9 +26,9 @@ public class Q07 {
 				>지각 객체에 key는 이름, value는 get + 1 넣음 
 		>if 조퇴인지? 지각과 같음
 	4. Stream 종료
-	5. for문 ArrayList 크기 반복
+	5. 향상된 for문 name 변수로 ArrayList 반복
 		>count변수를 0으로 초기화함.
-		>if문 i번째 요소에 해당하는 key가 있는지?
+		>if문 key 중 name 있는지?
 			>count에 값 저장함.
 	 	>결과 출력
 	 */
@@ -80,10 +80,9 @@ public class Q07 {
 			
 			System.out.println("[이름]\t[지각]\t[조퇴]");
 			
-			for(int i=0; i<list.size(); i++) {
+			for(String name : list) {
 				int lateCount = 0;
 				int earlyCount = 0;
-				String name = list.get(i);
 
 				if(late.containsKey(name)) {
 					lateCount = late.get(name);
@@ -99,7 +98,5 @@ public class Q07 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }
