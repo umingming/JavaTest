@@ -28,7 +28,7 @@ public class Main {
 		
 		 */
 		
-		
+		System.out.println(1+2+4+8+16+32);
 		String asciiArt1 = FigletFont.convertOneLine("Welcome!");
 		System.out.println(asciiArt1);
 		
