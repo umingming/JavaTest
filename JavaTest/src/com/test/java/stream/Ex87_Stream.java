@@ -80,27 +80,17 @@ public class Ex87_Stream {
 
 	private static void m1() {
 		int[] nums = Data.getIntArray();
-//		System.out.println(nums.length);
-//		System.out.println(Arrays.toString(nums));
 		
 		int[] nums2 = Data.getIntArray(5);
-//		System.out.println(nums2.length);
-//		System.out.println(Arrays.toString(nums2));
 		
 		List<Integer> nums3 = Data.getIntList();
 		List<Integer> nums4 = Data.getIntList(5);
-		String[] txt1 = Data.getStringArray();
-//		System.out.println(Arrays.toString(txt1));
 		
 		List<String> txt2 = Data.getStringList();
-//		System.out.println(txt2);
 		
 		User[] users1 = Data.getUserArray();
-//		System.out.println(Arrays.toString(users1));
 		List<User> users2 = Data.getUserList();
-//		System.out.println(users2);
 		
-		//for문
 		for(int i=0; i<nums4.size(); i++) {
 			System.out.printf("%4d", nums4.get(i));
 		}
