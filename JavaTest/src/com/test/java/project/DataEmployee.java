@@ -8,7 +8,7 @@ public class DataEmployee {
 
 	public static void main(String[] args) throws Exception{
 		
-		String path = "C:\\Users\\u_011\\git\\DragonLand\\DragonLand\\data\\직원정보.dat";
+		String path = "C:\\Users\\u_011\\git\\DragonLand\\DragonLand\\data\\직원정보.txt";
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 		
 		Random rnd = new Random();
