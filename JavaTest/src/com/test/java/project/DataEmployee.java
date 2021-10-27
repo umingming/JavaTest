@@ -4,11 +4,11 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Random;
 
-public class data {
+public class DataEmployee {
 
 	public static void main(String[] args) throws Exception{
 		
-		String path = "C:\\Users\\u_011\\git\\DragonLand\\DragonLand\\data\\회원정보.dat";
+		String path = "C:\\Users\\u_011\\git\\DragonLand\\DragonLand\\data\\직원정보.dat";
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 		
 		Random rnd = new Random();
@@ -28,57 +28,27 @@ public class data {
 							, " 가정", " 서인", " 청라", " 회관", " 인가", " 북성", " 반촌", " 갈산", " 송내", " 동죽", " 인산"};
 		String[] alphabet = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "x"};
 		
-		for(int i=0; i<1000; i++) {
-			String jumin = "";
+		for(int i=0; i<100; i++) {
 			int yy = rnd.nextInt(100);
 			int mm = rnd.nextInt(12) + 1;
 			int dd = rnd.nextInt(30) + 1;
-			int gender = yy <= 10 ? rnd.nextInt(2) + 3 : rnd.nextInt(2) + 1;
+			int gender = rnd.nextInt(2) + 1;
 			int etc = rnd.nextInt(90000) + 10000;
-			jumin = String.format("%02d%02d%02d%d%05d"
-							,yy,mm,dd,gender,etc);
-			int sum = 0;
-
-			for(int j=0; j<jumin.length()-1; j++) {
-				sum += Integer.parseInt(jumin.charAt(j)+"") * (j % 8 + 2);
-			}
-//			while(sum>=10) {
-				sum %= 11;
-				sum = 11 - sum;
-				if(sum>9) {
-					sum %= 11;
-					sum = 11 - sum;
-				}
-				
-//			}
-			jumin += sum + "";
-			String member = String.format("U%04d■%s■%s■%s■%s■%s■%s■%d"
+			String member = String.format("E%03d■%s■%s■%s■%s■%s"
 							, i+1
-							, alphabet[rnd.nextInt(alphabet.length)]
-								+ alphabet[rnd.nextInt(alphabet.length)]
-								+ alphabet[rnd.nextInt(alphabet.length)]
-								+ alphabet[rnd.nextInt(alphabet.length)]
-								+ rnd.nextInt(9999)		
-							, alphabet[rnd.nextInt(alphabet.length)]
-								+ alphabet[rnd.nextInt(alphabet.length)]
-								+ alphabet[rnd.nextInt(alphabet.length)]
-								+ alphabet[rnd.nextInt(alphabet.length)]
-								+ rnd.nextInt(9999)
 							, name1[rnd.nextInt(name1.length)]
 								+ name2[rnd.nextInt(name2.length)]
 								+ name2[rnd.nextInt(name2.length)]
-							, jumin
-
-							, "010" + (rnd.nextInt(9000)+1000) + (rnd.nextInt(9000)+1000)
+							, rnd.nextInt(20)+20
 							, address1[rnd.nextInt(address1.length)]
 								+ address2[rnd.nextInt(address2.length)]
 								+ address3[rnd.nextInt(address3.length)] +"동"
 								+ address3[rnd.nextInt(address3.length)] 
 								+ (rnd.nextInt(15)+1) + "로 "
 								+ (rnd.nextInt(99)+1) + "번길"
-								+ ( (rnd.nextInt(2) == 0 ? " " + (rnd.nextInt(100) + 1) : ""))
-							, rnd.nextInt(4));
-			
+								+ ( (rnd.nextInt(2) == 0 ? " " + (rnd.nextInt(100) + 1) : ""))	
+							, "010" + (rnd.nextInt(9000)+1000) + (rnd.nextInt(9000)+1000)
+							, "미정");
 			System.out.println(member);
 			writer.write(member);
 			writer.newLine();
