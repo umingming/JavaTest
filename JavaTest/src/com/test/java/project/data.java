@@ -8,7 +8,7 @@ public class data {
 
 	public static void main(String[] args) throws Exception{
 		
-		String path = "C:\\Users\\u_011\\git\\DragonLand\\DragonLand\\data\\회원정보.dat";
+		String path = "C:\\Users\\u_011\\git\\DragonLand\\DragonLand\\data\\회원정보.txt";
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 		
 		Random rnd = new Random();
@@ -52,7 +52,7 @@ public class data {
 				
 //			}
 			jumin += sum + "";
-			String member = String.format("U%04d■%s■%s■%s■%s■%s■%s■%d"
+			String member = String.format("U%04d■%s■%s■%s■%s■%s■%s■%b"
 							, i+1
 							, alphabet[rnd.nextInt(alphabet.length)]
 								+ alphabet[rnd.nextInt(alphabet.length)]
@@ -77,7 +77,7 @@ public class data {
 								+ (rnd.nextInt(15)+1) + "로 "
 								+ (rnd.nextInt(99)+1) + "번길"
 								+ ( (rnd.nextInt(2) == 0 ? " " + (rnd.nextInt(100) + 1) : ""))
-							, rnd.nextInt(4));
+							, rnd.nextBoolean());
 			
 			System.out.println(member);
 			writer.write(member);
