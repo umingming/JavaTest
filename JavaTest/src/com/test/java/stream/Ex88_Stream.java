@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,8 +23,61 @@ public class Ex88_Stream {
 //		list.stream().forEach(s -> System.out.println(s.getName()));
 //		m1();
 //		m2();
-		m3();
+//		m3();
+		m4();
 
+	}
+
+	private static void m4() {
+		/*
+		매핑
+		 */
+//		Data.getStringList(10)
+//			.stream()
+//			.forEach(word -> System.out.println(word));
+//		System.out.println();
+//		Data.getStringList(10)
+//			.stream()
+//			.map(word -> word.length())
+//			.forEach(num -> System.out.println(num));
+//		System.out.println();
+//		
+//		Data.getStringList(10)
+//			.stream()
+//			.map(word -> word.substring(0, 2))
+//			.forEach(word -> System.out.println(word));
+		
+//		list.stream()
+//			.map(s -> (s.getKor() + s.getEng() + s.getMath())/3.0)
+//			.filter(avg -> avg >= 60.0)
+//			.forEach(s -> System.out.printf("%.1f%n", s));	
+		
+		list.stream()
+			.filter(s -> ((s.getKor() + s.getEng() + s.getMath())/3.0)>=90)
+			.map(s -> s.getName())
+			.forEach(s -> System.out.println(s));
+		
+//		Data.getIntList(10)
+//			.forEach(num -> System.out.println(num));
+//		for(int i=0; i<=10; i++) {
+//			int size = Data.getIntList(10).get(i);
+//			Cup cup = new Cup(Cup.BLACK, size);
+//			list.add(cup);
+//		}
+		
+//		Data.getIntList(10)
+//			.stream()
+//			.map(num -> new Cup(Cup.BLACK, num))
+//			.forEach(cup -> System.err.println(cup));
+		
+//		System.out.println(Data.getItemList());
+		Data.getItemList()
+			.stream()
+			.filter(item -> item.getDate().get(Calendar.DAY_OF_WEEK) == 7)
+			.map(item -> item.getName())
+			.distinct()
+			.forEach(item -> System.out.println(item));
+		System.out.println();
 	}
 
 	private static void m3() {
@@ -231,6 +285,6 @@ class Cup{
 	}
 	
 	public boolean equals(Object obj) {
-		return false;
+		return this.hashCode() == obj.hashCode();
 	}
 }
