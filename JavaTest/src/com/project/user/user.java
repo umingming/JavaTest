@@ -18,8 +18,7 @@ public class user {
 				
 				if(sel.equals("1")) {
 				}else if(sel.equals("2")){
-					UserVoice uv = new UserVoice();
-					uv.add();
+					
 				}else {
 					loop = false;
 				}
