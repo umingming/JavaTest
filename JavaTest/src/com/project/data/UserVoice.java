@@ -32,7 +32,6 @@ public class UserVoice implements Data{
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 			String[] temp = line.split("■");
-			
 			Voice v = new Voice();
 			
 			v.setSeq(temp[0]);
@@ -47,15 +46,10 @@ public class UserVoice implements Data{
 		
 	}
 	public void list() throws Exception {
-		BufferedReader reader = new BufferedReader(new FileReader(PATH));
-		
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			System.out.println(line);
-		}
-		
-		reader.close();
-		
+		load();
+		list.stream()
+			.filter(voice -> voice.getContent().contains("회전"))
+			.forEach(s -> System.out.println(s.getContent()));
 	}
 
 	@Override
