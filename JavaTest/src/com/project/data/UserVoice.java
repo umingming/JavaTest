@@ -3,14 +3,14 @@ package com.project.data;
 import java.io.*;
 import java.util.*;
 
-public class UserVoice implements Data{
+public class UserVoice{
+	private final String PATH = "C:\\Users\\u_011\\git\\JavaTest\\JavaTest\\data\\고객의소리.txt";
+	private static Scanner scan = new Scanner(System.in);
 	private static ArrayList<Voice> list;
-	private final String PATH = "C:\\Users\\u_011\\git\\DragonLand\\DragonLand\\data\\고객의소리.txt";
 	static {
 		list = new ArrayList<Voice>(3100);
 	}
 	
-	@Override
 	public void save() throws Exception {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(PATH));
 		
@@ -25,21 +25,13 @@ public class UserVoice implements Data{
 		
 	}
 
-	@Override
 	public void load() throws Exception {
 		BufferedReader reader = new BufferedReader(new FileReader(PATH));
 
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 			String[] temp = line.split("■");
-			Voice v = new Voice();
-			
-			v.setSeq(temp[0]);
-			v.setDate(temp[1]);
-			v.setContent(temp[2]);
-			
-			list.add(v);
-			
+			list.add(new Voice(temp[0],temp[1],temp[2]));
 		}
 
 		reader.close();
@@ -48,11 +40,9 @@ public class UserVoice implements Data{
 	public void list() throws Exception {
 		load();
 		list.stream()
-			.filter(voice -> voice.getContent().contains("회전"))
 			.forEach(s -> System.out.println(s.getContent()));
 	}
 
-	@Override
 	public void add() throws Exception {
 		load();
 		String seq = getSeq();

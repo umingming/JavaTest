@@ -5,8 +5,11 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.Set;
 
 import com.test.data.Data;
@@ -24,8 +27,145 @@ public class Ex88_Stream {
 //		m1();
 //		m2();
 //		m3();
-		m4();
+//		m4();
+//		m5();
+//		m6();
+//		m7();
+//		m8();
+//		m9();
+//		m10();
+		m11();
 
+	}
+
+	private static void m11() {
+		list.stream()
+			.filter(s -> s.getHeight() >= 175)
+			.peek(s -> System.out.println("@" + s.getName()))
+			.filter(s -> s.getWeight() >= 80)
+			.filter(s -> s.getKor() >= 90)	
+			.forEach(s -> System.out.println(s.getName()));
+		
+	}
+
+	private static void m10() {
+		int[] nums1 = {2,3,4,5,1};
+		List<Integer>nums2 = Arrays.asList(1,2,3,4,5);
+		System.out.println(Arrays.stream(nums1).sum());
+		System.out.println(Arrays.stream(nums1).average());
+		System.out.println(
+		list.stream()
+			.mapToDouble(s -> (s.getKor() + s.getEng() + s.getMath())/3.0)
+			.average()
+			.getAsDouble()
+				);
+			
+	}
+
+	private static void m9() {
+		/*
+		min(), max()
+		 */
+		int[] nums1 = {2,3,4,5,1};
+		List<Integer>nums2 = Arrays.asList(1,2,3,4,5);
+		int max = 1;
+		int min = 5;
+		
+		for(int i=0; i<nums1.length; i++) {
+			if(nums1[i] > max) {
+				max = nums1[i];
+			}
+			if(nums1[i] < min) {
+				min = nums1[i];
+			}
+		}
+		System.out.println(Arrays.stream(nums1).max().getAsInt());
+		System.out.println(Arrays.stream(nums1).min());
+		
+		OptionalInt num = OptionalInt.of(10);
+		System.out.println(num);
+	}
+
+	private static void m8() {
+		System.out.println(Data.getIntList().stream().count());
+		System.out.println(Data.getUserList().stream().count());
+		System.out.println(Data.getUserList().stream().filter(user->user.getGender()==1).count());
+		System.out.println(list.stream().filter(s -> (s.getKor() + s.getEng() + s.getMath()) >= 270).count());
+		int count = 0;
+		for(Student s : list) {
+			if((s.getKor() + s.getEng() + s.getMath())>=270){
+				count++;
+			}
+		}
+	}
+
+	private static void m7() {
+		List<Integer> nums = Arrays.asList(2, 4, 5, 8, 10);
+		boolean result = false;
+		for(int num : nums) {
+			if(num % 2 == 1) {
+				result = true;
+				break;
+			}
+		}
+		if(result) {
+			System.out.println("홀수 발견");
+		} else {
+			System.out.println("모든 짝수~");
+		}
+		
+		if(nums.stream().anyMatch(num -> num%2==0)) {
+			System.out.println("모든 짝수~");
+		}else {
+			System.out.println("홀수 발견");
+		}
+		
+		if(nums.stream().noneMatch(num -> num%2==0)) {
+			System.out.println("모두 홀수");
+		}else {
+			System.out.println("짝수 발견");
+		}
+		
+	}
+
+	private static void m6() {
+		List<Integer> nums = Data.getIntList(10);
+		System.out.println(nums);
+//		Collections.sort(nums);
+//		System.out.println(nums);
+		nums.sort((n1, n2) -> n2 - n1);
+		System.out.println(nums);
+		nums.sort(Comparator.naturalOrder());
+		
+		list.stream()
+			.sorted((s1,s2)->s1.getName().compareTo(s2.getName()))
+			.forEach(s -> System.out.println(s.getName()));
+		
+		Data.getIntList()
+			.stream()	
+			.filter(num -> num%2==0)
+			.distinct()
+			.sorted()
+			.forEach(num -> System.out.printf("%4d",num));
+		
+	}
+
+	private static void m5() {
+		list.stream()
+			.forEach(s -> System.out.println(s.getName()));
+		System.out.println("===================");
+		list.stream()
+			.filter(s -> s.getHeight() >= 170)
+			.filter(s -> s.getKor() >= 80)
+			.map(s -> s.getName())
+			.forEach(name -> System.out.println(name));
+		System.out.println("===================");
+		list.stream()
+		.filter(s -> s.getHeight() >= 170)
+		.filter(s -> s.getKor() >= 80)
+		.forEach(name -> System.out.println(name.getHeight()));
+		
+		
 	}
 
 	private static void m4() {

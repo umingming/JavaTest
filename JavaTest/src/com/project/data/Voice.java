@@ -8,7 +8,6 @@ public class Voice {
 	
 	
 	public Voice(String seq, String date, String content) {
-		super();
 		this.seq = seq;
 		this.date = date;
 		this.content = content;
