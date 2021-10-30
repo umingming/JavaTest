@@ -30,6 +30,7 @@ public class UserVoice{
 
 		String line = null;
 		while ((line = reader.readLine()) != null) {
+			System.out.println(line);
 			String[] temp = line.split("■");
 			list.add(new Voice(temp[0],temp[1],temp[2]));
 		}
