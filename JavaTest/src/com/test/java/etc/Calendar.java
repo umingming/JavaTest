@@ -23,6 +23,7 @@ public class Calendar {
 		*/
 
 		int year = 1;
+		
 		int month = 1;
 		
 		int dayOfWeek = getDayOfWeek(year, month);
