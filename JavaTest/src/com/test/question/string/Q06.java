@@ -53,11 +53,13 @@ public class Q06 {
 			sum = 11 - sum;
 			if (sum >= 10) {
 				sum -= 10;
+				System.out.println(sum);
 				if(sum == Integer.parseInt(jumin.substring(jumin.length()-1))) {
 					return true;
 				} 
 				return false;
 			} else {
+				System.out.println(sum);
 				if(sum == Integer.parseInt(jumin.substring(jumin.length()-1))) {
 					return true;
 				} 
@@ -125,7 +127,7 @@ public class Q06 {
 		if(isRightFirst(jumin)) {
 			int year = Integer.parseInt(jumin.substring(0, 2));
 			
-			if(year > 0 && year < 100) {
+			if(year >= 0 && year < 100) {
 				return true;
 			} 
 			return false; 

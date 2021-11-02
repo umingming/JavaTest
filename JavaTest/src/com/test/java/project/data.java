@@ -13,9 +13,9 @@ public class data {
 		
 		Random rnd = new Random();
 		
-		String[] name1 =  { "김", "이", "박", "최", "정", "강", "한", "주", "임", "유", "안", "진"};
+		String[] name1 =  { "김", "이", "박", "최", "정", "강", "한", "주", "임", "유", "안", "진", "고", "민", "장", "호"};
 		String[] name2 =  { "수", "준", "선", "희", "하", "영", "정", "진",
-							"유", "미", "민", "섭", "지", "성", "연", "재", "형", "안", "진"};
+							"유", "미", "민", "섭", "지", "성", "연", "재", "형", "안", "진", "효", "주", "분", "상", "태"};
 		
 		String[] address1 = { "세종시", "거창시", "서산시", "청주시", "익산시", "여수시", "창원시", 
 								"이천시", "용인시", "오산시", "화성시", "천안시", "하남시", "서울시", 
@@ -32,26 +32,45 @@ public class data {
 			String jumin = "";
 			int yy = rnd.nextInt(100);
 			int mm = rnd.nextInt(12) + 1;
-			int dd = rnd.nextInt(30) + 1;
+			int dd = rnd.nextInt(31) + 1;
 			int gender = yy <= 10 ? rnd.nextInt(2) + 3 : rnd.nextInt(2) + 1;
 			int etc = rnd.nextInt(90000) + 10000;
 			jumin = String.format("%02d%02d%02d%d%05d"
 							,yy,mm,dd,gender,etc);
-			int sum = 0;
-
-			for(int j=0; j<jumin.length()-1; j++) {
-				sum += Integer.parseInt(jumin.charAt(j)+"") * (j % 8 + 2);
-			}
-//			while(sum>=10) {
-				sum %= 11;
-				sum = 11 - sum;
-				if(sum>9) {
-					sum %= 11;
-					sum = 11 - sum;
-				}
-				
+//			int sum = 0;
+//
+//			for(int j=0; j<jumin.length()-1; j++) {
+//				sum += Integer.parseInt(jumin.charAt(j)+"") * (j % 8 + 2);
 //			}
-			jumin += sum + "";
+//				sum %= 11;
+//				sum = 11 - sum;
+//				if(sum >= 10) {
+//					sum -= 10;
+//				}
+//			int sum = 0;
+//			for(int j=0; j<jumin.length()-1; j++) {
+//				sum += Integer.parseInt(jumin.charAt(j)+"") * (j % 8 + 2);
+//			}
+//			sum %= 11;
+//			sum = 11 - sum;
+//			if (sum >= 10) {
+//				sum -= 10;
+//			}
+//			System.out.println(sum);
+//				
+			int[] juminNum = { 2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5 };
+
+			int check = 0;
+			for (int j = 0; j < 12; j++) {
+
+				check += (jumin.charAt(j) - '0') * juminNum[j];
+
+			}
+
+			int nmg = check % 11;
+			int result = 11 - nmg;
+			if(result>=10) result -= 10;
+			jumin += result;
 			String member = String.format("U%04d■%s■%s■%s■%s■%s■%s■%b"
 							, i+1
 							, alphabet[rnd.nextInt(alphabet.length)]
