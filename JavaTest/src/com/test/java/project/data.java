@@ -90,12 +90,12 @@ public class data {
 
 							, "010" + (rnd.nextInt(9000)+1000) + (rnd.nextInt(9000)+1000)
 							, address1[rnd.nextInt(address1.length)]
-								+ address2[rnd.nextInt(address2.length)]
-								+ address3[rnd.nextInt(address3.length)] +"동"
-								+ address3[rnd.nextInt(address3.length)] 
-								+ (rnd.nextInt(15)+1) + "로 "
-								+ (rnd.nextInt(99)+1) + "번길"
-								+ ( (rnd.nextInt(2) == 0 ? " " + (rnd.nextInt(100) + 1) : ""))
+//								+ address2[rnd.nextInt(address2.length)]
+//								+ address3[rnd.nextInt(address3.length)] +"동"
+								+ address3[rnd.nextInt(address3.length)] + "로 "
+//								+ (rnd.nextInt(15)+1) + "로 "
+								+ (rnd.nextInt(99)+1) + "번길 "
+								+ (rnd.nextInt(100) + 1)
 							, rnd.nextBoolean());
 			
 			System.out.println(member);
