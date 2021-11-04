@@ -29,7 +29,7 @@ public class Main {
 		 */
 		
 		System.out.println(1+2+4+8+16+32);
-		String asciiArt1 = FigletFont.convertOneLine("Welcome!");
+		String asciiArt1 = FigletFont.convertOneLine("Dragon Land");
 		System.out.println(asciiArt1);
 		
 		boolean loop = true;
