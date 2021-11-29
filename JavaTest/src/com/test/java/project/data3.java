@@ -8,7 +8,7 @@ public class data3 {
 
 	public static void main(String[] args) throws Exception{
 		
-		String path = "C:\\class\\oracle\\tblSubject.sql";
+		String path = "C:\\class\\oracle\\tblScorePercent.sql";
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 		
 		Random rnd = new Random();
@@ -17,19 +17,20 @@ public class data3 {
 		String[] name2 = { "프로그래밍", "실습", "개론", "및 응용", "과목", "특강", "1", "2"};
 		
 		for(int i=0; i<50; i++) {
-			String member = String.format("insert into tblSubject (subject_seq, subject_name, subject_period)");
+			String member = String.format("insert into tblScorePercent (os_seq, sp_seq, exam_per, skill_per, attendance_per)");
 			writer.write(member);
 			writer.newLine();
-			int yy = rnd.nextInt(22);
-			int mm = rnd.nextInt(12) + 1;
-			int dd = rnd.nextInt(30) + 1;
-			int dd2 = rnd.nextInt(30);
+			int a = rnd.nextInt(20) + 20;
+			int b = rnd.nextInt(20) + 30;
+			int c = 100 - a - b;
+			int num = rnd.nextInt(30);
 			String file = "https://www.sycenter.net/document/";
-			member = String.format("    values (subject_seq.nextVal, '%s', %.1f);"
-							, name[rnd.nextInt(name.length)] + " "
-								+ name1[rnd.nextInt(name1.length)] + " "
-								+ name2[rnd.nextInt(name2.length)]
-							, rnd.nextInt(4) + rnd.nextDouble() + 0.5);
+			member = String.format("    values (%d, %d, %d, %d, %d);"
+							, i+1
+							, i+1
+							, b
+							, c
+							, a);
 			writer.write(member);
 			writer.newLine();
 			
