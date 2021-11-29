@@ -4,12 +4,12 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Random;
 
-public class data3 {
+public class OSData {
 
 	public static void main(String[] args) throws Exception{
 		
 		String path = "C:\\class\\oracle\\tblOpenSubject.sql";
-		BufferedWriter writer = new BufferedWriter(new FileWriter(path, true));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 		
 		Random rnd = new Random();
 		
@@ -19,8 +19,8 @@ public class data3 {
 			writer.newLine();
 			int yy = rnd.nextInt(22);
 			int mm = rnd.nextInt(12)+1;
-			int dd = rnd.nextInt(30);
-			int dd2 = rnd.nextInt(30);
+			int dd = rnd.nextInt(30)+1;
+			int dd2 = rnd.nextInt(30)+1;
 			member = String.format("    values (os_seq.nextVal, %d, %d, '%02d-%02d-%02d', '%02d-%02d-%02d');"
 							, rnd.nextInt(60) + 1
 							, rnd.nextInt(20) + 1
@@ -29,7 +29,7 @@ public class data3 {
 							, dd
 							, yy
 							, mm + 1
-							, dd);
+							, dd2);
 			writer.write(member);
 			writer.newLine();
 			
