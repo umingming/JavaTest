@@ -8,7 +8,7 @@ public class data3 {
 
 	public static void main(String[] args) throws Exception{
 		
-		String path = "C:\\class\\oracle\\tblScore.sql";
+		String path = "C:\\class\\oracle\\tblBook.sql";
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 		
 		Random rnd = new Random();
@@ -22,8 +22,8 @@ public class data3 {
 		String[] p4 = { "출판사", "출판", "북스", "아카데미", "미디어", "책방", "라이프"};
 		
 		
-		for(int i=0; i<900; i++) {
-			String member = String.format("insert into tblScore (score_seq, enrollment_seq, os_seq, sp_seq, score_exam, score_skill, score_attendance)");
+		for(int i=0; i<50; i++) {
+			String member = String.format("insert into tblBook (book_seq, book_name, book_publisher, book_price, subject_seq)");
 			writer.write(member);
 			writer.newLine();
 			int a = rnd.nextInt(20) + 20;
@@ -31,13 +31,16 @@ public class data3 {
 			int c = 100 - a - b;
 			int num = rnd.nextInt(30);
 			String file = "https://www.sycenter.net/document/";
-			member = String.format("    values (score_seq.nextVal, %d, %d, %d, %d, %d, %d);"
-							, i % 30 + 1
-							, (i/30) + 1
-							, (i/30) + 1
-							, rnd.nextInt(50)
-							, rnd.nextInt(50)
-							, rnd.nextInt(50));
+			member = String.format("    values (book_seq.nextVal, '%s', '%s', %d, %d);"
+							, n1[rnd.nextInt(n1.length)]
+							 + n2[rnd.nextInt(n2.length)]
+							 + n3[rnd.nextInt(n3.length)]
+							, p1[rnd.nextInt(p1.length)]
+							 + p2[rnd.nextInt(p2.length)]
+							 + p3[rnd.nextInt(p3.length)]
+							 + p4[rnd.nextInt(p4.length)]
+							, rnd.nextInt(30) * 1000 + 10000
+							, rnd.nextInt(50)+1);
 			writer.write(member);
 			writer.newLine();
 			
