@@ -8,7 +8,7 @@ public class Rank {
 
 	public static void main(String[] args) throws Exception{
 		
-		String path = "C:\\Users\\u_011\\git\\DeepRoot\\DeepRoot\\src\\com\\data\\회원_득점.txt";
+		String path = "C:\\Users\\u_011\\git\\DeepRoot\\DeepRoot\\src\\com\\data\\학습량.txt";
 		BufferedWriter writer = new BufferedWriter(new FileWriter(path, true));
 		
 		Random rnd = new Random();
@@ -16,9 +16,7 @@ public class Rank {
 		for(int i=0; i<1000; i++) {
 			String cateNum = "C" + (i/100 + 1);
 			int qNum = i%100 + 1;
-			String content = String.format("U%04dC1Q1■S%08dU%04dC1Q1"
-							, i+1
-							, i*i+i
+			String content = String.format("%d■1■0■0■0■0■0■0■0"
 							, i+1);
 			
 			System.out.println(content);
