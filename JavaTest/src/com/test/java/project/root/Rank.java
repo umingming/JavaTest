@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Random;
 
-public class Study {
+public class Rank {
 
 	public static void main(String[] args) throws Exception{
 		
