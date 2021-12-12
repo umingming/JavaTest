@@ -1,4 +1,4 @@
-package com.test.java.project;
+package com.test.java.project.root;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
