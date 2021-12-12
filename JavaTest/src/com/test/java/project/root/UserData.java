@@ -68,7 +68,7 @@ public class UserData {
 			int result = 11 - nmg;
 			if(result>=10) result -= 10;
 			jumin += result;
-			String member = String.format("U%04d■%s■%s■%s■%s■%s■%s"
+			String member = String.format("%d■%s■%s■%s■%s■%s■%s"
 							, i+1
 							, name1[rnd.nextInt(name1.length)]
 								+ name2[rnd.nextInt(name2.length)]
