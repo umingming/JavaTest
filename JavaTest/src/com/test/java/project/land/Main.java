@@ -1,4 +1,4 @@
-package com.test.java.project;
+package com.test.java.project.land;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
