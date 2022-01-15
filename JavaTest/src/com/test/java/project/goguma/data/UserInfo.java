@@ -1,10 +1,10 @@
-package com.test.java.project.goguma;
+package com.test.java.project.goguma.data;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Random;
 
-public class DataEmployee {
+public class UserInfo {
 
 	public static void main(String[] args) throws Exception{
 		
@@ -58,7 +58,7 @@ public class DataEmployee {
 							, rnd.nextInt(11) + 1
 							, rnd.nextInt(28) + 1
 							, rnd.nextBoolean() == true ? 'f' : 'm'
-							, rnd.nextInt(10) + 11
+							, rnd.nextInt(2) + 20
 							, rnd.nextInt(11) + 1
 							, rnd.nextInt(28) + 1);
 								

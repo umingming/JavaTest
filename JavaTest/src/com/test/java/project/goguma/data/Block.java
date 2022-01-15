@@ -1,4 +1,4 @@
-package com.test.java.project.goguma;
+package com.test.java.project.goguma.data;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -45,7 +45,7 @@ public class Block {
 			String member = String.format("insert into tblBlock (id, block_type_seq, regdate) values ('%s', %d, '%02d-%02d-%02d')"
 					, "user" + (i+1)
 					, rnd.nextInt(5) + 1
-					, rnd.nextInt(10) + 11
+					, rnd.nextInt(2) + 20
 					, rnd.nextInt(11) + 1
 					, rnd.nextInt(28) + 1);
 								

@@ -1,4 +1,4 @@
-package com.test.java.project.goguma;
+package com.test.java.project.goguma.data;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -66,13 +66,13 @@ public class Question {
 					+ content3[rnd.nextInt(content3.length)]
 					+ content4[rnd.nextInt(content4.length)] 
 					+ content5[rnd.nextInt(content5.length)];
-			String member = String.format("insert into tblQuestion (question_seq, id, question_type_seq, title, content, regdate) values (%d, '%s', %d, '%s', '%s', '%02d-%02d-%02d')"
-					, i+1
+			String member = String.format("insert into tblQuestion (question_seq, id, question_type_seq, title, content, regdate) values (%s, '%s', %d, '%s', '%s', '%02d-%02d-%02d')"
+					, "question_seq.nextVal"
 					, "user" + (i+1)
 					, rnd.nextInt(5) + 1
 					, title
 					, title + content 
-					, rnd.nextInt(10) + 11
+					, rnd.nextInt(2) + 20
 					, rnd.nextInt(11) + 1
 					, rnd.nextInt(28) + 1);
 								
