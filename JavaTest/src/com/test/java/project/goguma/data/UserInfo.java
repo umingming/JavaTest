@@ -42,7 +42,7 @@ public class UserInfo {
 			int dd = rnd.nextInt(30) + 1;
 			int gender = rnd.nextInt(2) + 1;
 			int etc = rnd.nextInt(90000) + 10000;
-			String member = String.format("insert into tblUserInfo (id, address_seq, name, address, tel, email, birth, gender, since) values ('%s', %d, '%s', '%s', '%s', '%s', '%02d-%02d-%02d', '%s', '%02d-%02d-%02d')"
+			String member = String.format("insert into tblUserInfo (id, address_seq, name, address, tel, email, birth, gender, since) values ('%s', %d, '%s', '%s', '%s', '%s', '%02d-%02d-%02d', '%s', '%02d-%02d-%02d');"
 							, "user" + (i+1)
 							, rnd.nextInt(30) + 1
 							, name1[rnd.nextInt(name1.length)]

@@ -66,7 +66,7 @@ public class Question {
 					+ content3[rnd.nextInt(content3.length)]
 					+ content4[rnd.nextInt(content4.length)] 
 					+ content5[rnd.nextInt(content5.length)];
-			String member = String.format("insert into tblQuestion (question_seq, id, question_type_seq, title, content, regdate) values (%s, '%s', %d, '%s', '%s', '%02d-%02d-%02d')"
+			String member = String.format("insert into tblQuestion (question_seq, id, question_type_seq, title, content, regdate) values (%s, '%s', %d, '%s', '%s', '%02d-%02d-%02d');"
 					, "question_seq.nextVal"
 					, "user" + (i+1)
 					, rnd.nextInt(5) + 1

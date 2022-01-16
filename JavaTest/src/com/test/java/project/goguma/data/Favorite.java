@@ -42,7 +42,7 @@ public class Favorite {
 			int dd = rnd.nextInt(30) + 1;
 			int gender = rnd.nextInt(2) + 1;
 			int etc = rnd.nextInt(90000) + 10000;
-			String member = String.format("insert into tblFavorite (favorite_seq, id, product_seq) values (%s, '%s', %d)"
+			String member = String.format("insert into tblFavorite (favorite_seq, id, product_seq) values (%s, '%s', %d);"
 					, "favorite_seq.nextVal"
 					, "user" + (i+1)
 					, rnd.nextInt(160)+1);

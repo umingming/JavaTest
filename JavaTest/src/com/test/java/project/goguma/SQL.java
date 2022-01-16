@@ -25,7 +25,8 @@ public class SQL {
 			String newPath = "C:\\유미\\goguma\\순서2.txt";
 			BufferedWriter writer = new BufferedWriter(new FileWriter(newPath));
 			
-			for(int i=0; i<stack.size(); i++) {
+			int size = stack.size();
+			for(int i=0; i<size; i++) {
 				String tmp = stack.pop();
 				System.out.println(tmp);
 				writer.write(tmp);

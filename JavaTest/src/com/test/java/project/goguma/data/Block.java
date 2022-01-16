@@ -42,7 +42,7 @@ public class Block {
 			int dd = rnd.nextInt(30) + 1;
 			int gender = rnd.nextInt(2) + 1;
 			int etc = rnd.nextInt(90000) + 10000;
-			String member = String.format("insert into tblBlock (id, block_type_seq, regdate) values ('%s', %d, '%02d-%02d-%02d')"
+			String member = String.format("insert into tblBlock (id, block_type_seq, regdate) values ('%s', %d, '%02d-%02d-%02d');"
 					, "user" + (i+1)
 					, rnd.nextInt(5) + 1
 					, rnd.nextInt(2) + 20
