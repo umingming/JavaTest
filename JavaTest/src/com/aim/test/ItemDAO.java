@@ -6,7 +6,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -26,26 +25,15 @@ public class ItemDAO {
 				Node node = nlist.item(i);
 				ItemDTO dto = new ItemDTO();
 
-				dto.setName(node.getChildNodes().item(0).getTextContent());
-				dto.setDeviceCode(node.getChildNodes().item(1).getTextContent());
-				dto.setPoint(node.getChildNodes().item(2).getTextContent());
+				dto.setName(node.getAttributes().item(0).getTextContent());
+				dto.setDeviceCode(node.getAttributes().item(1).getTextContent());
+				dto.setPoint(node.getAttributes().item(2).getTextContent());
 				list.add(dto);
+				
+				System.out.println(dto.toString());
 			}
 			
 			return list;
-//			Element root = document.getDocumentElement();
-//			NodeList children = root.getChildNodes();
-//			
-//			System.out.println(root.getNodeName());
-//			
-//			for(int i=0; i<children.getLength(); i++) {
-//				Node node = children.item(i);
-//				if(node.getNodeType() == Node.ELEMENT_NODE) {
-//					Element ele = (Element)node;
-//					String nodeName = ele.getNodeName();
-//					System.out.println("node name: " + nodeName);
-//				}
-//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

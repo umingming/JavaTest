@@ -23,4 +23,8 @@ public class ItemDTO {
 	public void setPoint(String point) {
 		this.point = point;
 	}
+	@Override
+	public String toString() {
+		return "ItemDTO [name=" + name + ", deviceCode=" + deviceCode + ", point=" + point + "]";
+	}
 }
