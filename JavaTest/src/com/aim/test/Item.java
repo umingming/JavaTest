@@ -1,12 +1,11 @@
 package com.aim.test;
 
-import java.util.ArrayList;
-
-public class BlockDTO {
+public class Item {
 	private String name;
-	private ArrayList<ItemDTO> item;
-//	private String deviceCode;
-//	private String point;
+	private String deviceCode;
+	private String point;
+	private String value;
+	private String syncValue;
 	
 	public String getName() {
 		return name;
@@ -26,8 +25,16 @@ public class BlockDTO {
 	public void setPoint(String point) {
 		this.point = point;
 	}
-	@Override
-	public String toString() {
-		return "ItemDTO [name=" + name + ", deviceCode=" + deviceCode + ", point=" + point + "]";
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+	public String getSyncValue() {
+		return syncValue;
+	}
+	public void setSyncValue(String syncValue) {
+		this.syncValue = syncValue;
 	}
 }
