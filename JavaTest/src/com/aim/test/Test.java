@@ -17,12 +17,15 @@ public class Test {
 			File file = new File(pathOPC_TagMap_Mill);
 			FileInputStream stream = new FileInputStream(file);
 			Document document = Jsoup.parse(stream, null, "", Parser.xmlParser());
-//			Document document = Jsoup.parse(input, "UTF-8");
-			System.out.println(document.toString());
+//			System.out.println(document.toString());
 			
+			document.select("Item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]").attr("Point", "10000");
 //			Elements element = document.select("Item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]");
+//			element.attr("Point", "10000");
+			
 //			
 //			System.out.println(element.toString());
+			System.out.println(document.toString());
 			
 			
 //			Elements contents = document.select("item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]");
@@ -35,6 +38,7 @@ public class Test {
 //			Document document = parse(pathOPC_TagMap_Mill);
 //			print(document);
 //			edit(document);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
