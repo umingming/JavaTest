@@ -1,10 +1,12 @@
 package com.aim.test;
 
 import java.io.File;
+import java.io.FileInputStream;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 public class Test {
@@ -12,13 +14,15 @@ public class Test {
 	
 	public static void main(String[] args) {
 		try {
-			File input = new File(pathOPC_TagMap_Mill);
-			Document document = Jsoup.parse(input, "UTF-8");
+			File file = new File(pathOPC_TagMap_Mill);
+			FileInputStream stream = new FileInputStream(file);
+			Document document = Jsoup.parse(stream, null, "", Parser.xmlParser());
+//			Document document = Jsoup.parse(input, "UTF-8");
 			System.out.println(document.toString());
 			
-			Elements element = document.select("Item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]");
-			
-			
+//			Elements element = document.select("Item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]");
+//			
+//			System.out.println(element.toString());
 			
 			
 //			Elements contents = document.select("item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]");
