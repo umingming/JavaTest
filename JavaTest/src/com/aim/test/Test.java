@@ -20,8 +20,16 @@ public class Test {
 			
 			
 			document.select("Block[Name=CoilRollingDataSendData_M1] Item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]").attr("Point", "10000");
+			Elements elements = document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest]");
+			Element element = elements.first();
+			element = element.appendChild("MultiBlock");
+			System.out.println(element.toString());
+//			element = element.appendElement("Multiblock");
 			
-			System.out.println(document.toString());
+			
+//					.append("MultiBlock");
+			
+//			System.out.println(document.toString());
 			
 			
 		} catch (Exception e) {
