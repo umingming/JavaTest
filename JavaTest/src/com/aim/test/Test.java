@@ -26,15 +26,28 @@ public class Test {
 			
 			document.select(String.format("Block[Name=%s] Item[Name=%s]", blockName, itemName)).attr(attribute, value);
 			
-			System.out.println(document.toString());
+//			System.out.println(document.toString());
 			setValue();
 			
 			
-//			document.select("Block[Name=CoilRollingDataSendData_M1] Item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]").attr("Point", "10000");
-//			Elements elements = document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest]");
+			document.select("Block[Name=CoilRollingDataSendData_M1] Item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]").attr("Point", "10000");
+			Element element = document.createElement("hi");
+//			Element element = document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest] MultiBlock[Name=MB_EVENT_REPLY_TURNTABLECOILIDREQUEST]")
+//										.createElement("hi");
+			System.out.println(element.toString());
+//			Element element = doc;
+//			document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest]").append(element);
+//			System.out.println(document.toString());
+//			Element element = document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest] MultiBlock[Name=MB_EVENT_REPLY_TURNTABLECOILIDREQUEST]").get(0).appendElement("MultiBlock");
+			Element elements = document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest]").first();
 //			Elements elements2 = elements.select("MultiBlock[Name=MB_EVENT_REPLY_TURNTABLECOILIDREQUEST]").get(0).children();
-//			element = element.append("MultiBlock");
-//			System.out.println(elements2.toString());
+//			elements = elements.appendChild(element);
+//			System.out.println(elements.toString());
+//			document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest]")
+//					.append(element.toString());
+//			System.out.println(document);
+			
+//			System.out.println(element.toString());
 //			element = element.appendElement("Multiblock");
 			
 			

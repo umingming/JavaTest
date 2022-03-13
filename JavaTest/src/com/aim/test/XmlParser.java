@@ -25,9 +25,11 @@ public class XmlParser {
 	}
 	
 	public void modifyAttr(String query, String attr, String value) {
-		
-		
+		document.select(query)
+				.attr(attr, value);
 	}
+	
+	public void addChild
 	
 	
 	
