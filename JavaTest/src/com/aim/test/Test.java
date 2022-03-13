@@ -31,9 +31,10 @@ public class Test {
 			
 			
 			document.select("Block[Name=CoilRollingDataSendData_M1] Item[Name=M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex]").attr("Point", "10000");
-			Element element = document.createElement("hi");
-//			Element element = document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest] MultiBlock[Name=MB_EVENT_REPLY_TURNTABLECOILIDREQUEST]")
+//			Element element = document.createElement("hi");
+			Element element = document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest]").first();
 //										.createElement("hi");
+			element.appendElement("hi").attr("my","youmi");
 			System.out.println(element.toString());
 //			Element element = doc;
 //			document.select("Trx[Name=S7_MILL.EQ.Event_TurnTableCoilIDRequest]").append(element);
