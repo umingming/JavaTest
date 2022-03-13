@@ -31,27 +31,36 @@ public class JdomTest {
 //					.setAttribute("Action", "W");
 		
 		Element root = doc.getRootElement();
+		System.out.println(doc.getRootElement().getChildren().get(2));
 		List<Element> blockList = root.getChildren("Block");
-		Element block2;
+		System.out.println(blockList.size());
+		List<Element> itemList = root.getChildren("Item");
+		Element item2 = null;
 		for(Element e : blockList) {
 			if(e.getAttribute("Name").equals("CoilRollingDataSendData_M1")) {
+				itemList = e.getChildren("Item");
+				System.out.println(itemList.size());
 				break;
-				
+			}
+		}
+
+		for(Element e : itemList) {
+			if(e.getAttribute("Name").equals("M1_MILL.EQ.CoilRollingDataSendData_M1_RefCurveIndex")) {
+				item2 = e.setAttribute("Point", "10000");
 			}
 		}
 		
 		
-		
-//		doc = new Document();
-		doc.setRootElement(multiBlock);
+		doc = new Document();
+//		doc.setRootElement(root);
 		XMLOutputter xout = new XMLOutputter();
-		Format format = xout.getFormat();
-		format.setLineSeparator("\r\n");
-		format.setIndent("\t");
-		format.setTextMode(Format.TextMode.TRIM);
-		xout.setFormat(format);
+//		Format format = xout.getFormat();
+//		format.setLineSeparator("\r\n");
+//		format.setIndent("\t");
+//		format.setTextMode(Format.TextMode.TRIM);
+//		xout.setFormat(format);
 //		xout.output(doc, new FileOutputStream(xmlNew));
 //		xout.output(doc, System.out);
-		xout.output(multiBlock, System.out);
+//		xout.output(root, System.out);
 	}
 }
