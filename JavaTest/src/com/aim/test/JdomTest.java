@@ -36,6 +36,7 @@ public class JdomTest {
 		for(Element e : blockList) {
 			if(e.getAttribute("Name").equals("CoilRollingDataSendData_M1")) {
 				break;
+				
 			}
 		}
 		
