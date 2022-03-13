@@ -1,5 +1,7 @@
 package com.aim.test;
 
+import org.jsoup.nodes.Element;
+
 public class Test {
 	
 	public static void main(String[] args) {
@@ -7,7 +9,7 @@ public class Test {
 			String xml = "C:\\aim\\220311\\OPC_TagMap_Mill_0.75.xml";
 			XmlParser parser = new XmlParser(xml);
 			
-			parser.print();
+//			parser.print();
 			
 			String query = String.format("Block[Name=%s] Item[Name=%s]"
 										, "CoilRollingDataSendData_M1"
@@ -17,7 +19,11 @@ public class Test {
 			
 			parser.modifyAttr(query, attribute, value);
 			
-			
+			Element element = new Element("MultiBlock")
+									.attr("Name", "MB_EVENT_REPLY_TURNTABLECOILIDREQUEST_APPEND")
+									.attr("Action", "W");
+			element.append("<Block>");
+			System.out.println(element.toString());
 			
 			
 			

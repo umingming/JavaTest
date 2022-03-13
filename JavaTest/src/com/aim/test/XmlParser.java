@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.parser.ParseSettings;
 import org.jsoup.parser.Parser;
 
 /*

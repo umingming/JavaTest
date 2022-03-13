@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
-public class Test {
+public class Test4 {
 	private static String pathOPC_TagMap_Mill;
 	private static Document document;
 	
