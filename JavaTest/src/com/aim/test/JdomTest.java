@@ -1,12 +1,9 @@
 package com.aim.test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
 import org.jdom2.Document;
+import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
-import org.jdom2.output.DOMOutputter;
+import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 public class JdomTest {
@@ -17,8 +14,30 @@ public class JdomTest {
 		SAXBuilder builder = new SAXBuilder();
 		Document doc = builder.build(xml);
 		
+		Element multiBlock = new Element("MultiBlock")
+									.setAttribute("Name", "MB_EVENT_REPLY_TURNTABLECOILIDREQUEST_APPEND")
+									.setAttribute("Action", "W");
+		Element block = new Element("Block")
+									.setAttribute("Name", "S7_MILL.EQ.Event_Reply_TurnTableCoilIDRequest_APPEND");
+		Element item = new Element("Item")
+									.setAttribute("Name", "S7_MILL.EQ.Event_Reply_TurnTableCoilIDRequest_APPEND")
+									.setAttribute("SyncValue", "true");
+		block.addContent(item);
+		multiBlock.addContent(block);
+		
+//		multiBlock.setAttribute("Name", "MB_EVENT_REPLY_TURNTABLECOILIDREQUEST_APPEND")
+//					.setAttribute("Action", "W");
+		
+		doc = new Document();
+		doc.setRootElement(multiBlock);
 		XMLOutputter xout = new XMLOutputter();
-		xout.output(doc, new FileOutputStream(xmlNew));
-		xout.output(doc, System.out);
+		Format format = xout.getFormat();
+		format.setLineSeparator("\r\n");
+		format.setIndent("\t");
+		format.setTextMode(Format.TextMode.TRIM);
+		xout.setFormat(format);
+//		xout.output(doc, new FileOutputStream(xmlNew));
+//		xout.output(doc, System.out);
+		xout.output(multiBlock, System.out);
 	}
 }
