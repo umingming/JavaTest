@@ -1,5 +1,7 @@
 package com.aim.test;
 
+import java.util.List;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
@@ -28,7 +30,18 @@ public class JdomTest {
 //		multiBlock.setAttribute("Name", "MB_EVENT_REPLY_TURNTABLECOILIDREQUEST_APPEND")
 //					.setAttribute("Action", "W");
 		
-		doc = new Document();
+		Element root = doc.getRootElement();
+		List<Element> blockList = root.getChildren("Block");
+		Element block2;
+		for(Element e : blockList) {
+			if(e.getAttribute("Name").equals("CoilRollingDataSendData_M1")) {
+				break;
+			}
+		}
+		
+		
+		
+//		doc = new Document();
 		doc.setRootElement(multiBlock);
 		XMLOutputter xout = new XMLOutputter();
 		Format format = xout.getFormat();
