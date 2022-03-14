@@ -49,7 +49,15 @@ public class JdomTest {
 				item2 = e.setAttribute("Point", "10000");
 			}
 		}
-		
+				for(Element e : rootList) {
+			for(int i=0; i<e.getChildren().size(); i++) {
+				if(e.getChildren().get(i).getName().equals("Block")) {
+					if(e.getChildren().get(i).getAttributeValue("Name").equals("CoilRollingDataSendData_M1")){
+						e.getChildren().get(i).setAttribute("Name", "Hi");
+					}
+				}
+			}
+		}
 		
 		doc = new Document();
 //		doc.setRootElement(root);
