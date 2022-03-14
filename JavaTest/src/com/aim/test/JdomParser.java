@@ -1,4 +1,4 @@
-package com.parser.jdom;
+package com.aim.test;
 
 import java.io.FileOutputStream;
 
