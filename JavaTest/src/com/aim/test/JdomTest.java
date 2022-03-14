@@ -31,18 +31,18 @@ public class JdomTest {
 		Element trx = parser.navigate(receive, "Trx", "Name", "S7_MILL.EQ.Event_TurnTableCoilIDRequest");
 		
 		// Trx에 MultiBlock 태그 추가
-		Element multiBlock = new Element("MultiBlock")
-							.setAttribute("Name", "MB_EVENT_REPLY_TURNTABLECOILIDREQUEST_APPEND")
-							.setAttribute("Action", "W");
+		String MB_EVENT = "MB_EVENT_REPLY_TURNTABLECOILIDREQUEST_APPEND";
+		Element multiBlock = new Element("MultiBlock").setAttribute("Name", MB_EVENT)
+													  .setAttribute("Action", "W");
 		trx.addContent(multiBlock);
 		
 		block = new Element("Block")
-							.setAttribute("Name", "S7_MILL.EQ.Event_Reply_TurnTableCoilIDRequest_APPEND");
+					.setAttribute("Name", "S7_MILL.EQ.Event_Reply_TurnTableCoilIDRequest_APPEND");
 		multiBlock.addContent(block);
 		
 		item = new Element("Item")
-							.setAttribute("Name", "S7_MILL.EQ.Event_Reply_TurnTableCoilIDRequest_APPEND")
-							.setAttribute("SyncValue", "true");
+					.setAttribute("Name", "S7_MILL.EQ.Event_Reply_TurnTableCoilIDRequest_APPEND")
+					.setAttribute("SyncValue", "true");
 		block.addContent(item);
 
 		// 새로운 경로에 저장

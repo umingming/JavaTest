@@ -26,8 +26,8 @@ public class JdomParser {
 		doc를 xml 파싱 값으로 초기화
 	 */
 	public void parse() throws Exception {
-		SAXBuilder builder = new SAXBuilder();
-		this.doc = builder.build(xmlPath);
+		SAXBuilder builder = new SAXBuilder(); //builder 패턴....네...
+		this.doc = builder.build(xmlPath); 
 	}
 	
 	/*
@@ -56,7 +56,7 @@ public class JdomParser {
 		자식 태그 중 해당하는 요소를 반환
 	 */
 	public Element navigate(Element element, String tag, String attr, String value) {
-		for(int i=0; i<element.getChildren().size(); i++) {
+		for(int i=0; i<element.getChildren().size(); ++i) {
 			Element child = element.getChildren().get(i);
 			
 			if(child.getName().equals(tag)
@@ -68,7 +68,7 @@ public class JdomParser {
 	}
 	
 	public Element navigate(Element element, String tag) {
-		for(int i=0; i<element.getChildren().size(); i++) {
+		for(int i=0; i<element.getChildren().size(); ++i) {
 			Element child = element.getChildren().get(i);
 			
 			if(child.getName().equals(tag)) {
