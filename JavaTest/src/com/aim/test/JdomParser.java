@@ -1,9 +1,13 @@
-package com.aim.test;
+package com.parser.jdom2;
 
 import java.io.FileOutputStream;
+import java.util.Iterator;
 
+import org.jdom2.Attribute;
+import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.jdom2.filter.ElementFilter;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
@@ -26,8 +30,8 @@ public class JdomParser {
 		doc를 xml 파싱 값으로 초기화
 	 */
 	public void parse() throws Exception {
-		SAXBuilder builder = new SAXBuilder(); //builder 패턴....네...
-		this.doc = builder.build(xmlPath); 
+		SAXBuilder builder = new SAXBuilder();
+		this.doc = builder.build(xmlPath);
 	}
 	
 	/*
@@ -55,29 +59,32 @@ public class JdomParser {
 	/*
 		자식 태그 중 해당하는 요소를 반환
 	 */
-	public Element navigate(Element element, String tag, String attr, String value) {
-		for(int i=0; i<element.getChildren().size(); ++i) {
-			Element child = element.getChildren().get(i);
+	public Element navigate(String tag, String attr, String value) {
+		Iterator iter = doc.getDescendants(new ElementFilter("Item"));
+		
+		while(iter.hasNext()) {
+			Element descendant = (Element) iter.next();
 			
-			if(child.getName().equals(tag)
-					&& child.getAttributeValue(attr).equals(value)) {
-				return child;
+			if(descendant.getAttributeValue(attr).equals(value)) {
+				return descendant;
 			}
 		}
 		return null;
 	}
 	
-	public Element navigate(Element element, String tag) {
-		for(int i=0; i<element.getChildren().size(); ++i) {
-			Element child = element.getChildren().get(i);
+	public Element navigate(Element element, String tag, String attr, String value) {
+		Iterator iter = element.getDescendants(new ElementFilter("Item"));
+		
+		while(iter.hasNext()) {
+			Element descendant = (Element) iter.next();
 			
-			if(child.getName().equals(tag)) {
-				return child;
+			if(descendant.getAttributeValue(attr).equals(value)) {
+				return descendant;
 			}
 		}
 		return null;
 	}
-
+	
 	/*
 		새로운 경로에 저장
 	 */
