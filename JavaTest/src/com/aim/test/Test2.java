@@ -1,4 +1,4 @@
-package com.aim.test;
+package com.test.parser;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,9 +17,8 @@ public class Test2 {
 	 */
 	public static void main(String[] args) {
 		try {
-			String path = "C:\\aim\\220311\\Mill_FDCData.xml";
-			print(path);
-//			print(Path.OPC_TagMap_Mill);
+			print(Path.Mill_FDCData);
+			print(Path.OPC_TagMap_Mill);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
