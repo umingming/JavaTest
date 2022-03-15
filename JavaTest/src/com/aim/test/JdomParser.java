@@ -3,8 +3,6 @@ package com.parser.jdom2;
 import java.io.FileOutputStream;
 import java.util.Iterator;
 
-import org.jdom2.Attribute;
-import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.filter.ElementFilter;
@@ -57,10 +55,10 @@ public class JdomParser {
 	}
 	
 	/*
-		자식 태그 중 해당하는 요소를 반환
+		루트 내에서 태그 탐색해 해당하는 요소를 반환
 	 */
 	public Element navigate(String tag, String attr, String value) {
-		Iterator iter = doc.getDescendants(new ElementFilter("Item"));
+		Iterator iter = doc.getDescendants(new ElementFilter(tag));
 		
 		while(iter.hasNext()) {
 			Element descendant = (Element) iter.next();
@@ -72,8 +70,11 @@ public class JdomParser {
 		return null;
 	}
 	
+	/*
+		요소 내에서 태그 탐색해 해당하는 요소를 반환함.
+	 */
 	public Element navigate(Element element, String tag, String attr, String value) {
-		Iterator iter = element.getDescendants(new ElementFilter("Item"));
+		Iterator iter = element.getDescendants(new ElementFilter(tag));
 		
 		while(iter.hasNext()) {
 			Element descendant = (Element) iter.next();
