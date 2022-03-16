@@ -1,8 +1,11 @@
-package com.parser.jdom2;
+package com.parser.jdom;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.filter.ElementFilter;
@@ -10,11 +13,11 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import com.parser.XmlParserApplication;
+
 /*
 	XML Parser
 	- XML 파일 객체화, 내용 출력, 수정
-	1. 밸리데이션
-	2. config; 파일의 위치, 저장명, 태그, 속성, value, 추가할 경우의 element 제거 -> 변수 빼기
 	3. 추가, 삭제, 변경, 주석 처리 등의 메소드
 	4. log4j 같은 로깅 시스템 console, file 출력 가능한 것
 	5. 파싱 시간이 느리다
@@ -25,12 +28,18 @@ import org.jdom2.output.XMLOutputter;
 	-> NULL -> log 
  */
 public class JdomParser {
-	private String xmlPath;
+	private String path;
 	private Document doc;
-	private XMLOutputter xout; 
+	private XMLOutputter xout;
+	private Logger logger;
 	
-	public JdomParser(String xmlPath) throws Exception {
-		this.xmlPath = xmlPath;
+	public JdomParser() throws Exception {
+		parse();
+	}
+	
+	public JdomParser(String path) throws Exception {
+		this.path = path;
+		this.logger = LogManager.getLogger(XmlParserApplication.class);
 		parse();
 	}
 	
@@ -41,13 +50,13 @@ public class JdomParser {
 	 */
 	public void parse() throws Exception {
 		SAXBuilder builder = new SAXBuilder();
- 		this.doc = builder.build(xmlPath); 
+ 		this.doc = builder.build(path); 
 	}
 	
 	/*
 		콘솔에 내용 출력
 	 */
-	public void print() throws Exception {
+	public void print() {
 		xout = new XMLOutputter();
 		Format format = xout.getFormat();
 		
@@ -56,8 +65,11 @@ public class JdomParser {
 		format.setTextMode(Format.TextMode.TRIM);
 		xout.setFormat(format);
 		
-		if(doc != null) {
+		try {
 			xout.output(doc, System.out);
+			logger.info("success");
+		} catch (IOException e) {
+			logger.error("Error at print()", e);
 		}
 	}
 
@@ -74,13 +86,13 @@ public class JdomParser {
 	/*
 		루트 내에서 태그 탐색해 해당하는 요소를 반환
 	 */
-	public Element navigate(String tag, String attr, String value) {
-		Iterator iter = doc.getDescendants(new ElementFilter(tag));
+	public Element navigate(Tag tag) {
+		Iterator iter = doc.getDescendants(new ElementFilter(tag.getTag()));
 		
 		while(iter.hasNext()) {
 			Element descendant = (Element) iter.next();
 			
-			if(descendant.getAttributeValue(attr).equals(value)) {
+			if(descendant.getAttributeValue("Name").equals(tag.getName())) {
 				return descendant;
 			}
 		}
@@ -90,32 +102,49 @@ public class JdomParser {
 	/*
 		요소 내에서 태그 탐색해 해당하는 요소를 반환함.
 	 */
-	public Element navigate(Element element, String tag, String attr, String value) {
+	public Element navigate(Element element, Tag tag) {
 		if(element != null) {
-			Iterator<Element> iter = element.getDescendants(new ElementFilter(tag));
+			Iterator<Element> iter = element.getDescendants(new ElementFilter(tag.getTag()));
 			
 			while(iter.hasNext()) {
 				Element descendant = (Element) iter.next();
 				
-				if(descendant.getAttributeValue(attr).equals(value)) {
+				if(descendant.getAttributeValue("Name").equals(tag.getName())) {
 					return descendant;
 				}
 			}
 		}
 		return null;
 	}
-	
-	public Element copy(Element element, String tag, String attr, String value) {
-		Element copy = navigate(element, tag, attr, value).clone();
+
+	/*
+		태그 탐색 후 해당 요소를 카피함.
+	 */
+	public Element copy(Element element, Tag tag) {
+		Element copy = navigate(element, tag).clone();
 
 		if(copy != null) {
 			copy.removeContent();
 			
-			String newVal = copy.getAttributeValue(attr) + "_APPEND";
-			copy.setAttribute(attr, newVal);
+			String newVal = copy.getAttributeValue("Name") + "_APPEND";
+			copy.setAttribute("Name", newVal);
+			
 			return copy;
 		}
 		return null;
+	}
+	
+	/*
+		태그 탐색 후 해당 태그를 가진 자식을 생성함.
+	 */
+	public void createChild(Tag tagParent, Tag tagChild) {
+		Element parent = navigate(tagParent);
+		
+		if(parent != null) {
+			Element child = new Element(tagChild.getTag())
+								.setAttribute("Name", tagChild.getName());
+			parent.addContent(child);
+		}
 	}
 	
 	/*
