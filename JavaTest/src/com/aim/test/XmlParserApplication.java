@@ -2,6 +2,8 @@ package com.parser;
 
 import java.io.File;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jdom2.Element;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -25,6 +27,7 @@ public class XmlParserApplication {
 	private static Tag itemInTrx;
 	
 	private static JdomParser parser;
+	private static Logger logger;
 	
 	static {
 		block = new Tag();
@@ -33,22 +36,20 @@ public class XmlParserApplication {
 		multiBlock = new Tag();
 		blockInTrx = new Tag();
 		itemInTrx = new Tag();
+		logger = LogManager.getLogger(XmlParserApplication.class);
 	}
 	
 	public static void main(String[] args) {
 		try {
 			SpringApplication.run(XmlParserApplication.class, args);
-			
-			if(new File(path).exists()) {
-				parser = new JdomParser(path);
-				
-				modifyAttr();
-				
-				addChild();
-			
-				parser.print();
-			}
+			parser = new JdomParser(path);
+			String temp = parser.navigate(block).toString();
+			System.out.println(temp);
+//			modifyAttr();
+//			addChild();
+//			parser.print();
 		} catch (Exception e) {
+			logger.error(e);
 		}
 	}
 
@@ -57,8 +58,8 @@ public class XmlParserApplication {
 		
 		if(eleTrx != null) {
 			Element eleMultiBlock = parser.copy(eleTrx, multiBlock);
-			Element eleBlock = parser.copy(eleTrx, block);
-			Element eleItem = parser.copy(eleTrx, item);
+			Element eleBlock = parser.copy(eleTrx, blockInTrx);
+			Element eleItem = parser.copy(eleTrx, itemInTrx);
 			
 			// Trx에 MultiBlock 추가
 			eleTrx.addContent(eleMultiBlock);
@@ -80,28 +81,61 @@ public class XmlParserApplication {
 	public void setPath(String input) {
 		path = input;
 	}
+	
+	@Value("${new-xml.path}")
+	public void setNewPath(String input) {
+		newPath = input;
+	}
 
 	@Value("${tag.attr.point}")
 	public void setAttr(String input) {
 		attr = input;
 	}
 	
-	@Value("${tag.attr.point.value}")
+	@Value("${block.item.point.value}")
 	public void setAttrValue(String input) {
 		attrValue = input;
 	}
 
-	@Value("${tag.block} ${tag.block.name}")
+	@Value("${tag.block} ${block.name}")
 	public void setBlock(String input) {
 		String[] info =  input.split(" ");
 		block.setTag(info[0]);
 		block.setName(info[1]);
 	}
 	
-	@Value("${tag.item} ${tag.item.name}")
+	@Value("${tag.item} ${block.item.name}")
 	public void setItem(String input) {
 		String[] info =  input.split(" ");
 		item.setTag(info[0]);
 		item.setName(info[1]);
+	}
+
+	@Value("${tag.trx} ${trx.name}")
+	public void setTrx(String input) {
+		String[] info =  input.split(" ");
+		trx.setTag(info[0]);
+		trx.setName(info[1]);
+	}
+	
+	@Value("${tag.multi-block} ${trx.multi-block.name}")
+	public void setMultiBlock(String input) {
+		String[] info =  input.split(" ");
+		multiBlock.setTag(info[0]);
+		multiBlock.setName(info[1]);
+	}
+
+	@Value("${tag.block} ${trx.multi-block.block.name}")
+	public void setBlockInTrx(String input) {
+		String[] info =  input.split(" ");
+		blockInTrx.setTag(info[0]);
+		blockInTrx.setName(info[1]);
+	}
+	
+	@Value("${tag.item} ${trx.multi-block.block.item.name}")
+	public void setItemInTrx(String input) {
+		String[] info =  input.split(" ");
+		itemInTrx.setTag(info[0]);
+		itemInTrx.setName(info[1]);
 	}
 }
