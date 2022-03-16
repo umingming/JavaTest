@@ -1,11 +1,13 @@
 package com.parser.jdom;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Iterator;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jdom2.Comment;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.filter.ElementFilter;
@@ -28,7 +30,7 @@ import com.parser.XmlParserApplication;
 	-> NULL -> log 
  */
 public class JdomParser {
-	private String path;
+	private File file;
 	private Document doc;
 	private XMLOutputter xout;
 	private Logger logger;
@@ -38,8 +40,9 @@ public class JdomParser {
 	}
 	
 	public JdomParser(String path) throws Exception {
-		this.path = path;
+		this.file = new File(path);
 		this.logger = LogManager.getLogger(XmlParserApplication.class);
+		this.xout = new XMLOutputter();
 		parse();
 	}
 	
@@ -48,16 +51,21 @@ public class JdomParser {
 		파싱하는 시간이 길다,,??
 		어떻게 하면 짧아질까?
 	 */
-	public void parse() throws Exception {
-		SAXBuilder builder = new SAXBuilder();
- 		this.doc = builder.build(path); 
+	public void parse() {
+		try {
+			SAXBuilder builder = new SAXBuilder();
+			this.doc = builder.build(file);
+			
+			logger.info("Success to parse : " + file.getName());
+		} catch (Exception e) {
+			logger.error("Failure to parse : " + file.getName(), e);
+		}
 	}
 	
 	/*
 		콘솔에 내용 출력
 	 */
 	public void print() {
-		xout = new XMLOutputter();
 		Format format = xout.getFormat();
 		
 		format.setLineSeparator("\r\n");
@@ -67,22 +75,12 @@ public class JdomParser {
 		
 		try {
 			xout.output(doc, System.out);
-			logger.info("success");
+			logger.info("Success to print : " + file.getName());
 		} catch (IOException e) {
-			logger.error("Error at print()", e);
+			logger.error("Failure to print : " + file.getName(), e);
 		}
 	}
 
-	/*
-		Root를 반환
-	 */
-	public Element getRoot() {
-		if(doc != null) {
-			return doc.getRootElement();
-		}
-		return null;
-	}
-	
 	/*
 		루트 내에서 태그 탐색해 해당하는 요소를 반환
 	 */
@@ -93,9 +91,11 @@ public class JdomParser {
 			Element descendant = (Element) iter.next();
 			
 			if(descendant.getAttributeValue("Name").equals(tag.getName())) {
+				logger.info("Success to navigate : " + tag.getName());
 				return descendant;
-			}
+			} 
 		}
+		logger.error("Failure to navigate : " + tag.getName());
 		return null;
 	}
 	
@@ -110,10 +110,12 @@ public class JdomParser {
 				Element descendant = (Element) iter.next();
 				
 				if(descendant.getAttributeValue("Name").equals(tag.getName())) {
+					logger.info("Success to navigate : " + tag.getName());
 					return descendant;
 				}
 			}
 		}
+		logger.error("Failure to navigate : " + tag.getName());
 		return null;
 	}
 
@@ -129,8 +131,10 @@ public class JdomParser {
 			String newVal = copy.getAttributeValue("Name") + "_APPEND";
 			copy.setAttribute("Name", newVal);
 			
+			logger.info("Success to copy : " + tag.getName());
 			return copy;
 		}
+		logger.error("Failure to copy : " + tag.getName());
 		return null;
 	}
 	
@@ -140,10 +144,92 @@ public class JdomParser {
 	public void createChild(Tag tagParent, Tag tagChild) {
 		Element parent = navigate(tagParent);
 		
-		if(parent != null) {
+		try {
 			Element child = new Element(tagChild.getTag())
-								.setAttribute("Name", tagChild.getName());
+					.setAttribute("Name", tagChild.getName());
 			parent.addContent(child);
+			logger.info("Success to create : " + tagChild.getName());
+			
+		} catch (Exception e) {
+			logger.error("Failure to create : " + tagChild.getName());
+		}
+	}
+	
+	/*
+		태그 탐색 후 해당 태그를 원하는 속성으로 수정함.
+	 */
+	public void modify(Tag tag, String attr, String value) {
+		Element element = navigate(tag);
+		
+		try {
+			element.setAttribute(attr, value);
+			logger.info("Success to modify : " + tag.getName());
+			
+		} catch (Exception e) {
+			logger.error("Filure to modify : " + tag.getName());
+		}
+	}
+
+	/*
+		부모 요소 내에서 태그 탐색해 원하는 속성으로 수정함.
+	 */
+	public void modify(Element parent, Tag tag, String attr, String value) {
+		Element element = navigate(parent, tag);
+		
+		try {
+			element.setAttribute(attr, value);
+			logger.info("Success to modify : " + tag.getName());
+			
+		} catch (Exception e) {
+			logger.error("Filure to modify : " + tag.getName());
+		}
+	}
+	
+	/*
+		부모 요소 내에서 태그 탐색해 주석 처리함.
+	 */
+	public void toggleComment(Element parent, Tag tag) {
+		Element child = navigate(parent, tag);
+		
+		try {
+			Comment comment = new Comment(xout.outputString(child));
+			parent.setContent(parent.indexOf(child), comment);
+			logger.info("Success to toggle : " + tag.getName());
+			
+		} catch (Exception e) {
+			logger.error("Filure to toggle : " + tag.getName());
+		}
+	}
+	
+	/*
+		태그를 탐색해 주석 처리함.
+	 */
+	public void toggleComment(Tag tag) {
+		Element child = navigate(tag);
+		Element parent = child.getParentElement();
+		
+		try {
+			Comment comment = new Comment(xout.outputString(child));
+			parent.setContent(parent.indexOf(child), comment);
+			logger.info("Success to toggle : " + tag.getName());
+			
+		} catch (Exception e) {
+			logger.error("Filure to toggle : " + tag.getName());
+		}
+	}
+	
+	/*
+		태그 탐색해 삭제함.
+	 */
+	public void delete(Tag tag) {
+		Element element = navigate(tag);
+		
+		try {
+			element.getParent().removeContent(element);
+			logger.info("Success to delete : " + tag.getName());
+			
+		} catch (Exception e) {
+			logger.error("Filure to delete : " + tag.getName());
 		}
 	}
 	
@@ -151,8 +237,12 @@ public class JdomParser {
 		새로운 경로에 저장
 	 */
 	public void update(String newPath) throws Exception {
-		if(doc != null) {
+		try {
 			xout.output(doc, new FileOutputStream(newPath));
+			logger.info("Success to update : " + file.getName());
+			
+		} catch (Exception e) {
+			logger.error("Failure to update : " + file.getName());
 		}
 	}
 }
