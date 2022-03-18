@@ -22,9 +22,9 @@ public class EchoServerMain {
     public static void main(String[] args) {
         try {
             ServerSocket server = new ServerSocket(9800);
-            System.out.println("클라이언트의 요청을 기다립니다.");
+            System.out.println("[서버 생성] 9800");
             Socket client = server.accept();
-            System.out.println("접속한 클라이언트 정보 : " + "[" + client.getInetAddress().getHostName()+"]");
+            System.out.println("[클라이언트 접속]" + client.getInetAddress().getHostName());
             
             //클라이언트에서 전송한 메세지를 받는 객체
             InputStream is = client.getInputStream();
@@ -42,9 +42,9 @@ public class EchoServerMain {
              */
             while(true) {
                 String msg = br.readLine();
-                System.out.println("받은 메세지 : " + msg);
+                System.out.println("[받은 메세지]" + msg);
                 if ( msg == null ) {
-                    System.out.println(client.getInetAddress() + "연결을 종료합니다.");
+                    System.out.println("[연결 종료]" + client.getInetAddress());
                     client.close();
                     server.close();
                     break;
