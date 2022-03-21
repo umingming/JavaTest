@@ -42,6 +42,7 @@ public class JdomParser {
 		doc를 xml 파싱 값으로 초기화
 		파싱하는 시간이 길다,,??
 		어떻게 하면 짧아질까?
+		-> 다른 라이브러리 사용
 	 */
 	public void parse() {
 		try {
