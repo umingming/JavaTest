@@ -66,7 +66,11 @@ public class JdomParser {
 		}
 		return null;
 	}
+
 	
+	/*
+		자식 태그 중 해당하는 요소를 반환
+	 */
 	public Element navigate(Element element, String tag) {
 		for(int i=0; i<element.getChildren().size(); ++i) {
 			Element child = element.getChildren().get(i);
