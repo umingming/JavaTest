@@ -24,7 +24,6 @@ public class EchoServerThread implements Runnable {
 			System.out.println(socket.getInetAddress() + "로 부터 연결 요청을 받음.");
 			is = socket.getInputStream();
 			ois = new ObjectInputStream(is);
-			String name = (String)ois.readObject();
 			
 			os = socket.getOutputStream();
 			oos = new ObjectOutputStream(os);
