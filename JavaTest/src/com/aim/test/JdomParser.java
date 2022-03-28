@@ -20,14 +20,6 @@ import com.parser.XmlParserApplication;
 /*
 	XML Parser
 	- XML 파일 객체화, 내용 출력, 수정
-	3. 추가, 삭제, 변경, 주석 처리 등의 메소드
-	4. log4j 같은 로깅 시스템 console, file 출력 가능한 것
-	5. 파싱 시간이 느리다
-	
-	=>내일 오후 =>네!
-	
-	잡을 수 있는 에러는 다 처리해라
-	-> NULL -> log 
  */
 public class JdomParser {
 	private File file;
@@ -50,6 +42,7 @@ public class JdomParser {
 		doc를 xml 파싱 값으로 초기화
 		파싱하는 시간이 길다,,??
 		어떻게 하면 짧아질까?
+		-> 다른 라이브러리 사용
 	 */
 	public void parse() {
 		try {
@@ -115,7 +108,25 @@ public class JdomParser {
 				}
 			}
 		}
+<<<<<<< HEAD
+		return null;
+	}
+
+	
+	/*
+		자식 태그 중 해당하는 요소를 반환
+	 */
+	public Element navigate(Element element, String tag) {
+		for(int i=0; i<element.getChildren().size(); ++i) {
+			Element child = element.getChildren().get(i);
+			
+			if(child.getName().equals(tag)) {
+				return child;
+			}
+		}
+=======
 		logger.error("Failure to navigate : " + tag.getName());
+>>>>>>> branch 'master' of https://github.com/umingming/JavaTest.git
 		return null;
 	}
 

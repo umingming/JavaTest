@@ -14,6 +14,7 @@ public class Test {
 			가변적인 건 config 파일에서 불러오도록
 			얘네가 수정이 되도록
 			타협을 어떻게 할 것인가
+			-> properties 파일 이용
 		 */
 		try {
 			String xmlPath = "C:\\Aim\\Spring\\JavaTest\\OPC_TagMap_Mill_0.75.xml";

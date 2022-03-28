@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Random;
 
-public class data3 {
+public class DataScorePer {
 
 	public static void main(String[] args) throws Exception{
 		
@@ -17,7 +17,7 @@ public class data3 {
 		String[] name2 = { "프로그래밍", "실습", "개론", "및 응용", "과목", "특강", "1", "2"};
 		
 		for(int i=0; i<50; i++) {
-			String member = String.format("insert into tblScorePercent (os_seq, sp_seq, exam_per, skill_per, attendance_per)");
+			String member = String.format("insert into tblScorePercent (sp_seq, os_seq, exam_per, skill_per, attendance_per)");
 			writer.write(member);
 			writer.newLine();
 			int a = rnd.nextInt(20) + 20;
@@ -25,8 +25,7 @@ public class data3 {
 			int c = 100 - a - b;
 			int num = rnd.nextInt(30);
 			String file = "https://www.sycenter.net/document/";
-			member = String.format("    values (%d, %d, %d, %d, %d);"
-							, i+1
+			member = String.format("    values (sp_seq.nextVal, %d, %d, %d, %d);"
 							, i+1
 							, b
 							, c
