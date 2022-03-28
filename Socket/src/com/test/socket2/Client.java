@@ -26,8 +26,8 @@ public class Client {
 	String msg;
 	String echo;
 	
-	public Client(String name) {
-		this.ip = "localhost";
+	public Client(String ip) {
+		this.ip = ip;
 		try {
 			System.out.println("클라이언트 접속");
 			
@@ -41,7 +41,6 @@ public class Client {
 			is = client.getInputStream();
 			ois = new ObjectInputStream(is);
 			
-			oos.writeObject(name);
 			System.out.println("입력>>");
 			
 			while((msg = reader.readLine()) != null) {
@@ -73,9 +72,7 @@ public class Client {
 	}
 	public static void main(String[] args) {
 		try {
-			System.out.println("닉네임을 입력하세요.");
-			String name = reader.readLine();
-			new Client(name);
+			new Client("localhost");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
