@@ -5,7 +5,7 @@ import java.net.Socket;
 
 public class Server {
 	ServerSocket server;
-	final int PORT = 7000;
+	final int PORT = 1234;
 	Socket socket;
 	
 	public Server() {
