@@ -71,10 +71,6 @@ public class Client {
 		}
 	}
 	public static void main(String[] args) {
-		try {
-			new Client("localhost");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		new Client("localhost");
 	}
 }
