@@ -28,8 +28,6 @@ public class Server {
 			> flush 메소드로 스트림 확인
 		7. 스트림과 소켓을 역순으로 닫아줌. 	
 	 */
-	Socket client;
-	
 	InputStream in;
 	BufferedReader reader;
 	
@@ -57,7 +55,7 @@ public class Server {
 				name = reader.readLine();
 				System.out.printf("%s님이 접속했습니다.%n", name);
 				
-				if(client != null) {
+//				if(client != null) {
 					Thread thread = new Thread() {
 						@Override
 						public void run() {
@@ -65,7 +63,7 @@ public class Server {
 						}
 					};
 					thread.start();
-				}
+//				}
 			}
 			
 		} catch (Exception e) {
