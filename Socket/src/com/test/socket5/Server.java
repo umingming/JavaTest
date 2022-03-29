@@ -3,7 +3,9 @@ package com.test.socket5;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -45,14 +47,25 @@ public class Server {
 			while(true) {
 				Socket client = server.accept();
 				System.out.println("[사용자 접속]");
+
+				in = client.getInputStream();
+				reader = new BufferedReader(new InputStreamReader(in));
 				
-				Thread thread = new Thread() {
-					@Override
-					public void run() {
-						echo(client);
-					}
-				};
-				thread.start();
+				out = client.getOutputStream();
+				writer = new PrintWriter(new OutputStreamWriter(out));
+				
+				name = reader.readLine();
+				System.out.printf("%s님이 접속했습니다.%n", name);
+				
+				if(client != null) {
+					Thread thread = new Thread() {
+						@Override
+						public void run() {
+							echo(client);
+						}
+					};
+					thread.start();
+				}
 			}
 			
 		} catch (Exception e) {
