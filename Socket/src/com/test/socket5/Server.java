@@ -1,9 +1,13 @@
 package com.test.socket5;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -33,36 +37,28 @@ public class Server {
 			Socket client = server.accept();
 			System.out.println("[사용자 접속]");
 			
-			InputStream is = client.getInputStream();
-			DataInputStream dis = new DataInputStream(is);
+			InputStream in = client.getInputStream();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			
-			OutputStream os = client.getOutputStream();
-			DataOutputStream dos = new DataOutputStream(os);
+			OutputStream out = client.getOutputStream();
+			PrintWriter writer = new PrintWriter(new OutputStreamWriter(out));
 			
-			String name = dis.readUTF();
+			String name = reader.readLine();
 			System.out.printf("%s님이 접속했습니다.%n", name);
+			String msg = null;
 			
-			
-			while(true) {
-				if(dis.available() != 0) {
-					String msg = dis.readUTF();
-					
-					if(msg.equals("quit")) {
-						break;
-					}
-					
-					String echo = String.format("[%s] %s"
-							, name, msg);
-					System.out.println(echo);
-					dos.writeUTF(echo);
-					dos.flush();
-				}
+			while((msg = reader.readLine()) != null) {
+				String echo = String.format("[%s] %s"
+						, name, msg);
+				System.out.println(echo);
+				writer.println(echo);
+				writer.flush();
 			}
-
-			os.close();
-			dos.close();
-			dis.close();
-			is.close();
+			
+			writer.close();
+			out.close();
+			reader.close();
+			in.close();
 			client.close();
 
 			System.out.println("[서버 종료]");

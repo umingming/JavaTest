@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Client {
@@ -33,34 +35,35 @@ public class Client {
 			Socket client = new Socket("localhost", 1234);
 			System.out.println("[서버 접속]");
 			
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
 			System.out.println("[사용자 이름 입력]");
 			System.out.print("☞");
-			String name = reader.readLine();
+			String name = input.readLine();
 
-			OutputStream os = client.getOutputStream();
-			DataOutputStream dos = new DataOutputStream(os);
+			OutputStream out = client.getOutputStream();
+			PrintWriter writer = new PrintWriter(new OutputStreamWriter(out));
 
-			InputStream is = client.getInputStream();
-			DataInputStream dis = new DataInputStream(is);
+			InputStream in = client.getInputStream();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			
-			dos.writeUTF(name);
+			writer.println(name);
 			String msg;
 			
-			while((msg = reader.readLine()) != null) {
-				dos.writeUTF(msg);
-				
-				if(dis.available() != 0) {
-					System.out.println(dis.readUTF());
+			while((msg = input.readLine()) != null) {
+				if(input.equals("quit")) {
+					break;
 				}
-				dos.flush();
+				writer.println(msg);
+				writer.flush();
+				System.out.println(reader.readLine());
 			}
-			
-			dis.close();
-			is.close();
-			os.close();
-			dos.close();
+
+			reader.close();
+			in.close();
+			writer.close();
+			out.close();
+			input.close();
 			client.close();
 			
 		} catch (IOException e) {

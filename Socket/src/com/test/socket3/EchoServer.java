@@ -1,4 +1,4 @@
-package com.test;
+package com.test.socket3;
 
 import java.io.BufferedReader; 
 import java.io.InputStream; 
