@@ -34,8 +34,16 @@ public class Server {
 			OutputStream os = client.getOutputStream();
 			DataOutputStream dos = new DataOutputStream(os);
 			String name = dis.readUTF();
-			
 			System.out.println(name);
+//			
+//			if(dis.available() == 0) {
+//				System.out.println("없어");
+//			}
+			
+			if(dis.readUTF() == null) {
+				System.out.println("없어");
+			}
+			
 //			dos.writeUTF(str);
 //			dos.writeUTF(str2);
 //			dos.writeInt(number);
