@@ -1,5 +1,10 @@
 package com.test.socket5;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -21,6 +26,16 @@ public class Server {
 			> flush 메소드로 스트림 확인
 		7. 스트림과 소켓을 역순으로 닫아줌. 	
 	 */
+	Socket client;
+	
+	InputStream in;
+	BufferedReader reader;
+	
+	OutputStream out;
+	PrintWriter writer;
+	
+	String name;
+	String msg;
 	
 	public Server() {
 		try {
@@ -31,7 +46,12 @@ public class Server {
 				Socket client = server.accept();
 				System.out.println("[사용자 접속]");
 				
-				Thread thread = new ServerThread(client);
+				Thread thread = new Thread() {
+					@Override
+					public void run() {
+						echo(client);
+					}
+				};
 				thread.start();
 			}
 			
@@ -40,6 +60,21 @@ public class Server {
 			System.exit(0);
 		}
 	}
+	
+	private void echo(Socket client) {
+		try {
+			while((msg = reader.readLine()) != null) {
+				String echo = String.format("[%s] %s"
+						, name, msg);
+				System.out.println(echo);
+				writer.println(echo);
+				writer.flush();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 		new Server();
 //		try {
