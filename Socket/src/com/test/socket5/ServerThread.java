@@ -59,7 +59,7 @@ public class ServerThread extends Thread {
 				client.close();
 			} catch(IOException e) {
 				e.printStackTrace();
-			}
+			} catch(NullPointerException)
 		}
 	}
 }
