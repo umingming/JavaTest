@@ -14,8 +14,9 @@ public class Client {
 		DataInputStream dis = new DataInputStream(is);
 		
 		String str = dis.readUTF();
-		int number = dis.readInt();
-		System.out.println(number + ", " + str);
+		String str2 = dis.readUTF();
+//		int number = dis.readInt();
+		System.out.println(str + ", " + str2);
 		
 		dis.close();
 		is.close();

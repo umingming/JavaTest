@@ -13,10 +13,11 @@ public class Server {
 		int port = 1234;
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("숫자를 입력하세여");
-		int number = Integer.parseInt(reader.readLine());
 		System.out.println("문자를 입력하세여");
 		String str = reader.readLine();
+//		int number = Integer.parseInt(reader.readLine());
+		System.out.println("문자를 입력하세여");
+		String str2 = reader.readLine();
 		ServerSocket server = new ServerSocket(port);
 		
 		System.out.println("서버 생성");
@@ -29,7 +30,8 @@ public class Server {
 			DataOutputStream dos = new DataOutputStream(os);
 			
 			dos.writeUTF(str);
-			dos.writeInt(number);
+			dos.writeUTF(str2);
+//			dos.writeInt(number);
 //			dos.flush();
 			dos.close();
 			client.close();
