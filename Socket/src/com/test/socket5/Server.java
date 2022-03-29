@@ -1,13 +1,5 @@
 package com.test.socket5;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -29,43 +21,63 @@ public class Server {
 			> flush 메소드로 스트림 확인
 		7. 스트림과 소켓을 역순으로 닫아줌. 	
 	 */
-	public static void main(String[] args) {
+	
+	public Server() {
 		try {
 			ServerSocket server = new ServerSocket(1234);
 			System.out.printf("[서버 생성] PORT=1234%n", server.getLocalPort());
 			
-			Socket client = server.accept();
-			System.out.println("[사용자 접속]");
-			
-			InputStream in = client.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-			
-			OutputStream out = client.getOutputStream();
-			PrintWriter writer = new PrintWriter(new OutputStreamWriter(out));
-			
-			String name = reader.readLine();
-			System.out.printf("%s님이 접속했습니다.%n", name);
-			String msg = null;
-			
-			while((msg = reader.readLine()) != null) {
-				String echo = String.format("[%s] %s"
-						, name, msg);
-				System.out.println(echo);
-				writer.println(echo);
-				writer.flush();
+			while(true) {
+				Socket client = server.accept();
+				System.out.println("[사용자 접속]");
+				
+				Thread thread = new ServerThread(client);
+				thread.start();
 			}
-			
-			writer.close();
-			out.close();
-			reader.close();
-			in.close();
-			client.close();
-
-			System.out.println("[서버 종료]");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.exit(0);
 		}
+	}
+	public static void main(String[] args) {
+		new Server();
+//		try {
+//			ServerSocket server = new ServerSocket(1234);
+//			System.out.printf("[서버 생성] PORT=1234%n", server.getLocalPort());
+//			
+//			Socket client = server.accept();
+//			System.out.println("[사용자 접속]");
+//			
+//			InputStream in = client.getInputStream();
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+//			
+//			OutputStream out = client.getOutputStream();
+//			PrintWriter writer = new PrintWriter(new OutputStreamWriter(out));
+//			
+//			String name = reader.readLine();
+//			System.out.printf("%s님이 접속했습니다.%n", name);
+//			String msg = null;
+//			
+//			while((msg = reader.readLine()) != null) {
+//				String echo = String.format("[%s] %s"
+//						, name, msg);
+//				System.out.println(echo);
+//				writer.println(echo);
+//				writer.flush();
+//			}
+//			
+//			writer.close();
+//			out.close();
+//			reader.close();
+//			in.close();
+//			client.close();
+//
+//			System.out.println("[서버 종료]");
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 	}
 
 }

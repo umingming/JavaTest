@@ -1,32 +1,38 @@
 package com.test.socket5;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class ServerThread extends Thread {
-	Socket socket;
+	Socket client;
 	
-	InputStream is;
-	ObjectInputStream ois;
+	InputStream in;
+	BufferedReader reader;
 	
-	OutputStream os;
-	ObjectOutputStream oos;
+	OutputStream out;
+	PrintWriter writer;
 	
+	String name;
 	String msg;
 	
-	public ServerThread(Socket socket) {
-		this.socket = socket;
+	public ServerThread(Socket client) {
+		this.client = client;
 		try {
-			System.out.println(socket.getInetAddress() + "로 부터 연결 요청을 받음.");
-			is = socket.getInputStream();
-			ois = new ObjectInputStream(is);
+			in = client.getInputStream();
+			reader = new BufferedReader(new InputStreamReader(in));
 			
-			os = socket.getOutputStream();
-			oos = new ObjectOutputStream(os);
+			out = client.getOutputStream();
+			writer = new PrintWriter(new OutputStreamWriter(out));
+			
+			name = reader.readLine();
+			System.out.printf("%s님이 접속했습니다.%n", name);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -35,21 +41,22 @@ public class ServerThread extends Thread {
 	@Override
 	public void run() {
 		try {
-			while(true) {
-				msg = (String)ois.readObject();
-				System.out.println(socket.getInetAddress() + "의 메시지 : " + msg);
-				oos.writeObject(msg);
-				oos.flush();
+			while((msg = reader.readLine()) != null) {
+				String echo = String.format("[%s] %s"
+											, name, msg);
+				System.out.println(echo);
+				writer.println(echo);
+				writer.flush();
 			}
 		} catch (Exception e) {
 			System.out.println("클라이언트가 강제 종료");
 		} finally {
 			try {
-				is.close();
-				os.close();
-				ois.close();
-				oos.close();
-				socket.close();
+				writer.close();
+				out.close();
+				reader.close();
+				in.close();
+				client.close();
 			} catch(IOException e) {
 				e.printStackTrace();
 			}
