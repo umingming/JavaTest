@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.PortUnreachableException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -64,8 +66,8 @@ public class EchoClient {
 
 	private void accessServer() {
 		try {
-			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n ☞ ");
 			scanner = new Scanner(System.in);
+			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n ☞ ");
 			port = scanner.nextInt();
 			
 			if(port > 0 && port < 65536) {
@@ -80,11 +82,13 @@ public class EchoClient {
 			
 		} catch (InputMismatchException e) {
 			System.out.println("[서버 접속 실패] 65536 보다 작은 양수를 입력하세요.");
+		} catch (SocketException e) {
+			System.out.printf("[서버 접속 실패] %d는 불가능한 Port입니다.", port);
 		} catch (UnknownHostException e) {
-			System.out.printf("[서버 접속 실패] %d는 불가능한 Port 번호입니다.");
-		} catch (Exception e) {
-			System.out.println("[서버 접속 실패]");   //불가능한 접속에서 안내하기
-		}
+			System.out.printf("[서버 접속 실패] %d는 불가능한 IP입니다.", port);
+		} catch (IOException e) {
+			System.out.printf("[서버 접속 실패]");
+		} 
 	}
 	
 	private void close() {
@@ -122,7 +126,7 @@ public class EchoClient {
 			receiver = new Scanner(new InputStreamReader(in));
 			
 			sender.println(name);
-			System.out.printf("[통신 시작]%s님 환영합니다.%n ☞ ", name);
+			System.out.printf("[통신 시작] %s님 환영합니다.%n ☞ ", name);
 			
 		} catch (IOException e) {
 			System.out.println("[통신 실패]");
