@@ -46,7 +46,6 @@ public class ServerThread implements Runnable {
 	public ServerThread(Socket client) {
 		this.client = client;
 		setClient();
-		System.out.println(4);
 	}
 	
 	private void setClient() {
@@ -67,18 +66,11 @@ public class ServerThread implements Runnable {
 	
 	@Override
 	public void run() {
-		System.out.println(6);
 		echo();
-		System.out.println(11);
 		close();
 	}
 
 	private void echo() {
-		System.out.println(7);
-		if(reader.hasNext()) {
-			name = "익명";
-		}
-		System.out.println(8);
 		try {
 			while(reader.hasNext()) {
 				msg = reader.nextLine();

@@ -60,11 +60,8 @@ public class EchoServer {
 				System.out.println("[사용자 접속 대기]");
 				
 				ServerThread serverThread = new ServerThread(client);
-				System.out.println(1);
 				Thread thread = new Thread(serverThread);
-				System.out.println(2);
 				thread.start();
-				System.out.println(3);
 			}
 		} catch (Exception e) {
 			System.out.println("[사용자 접속 실패]");
