@@ -1,17 +1,17 @@
-package com.test.socket7;
+package com.test.socket8;
 
-import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.InputMismatchException;
+import java.util.Properties;
 import java.util.Scanner;
 
-import com.test.socket2.EchoServerThread;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 public class EchoServer {
 	/*
@@ -45,6 +45,8 @@ public class EchoServer {
 	private Scanner scan;
 	private int port;
 	
+	private static Logger logger;
+	
 	public EchoServer() {
 		setServer();
 		
@@ -57,40 +59,53 @@ public class EchoServer {
 		try {
 			while(true) {
 				client = server.accept();
-				System.out.println("[사용자 접속 대기]");
+				logger.info("사용자 접속 대기");
 				
 				ServerThread serverThread = new ServerThread(client);
 				Thread thread = new Thread(serverThread);
 				thread.start();
 			}
 		} catch (Exception e) {
-			System.out.println("[사용자 접속 실패]");
-			System.exit(0);
+			logger.error("사용자 접속 실패");
 		} 
 	}
 
 	private void setServer() {
 		try {
-			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n☞ ");
+			logger.info("시스템 시작");
+			System.out.print("Port 번호를 입력하세요. \n ☞ ");
 			
 			scan = new Scanner(System.in);
 			port = scan.nextInt();
 			
 			if(port > 0 && port < 65536) {
 				server = new ServerSocket(port);
-				System.out.printf("[서버 생성 성공] Port 번호는 %d입니다.%n"
-									, server.getLocalPort());
+				logger.info("서버 생성 성공");
 			} else {
 				new Exception();
 			}
 			
-		} catch (Exception e) {
-			System.out.println("[서버 생성 실패] 65536 보다 작은 양수를 입력하세요.");
-			System.exit(0);
+		} catch (InputMismatchException e) {
+			logger.error("서버 접속 실패; 65536 보다 작은 양수를 입력하세요.");
+		} catch (UnknownHostException e) {
+			logger.error("서버 접속 실패; 불가능한 Port 번호입니다.");
+		} catch (IOException e) {
+			logger.error("서버 접속 실패; 불가능한 Port 번호입니다.");
 		}
 	}
 	
 	public static void main(String[] args) {
+		try {
+			logger = Logger.getLogger(EchoServer.class);
+			BasicConfigurator.configure();
+			FileInputStream log4jRead =new FileInputStream ("log4j.properties");
+			Properties log4jProperty=new Properties (); 
+			log4jProperty.load (log4jRead);
+			PropertyConfigurator.configure(log4jProperty);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		new EchoServer();
 	}
 }

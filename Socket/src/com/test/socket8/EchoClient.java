@@ -1,19 +1,21 @@
-package com.test.socket7;
+package com.test.socket8;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.InputMismatchException;
+import java.util.Properties;
 import java.util.Scanner;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 public class EchoClient {
 	/*
@@ -48,8 +50,6 @@ public class EchoClient {
 	
 	private String name;
 	private String msg;
-	private String echo;
-	private String ip;
 	private int port;
 	
 	private OutputStream out;
@@ -57,6 +57,8 @@ public class EchoClient {
 	private PrintWriter sender;
 	private Scanner receiver;
 	private Scanner scanner;
+	
+	private static Logger logger;
 	
 	public EchoClient() {
 		accessServer();
@@ -75,10 +77,10 @@ public class EchoClient {
 			receiver.close();
 			in.close();
 			client.close();
-			System.out.println("[접속 종료]");
+			logger.info("접속 종료");
 			
 		} catch (IOException e) {
-			System.out.println("[접속 종료 실패]");
+			logger.info("접속 종료 실패");
 		}
 	}
 
@@ -87,10 +89,10 @@ public class EchoClient {
 			if(msg.equals("종료")) {
 				break;
 			}
+			
 			sender.println(msg);
 			sender.flush();
-			System.out.println(receiver.nextLine());
-			System.out.print(" ☞ ");
+			System.out.printf("%s%n ☞ ", receiver.nextLine());
 		}
 	}
 
@@ -103,39 +105,53 @@ public class EchoClient {
 			receiver = new Scanner(new InputStreamReader(in));
 			
 			sender.println(name);
+			logger.info("서버 접속 성공");
 			System.out.printf("%s님 환영합니다.%n ☞ ", name);
 			
 		} catch (IOException e) {
-			
+			logger.error("서버 접속 실패");
 		}
 	}
 	
 	private void accessServer() {
 		try {
-			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n ☞ ");
+			logger.info("시스템 시작");
+			System.out.print("Port 번호를 입력하세요. \n ☞ ");
 			scanner = new Scanner(System.in);
 			port = scanner.nextInt();
-			ip = "localhost";
 			
 			if(port > 0 && port < 65536) {
 				client = new Socket("localhost", port);
-				System.out.print("[서버 접속 성공] 사용자 이름을 입력해주세요. \n ☞ ");
+				logger.info("서버 접속 중");
+				System.out.print("사용자 이름을 입력해주세요. \n ☞ ");
 				scanner.nextLine();
 				name = scanner.nextLine();
+				
 			} else {
 				new InputMismatchException();
 			}
 			
 		} catch (InputMismatchException e) {
-			System.out.println("[서버 접속 실패] 65536 보다 작은 양수를 입력하세요.");
+			logger.error("서버 접속 실패; 65536 보다 작은 양수를 입력하세요.");
 		} catch (UnknownHostException e) {
-			System.out.printf("[서버 접속 실패] %d는 불가능한 Port 번호입니다.");
-		} catch (Exception e) {
-			System.out.println("[서버 접속 실패]");
+			logger.error("서버 접속 실패; 불가능한 Port 번호입니다.");
+		} catch (IOException e) {
+			logger.error("서버 접속 실패; 불가능한 Port 번호입니다.");
 		}
 	}
 	
 	public static void main(String[] args) {
+		try {
+			logger = Logger.getLogger(EchoClient.class);
+			BasicConfigurator.configure();
+			FileInputStream log4jRead =new FileInputStream ("log4j.properties");
+			Properties log4jProperty=new Properties (); 
+			log4jProperty.load (log4jRead);
+			PropertyConfigurator.configure(log4jProperty);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		new EchoClient();
 	}
 }

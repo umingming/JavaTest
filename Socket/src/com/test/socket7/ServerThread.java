@@ -1,6 +1,6 @@
 package com.test.socket7;
 
-import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -8,7 +8,14 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Properties;
 import java.util.Scanner;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import com.test.socket8.EchoClient;
 
 public class ServerThread implements Runnable {
 	/*
@@ -34,6 +41,7 @@ public class ServerThread implements Runnable {
 		6. close 메소드
 			> 역순으로 닫음.
 	 */
+	
 	private Socket client;
 	private String name;
 	private String msg;
@@ -48,11 +56,21 @@ public class ServerThread implements Runnable {
 		setClient();
 	}
 	
+	/*
+		좋은 필터 스트림이란?
+		
+		채팅 프로그램; 개발하는데 제일 좋음?
+		소켓 ->  
+		재사용성 중요하다,,
+		개발 패턴,, 디자인 패턴,, -> 제가 알아서 잘
+		클라이언트만 씨샵+윈폼 -> 한 번,,,
+		ip 받을 수 있게 설정 -> 창이 떠야 함,,, 윈폼으로 할 것,,
+	 */
+	
 	private void setClient() {
 		try {
 			in = client.getInputStream();
 			reader = new Scanner(new InputStreamReader(in));
-			
 			out = client.getOutputStream();
 			writer = new PrintWriter(new OutputStreamWriter(out));
 			
@@ -98,4 +116,7 @@ public class ServerThread implements Runnable {
 			System.out.println("[사용자 종료 실패]");
 		}
 	}
+	/*
+		10만개 들어오면 어떻게 되는지, 스레드의 제한을 둬야하나?
+	 */
 }

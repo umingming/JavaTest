@@ -1,15 +1,11 @@
 package com.test.socket7;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.InputMismatchException;
@@ -48,7 +44,6 @@ public class EchoClient {
 	
 	private String name;
 	private String msg;
-	private String echo;
 	private int port;
 	
 	private OutputStream out;
@@ -65,6 +60,31 @@ public class EchoClient {
 			communicate();
 		}
 		close();
+	}
+
+	private void accessServer() {
+		try {
+			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n ☞ ");
+			scanner = new Scanner(System.in);
+			port = scanner.nextInt();
+			
+			if(port > 0 && port < 65536) {
+				client = new Socket("localhost", port); // ip
+				System.out.print("[서버 접속 중] 사용자 이름을 입력해주세요. \n ☞ ");
+				scanner.nextLine();
+				name = scanner.nextLine();
+				
+			} else {
+				new InputMismatchException();
+			}
+			
+		} catch (InputMismatchException e) {
+			System.out.println("[서버 접속 실패] 65536 보다 작은 양수를 입력하세요.");
+		} catch (UnknownHostException e) {
+			System.out.printf("[서버 접속 실패] %d는 불가능한 Port 번호입니다.");
+		} catch (Exception e) {
+			System.out.println("[서버 접속 실패]");   //불가능한 접속에서 안내하기
+		}
 	}
 	
 	private void close() {
@@ -106,31 +126,6 @@ public class EchoClient {
 			
 		} catch (IOException e) {
 			System.out.println("[통신 실패]");
-		}
-	}
-	
-	private void accessServer() {
-		try {
-			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n ☞ ");
-			scanner = new Scanner(System.in);
-			port = scanner.nextInt();
-			
-			if(port > 0 && port < 65536) {
-				client = new Socket("localhost", port);
-				System.out.print("[서버 접속 중] 사용자 이름을 입력해주세요. \n ☞ ");
-				scanner.nextLine();
-				name = scanner.nextLine();
-				
-			} else {
-				new InputMismatchException();
-			}
-			
-		} catch (InputMismatchException e) {
-			System.out.println("[서버 접속 실패] 65536 보다 작은 양수를 입력하세요.");
-		} catch (UnknownHostException e) {
-			System.out.printf("[서버 접속 실패] %d는 불가능한 Port 번호입니다.");
-		} catch (Exception e) {
-			System.out.println("[서버 접속 실패]");
 		}
 	}
 	

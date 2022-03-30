@@ -1,17 +1,8 @@
 package com.test.socket7;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
-
-import com.test.socket2.EchoServerThread;
 
 public class EchoServer {
 	/*
@@ -71,7 +62,7 @@ public class EchoServer {
 
 	private void setServer() {
 		try {
-			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n☞ ");
+			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n ☞ ");
 			
 			scan = new Scanner(System.in);
 			port = scan.nextInt();
@@ -85,7 +76,7 @@ public class EchoServer {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("[서버 생성 실패] 65536 보다 작은 양수를 입력하세요.");
+			System.out.println("[서버 생성 실패] 65536 보다 작은 양수를 입력하세요."); // 
 			System.exit(0);
 		}
 	}

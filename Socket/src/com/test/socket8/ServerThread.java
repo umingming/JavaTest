@@ -1,6 +1,6 @@
-package com.test.socket7;
+package com.test.socket8;
 
-import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -8,7 +8,12 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Properties;
 import java.util.Scanner;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 public class ServerThread implements Runnable {
 	/*
@@ -34,6 +39,7 @@ public class ServerThread implements Runnable {
 		6. close 메소드
 			> 역순으로 닫음.
 	 */
+	
 	private Socket client;
 	private String name;
 	private String msg;
@@ -43,11 +49,14 @@ public class ServerThread implements Runnable {
 	private Scanner reader;
 	private PrintWriter writer;
 
+	private Logger logger;
+
 	public ServerThread(Socket client) {
 		this.client = client;
+		setLogger();
 		setClient();
 	}
-	
+
 	private void setClient() {
 		try {
 			in = client.getInputStream();
@@ -57,10 +66,11 @@ public class ServerThread implements Runnable {
 			writer = new PrintWriter(new OutputStreamWriter(out));
 			
 			name = reader.nextLine();
-			System.out.printf("[사용자 접속 성공] %s님이 접속했습니다.%n", name);
+			logger.info("사용자 접속 성공");
+			System.out.printf("%s님이 접속했습니다.%n", name);
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("사용자 접속 실패");
 		}
 	}
 	
@@ -74,14 +84,14 @@ public class ServerThread implements Runnable {
 		try {
 			while(reader.hasNext()) {
 				msg = reader.nextLine();
-				String echo = String.format("[%s] %s"
+				String echo = String.format("[ %s ] %s"
 											, name, msg);
 				System.out.println(echo);
 				writer.println(echo);
 				writer.flush();
 			}
 		} catch (Exception e) {
-			System.out.println("[메시지 전송 실패]");
+			logger.error("메시지 전송 실패");
 		}
 	}
 	
@@ -92,10 +102,24 @@ public class ServerThread implements Runnable {
 			reader.close();
 			in.close();
 			client.close();
-			System.out.println("[접속 종료]");
+			logger.info("사용자 접속 종료");
+			System.out.printf("%s님이 종료합니다.%n", name);
 			
 		} catch (IOException e) {
-			System.out.println("[접속 종료 실패]");
+			logger.error("사용자 접속 종료 실패");
+		}
+	}
+	
+	private void setLogger() {
+		try {
+			logger = Logger.getLogger(ServerThread.class);
+			BasicConfigurator.configure();
+			FileInputStream log4jRead =new FileInputStream ("log4j.properties");
+			Properties log4jProperty=new Properties (); 
+			log4jProperty.load (log4jRead);
+			PropertyConfigurator.configure(log4jProperty);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
