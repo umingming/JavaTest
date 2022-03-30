@@ -92,10 +92,10 @@ public class ServerThread implements Runnable {
 			reader.close();
 			in.close();
 			client.close();
-			System.out.printf("[사용자 접속 종료] %s님이 종료합니다.%n", name);
+			System.out.println("[접속 종료]");
 			
 		} catch (IOException e) {
-			System.out.println("[사용자 종료 실패]");
+			System.out.println("[접속 종료 실패]");
 		}
 	}
 }

@@ -49,6 +49,7 @@ public class EchoClient {
 	private String name;
 	private String msg;
 	private String echo;
+	private String ip;
 	private int port;
 	
 	private OutputStream out;
@@ -86,10 +87,10 @@ public class EchoClient {
 			if(msg.equals("종료")) {
 				break;
 			}
-			
 			sender.println(msg);
 			sender.flush();
-			System.out.printf("%s%n ☞ ", receiver.nextLine());
+			System.out.println(receiver.nextLine());
+			System.out.print(" ☞ ");
 		}
 	}
 
@@ -102,10 +103,10 @@ public class EchoClient {
 			receiver = new Scanner(new InputStreamReader(in));
 			
 			sender.println(name);
-			System.out.printf("[통신 시작]%s님 환영합니다.%n ☞ ", name);
+			System.out.printf("%s님 환영합니다.%n ☞ ", name);
 			
 		} catch (IOException e) {
-			System.out.println("[통신 실패]");
+			
 		}
 	}
 	
@@ -114,13 +115,13 @@ public class EchoClient {
 			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n ☞ ");
 			scanner = new Scanner(System.in);
 			port = scanner.nextInt();
+			ip = "localhost";
 			
 			if(port > 0 && port < 65536) {
 				client = new Socket("localhost", port);
-				System.out.print("[서버 접속 중] 사용자 이름을 입력해주세요. \n ☞ ");
+				System.out.print("[서버 접속 성공] 사용자 이름을 입력해주세요. \n ☞ ");
 				scanner.nextLine();
 				name = scanner.nextLine();
-				
 			} else {
 				new InputMismatchException();
 			}
