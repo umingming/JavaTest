@@ -9,65 +9,136 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class EchoClient {
 	/*
 		클라이언트
 		- 서버에 메시지를 보내고, 해당 메시지를 돌려 받을 것.
 		
-		1. IP와 PORT를 매개로 Socket 생성 후 접속 메시지 출력
-		2. BufferedReader 생성해 입력 값을 name 변수에 초기화함.
-		3. 서버에 데이터를 보내기 위해 OutputStream 생성
-		4. 데이터를 되돌려 받기 위해 InputStream 생성
-		5. name을 writeUTF의 매개로 서버에 전송함.
-		6. msg 변수 선언
-		7. while문 입력 값을 msg에 초기화 후,
-			msg가 null이 아닐 경우를 조건으로 반복; (msg = reader.readLine()) != null
-			> msg를 writeUTF의 매개로 서버에 전송함.
-			> flush 메소드로 OutputStream 확인
-			> if문 InputStream의 존재 데이터가 0이 아닌가?
-				> readUTF를 출력함.
-		8. 스트림과 소켓을 역순으로 닫기
+		1. 필드 변수 선언
+			> socket, ip, port, name, msg, echo
+			> In/OutputStream, Scanner, PrintWriter
+		2. 생성자 정의
+			> accessServer 메소드 호출
+			> if문 클라이언트가 null이 아닌지? 
+				> setClient 메소드
+				> communicate 메소드 호출
+			> close 메소드 호출
+		3. accessServer 메소드
+			> Scanner 생성
+			> 입력 값을 port에 초기화
+			> 클라이언트 소켓 생성 후 접속 안내 메시지
+		4. setClient 메소드
+			> 스트림 변수에 client 소켓 스트림의 값을 초기화함.
+			> name을 println 메소드로 전송함.
+		5. communicate 메소드
+			> while문 입력 값이 있을 때까지 반복함.
+				> 입력 값을 msg에 초기화
+				> msg를 println으로 서버에 전송하고 flush 메소드로 확인
+				> flush 메소드로 OutputStream 확인
+		6. close 메소드
+			> 역순으로 닫음.
 	 */
-	public static void main(String[] args) {
+	private Socket client;
+	
+	private String name;
+	private String msg;
+	private String echo;
+	private String ip;
+	private int port;
+	
+	private OutputStream out;
+	private InputStream in;
+	private PrintWriter sender;
+	private Scanner receiver;
+	private Scanner scanner;
+	
+	public EchoClient() {
+		accessServer();
+		
+		if(client != null) {
+			setClient();
+			communicate();
+		}
+		close();
+	}
+	
+	private void close() {
 		try {
-			Socket client = new Socket("localhost", 1234);
-			System.out.print("[서버 접속] 사용자 이름을 입력하세요.\n ☞ ");
-			
-			BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-			String name = input.readLine();
-			
-			System.out.printf("[사용자 확인] %s님 환영합니다.%n ☞ ", name);
-
-			OutputStream out = client.getOutputStream();
-			PrintWriter writer = new PrintWriter(new OutputStreamWriter(out));
-
-			InputStream in = client.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-			
-			writer.println(name);
-			String msg;
-			
-			while((msg = input.readLine()) != null) {
-				if(input.equals("quit")) {
-					break;
-				}
-				writer.println(msg);
-				writer.flush();
-				System.out.println(reader.readLine());
-				System.out.print(" ☞ ");
-			}
-
-			reader.close();
-			in.close();
-			writer.close();
+			sender.close();
 			out.close();
-			input.close();
+			receiver.close();
+			in.close();
 			client.close();
+			System.out.println("[접속 종료]");
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("[접속 종료 실패]");
 		}
+	}
+
+	private void communicate() {
+		while(receiver.hasNext()) {
+			System.out.print(" ☞ ");
+			msg = scanner.nextLine();
+			sender.println(msg);
+			sender.flush();
+			
+			System.out.println(receiver.nextLine());
+		}
+	}
+
+	private void setClient() {
+		try {
+			out = client.getOutputStream();
+			sender = new PrintWriter(new OutputStreamWriter(out));
+	
+			in = client.getInputStream();
+			receiver = new Scanner(new InputStreamReader(in));
+			
+			if(name == null) {
+				name = "익명";
+			}
+			
+			sender.println(name);
+			System.out.printf("%s님 환영합니다.", name);
+			
+		} catch (IOException e) {
+			
+		}
+	}
+	
+	private void accessServer() {
+		try {
+			System.out.print("[시스템 시작] Port 번호를 입력하세요. \n☞ ");
+			scanner = new Scanner(System.in);
+			port = scanner.nextInt();
+			ip = "localhost";
+			
+			if(port > 0 && port < 65536) {
+				Socket client = new Socket("localhost", port);
+				System.out.println("[서버 접속 성공] 사용자 이름을 입력해주세요. \n☞ ");
+				name = scanner.nextLine();
+				
+			} else {
+				new InputMismatchException();
+			}
+			
+		} catch (InputMismatchException e) {
+			System.out.println("[서버 접속 실패] 65536 보다 작은 양수를 입력하세요.");
+		} catch (UnknownHostException e) {
+			System.out.printf("[서버 접속 실패] %d는 불가능한 Port 번호입니다.");
+		} catch (Exception e) {
+			System.out.println("[서버 접속 실패]");
+		}
+	}
+	
+	public static void main(String[] args) {
+		new EchoClient();
 	}
 }

@@ -75,7 +75,7 @@ public class ServerThread implements Runnable {
 		try {
 			while((msg = reader.readLine()) != null) {
 				String echo = String.format("[%s] %s"
-						, name, msg);
+											, name, msg);
 				System.out.println(echo);
 				writer.println(echo);
 				writer.flush();
@@ -92,6 +92,8 @@ public class ServerThread implements Runnable {
 			reader.close();
 			in.close();
 			client.close();
+			System.out.println("[접속 종료]");
+			
 		} catch (IOException e) {
 			System.out.println("[접속 종료 실패]");
 		}

@@ -1,14 +1,13 @@
 package com.test.socket6;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoClient {
@@ -32,9 +31,11 @@ public class EchoClient {
 	 */
 	public static void main(String[] args) {
 		try {
-			Socket client = new Socket("localhost", 1234);
+			
+			Socket client = new Socket("localhost", 2234);
 			System.out.print("[서버 접속] 사용자 이름을 입력하세요.\n ☞ ");
 			
+				
 			BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 			String name = input.readLine();
 			
