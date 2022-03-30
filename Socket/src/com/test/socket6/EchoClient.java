@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class EchoClient {
 	/*
@@ -36,8 +36,8 @@ public class EchoClient {
 			System.out.print("[서버 접속] 사용자 이름을 입력하세요.\n ☞ ");
 			
 				
-			BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-			String name = input.readLine();
+			Scanner input = new Scanner(new InputStreamReader(System.in));
+			String name = input.nextLine();
 			
 			System.out.printf("[사용자 확인] %s님 환영합니다.%n ☞ ", name);
 
@@ -45,18 +45,18 @@ public class EchoClient {
 			PrintWriter writer = new PrintWriter(new OutputStreamWriter(out));
 
 			InputStream in = client.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			Scanner reader = new Scanner(new InputStreamReader(in));
 			
 			writer.println(name);
 			String msg;
 			
-			while((msg = input.readLine()) != null) {
+			while((msg = input.nextLine()) != null) {
 				if(input.equals("quit")) {
 					break;
 				}
 				writer.println(msg);
 				writer.flush();
-				System.out.println(reader.readLine());
+				System.out.println(reader.nextLine());
 				System.out.print(" ☞ ");
 			}
 
