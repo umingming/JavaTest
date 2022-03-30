@@ -32,7 +32,7 @@ public class EchoClient {
 	public static void main(String[] args) {
 		try {
 			
-			Socket client = new Socket("localhost", 2234);
+			Socket client = new Socket("localhost", 1234);
 			System.out.print("[서버 접속] 사용자 이름을 입력하세요.\n ☞ ");
 			
 				

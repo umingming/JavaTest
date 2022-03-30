@@ -40,26 +40,23 @@ public class ServerThread implements Runnable {
 	
 	private InputStream in;
 	private OutputStream out;
-	private BufferedReader reader;
+	private Scanner reader;
 	private PrintWriter writer;
 
 	public ServerThread(Socket client) {
 		this.client = client;
 		setClient();
+		System.out.println(4);
 	}
 	
 	private void setClient() {
 		try {
 			in = client.getInputStream();
-			reader = new BufferedReader(new InputStreamReader(in));
+			reader = new Scanner(new InputStreamReader(in));
 			
 			out = client.getOutputStream();
 			writer = new PrintWriter(new OutputStreamWriter(out));
-		
-			if((name = reader.readLine()) == null) {
-				name = "익명";
-			}
-		
+			System.out.println(5);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -67,20 +64,32 @@ public class ServerThread implements Runnable {
 	
 	@Override
 	public void run() {
+		System.out.println(6);
 		echo();
+		System.out.println(11);
 		close();
 	}
 
 	private void echo() {
+		System.out.println(7);
+		if(reader.hasNext()) {
+			name = "익명";
+		}
+		System.out.println(8);
 		try {
-			while((msg = reader.readLine()) != null) {
-				String echo = String.format("[%s] %s"
-											, name, msg);
-				System.out.println(echo);
-				writer.println(echo);
-				writer.flush();
+			while(true) {
+				System.out.println(9);
+				if(reader.hasNext()) {
+					System.out.println(10);
+					msg = reader.nextLine();
+					String echo = String.format("[%s] %s"
+							, name, msg);
+					System.out.println(echo);
+					writer.println(echo);
+					writer.flush();
+				}
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			System.out.println("[메시지 전송 실패]");
 		}
 	}

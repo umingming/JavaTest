@@ -83,13 +83,19 @@ public class EchoClient {
 	}
 
 	private void communicate() {
-		while(receiver.hasNext()) {
+		while(true) {
 			System.out.print(" ☞ ");
 			msg = scanner.nextLine();
-			sender.println(msg);
-			sender.flush();
 			
-			System.out.println(receiver.nextLine());
+			if(msg.equals("종료")) {
+				return;
+			}
+
+			if(receiver.hasNext()) {
+				sender.println(msg);
+				sender.flush();
+				System.out.println(receiver.nextLine());
+			}
 		}
 	}
 
@@ -101,7 +107,7 @@ public class EchoClient {
 			in = client.getInputStream();
 			receiver = new Scanner(new InputStreamReader(in));
 			
-			if(name == null) {
+			if(name.equals("")) {
 				name = "익명";
 			}
 			
@@ -121,7 +127,7 @@ public class EchoClient {
 			ip = "localhost";
 			
 			if(port > 0 && port < 65536) {
-				Socket client = new Socket("localhost", port);
+				client = new Socket("localhost", port);
 				System.out.println("[서버 접속 성공] 사용자 이름을 입력해주세요. \n☞ ");
 				name = scanner.nextLine();
 				
