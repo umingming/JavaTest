@@ -11,6 +11,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
+import com.test.socket2.EchoServerThread;
+
 public class EchoServer {
 	/*
 		에코 서버
@@ -40,45 +42,31 @@ public class EchoServer {
 	private ServerSocket server;
 	private Socket client;
 	
-	private InputStream in;
-	private OutputStream out;
-	private BufferedReader reader;
-	private PrintWriter writer;
 	private Scanner scan;
-	
 	private int port;
-	private String name;
-	private String msg;
 	
 	public EchoServer() {
+		setServer();
+		
+		if(server != null) {
+			communicate();
+		}
+	}
+	
+	private void communicate() {
 		try {
-			setServer();
-			
 			while(true) {
 				client = server.accept();
 				System.out.println("[사용자 접속 대기]");
 				
-				setClient();
+				ServerThread serverThread = new ServerThread(client);
+				Thread thread = new Thread(serverThread);
+				thread.start();
 			}
-			
 		} catch (Exception e) {
-			System.out.println("[시스템 종료]");
+			System.out.println("[사용자 접속 실패]");
 			System.exit(0);
-		} finally {
-			close();
-		}
-	}
-	
-	private void close() {
-		try {
-			writer.close();
-			out.close();
-			reader.close();
-			in.close();
-			client.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	private void setServer() {
@@ -93,53 +81,12 @@ public class EchoServer {
 				System.out.printf("[서버 생성 성공] Port 번호는 %d입니다.%n"
 									, server.getLocalPort());
 			} else {
-				System.out.println("[서버 생성 실패] 65536 보다 작은 양수를 입력하세요.");
-				System.exit(0);
+				new Exception();
 			}
 			
 		} catch (Exception e) {
 			System.out.println("[서버 생성 실패] 65536 보다 작은 양수를 입력하세요.");
 			System.exit(0);
-		}
-	}
-
-	private void setClient() {
-		try {
-			in = client.getInputStream();
-			reader = new BufferedReader(new InputStreamReader(in));
-			
-			out = client.getOutputStream();
-			writer = new PrintWriter(new OutputStreamWriter(out));
-			
-			name = reader.readLine();
-			System.out.printf("[사용자 접속 성공] %s님이 접속했습니다.%n", name);
-			
-			Thread thread = new Thread() {
-				@Override
-				public void run() {
-					echo();
-				}
-			};
-			thread.start();
-			
-		} catch (IOException e) {
-			System.out.println("[사용자 접속 실패]");
-			System.exit(0);
-		}
-	}
-	
-	private void echo() {
-		try {
-			while((msg = reader.readLine()) != null) {
-				String echo = String.format("[%s] %s"
-											, name, msg);
-				System.out.println(echo);
-				writer.println(echo);
-				writer.flush();
-			}
-			
-		} catch (IOException e) {
-			System.out.println("[메시지 전송 실패]");
 		}
 	}
 	
