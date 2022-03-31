@@ -1,4 +1,4 @@
-package com.test.socket7;
+package com.test.socket;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,35 +13,11 @@ import java.net.UnknownHostException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/*
+	에코 클라이언트
+	- 서버에 메시지를 보내고, 해당 메시지를 돌려 받을 것.
+ */
 public class EchoClient {
-	/*
-		클라이언트
-		- 서버에 메시지를 보내고, 해당 메시지를 돌려 받을 것.
-		
-		1. 필드 변수 선언
-			> socket, ip, port, name, msg, echo
-			> In/OutputStream, Scanner, PrintWriter
-		2. 생성자 정의
-			> accessServer 메소드 호출
-			> if문 클라이언트가 null이 아닌지? 
-				> setClient 메소드
-				> communicate 메소드 호출
-			> close 메소드 호출
-		3. accessServer 메소드
-			> Scanner 생성
-			> 입력 값을 port에 초기화
-			> 클라이언트 소켓 생성 후 접속 안내 메시지
-		4. setClient 메소드
-			> 스트림 변수에 client 소켓 스트림의 값을 초기화함.
-			> name을 println 메소드로 전송함.
-		5. communicate 메소드
-			> while문 입력 값이 있을 때까지 반복함.
-				> 입력 값을 msg에 초기화
-				> msg를 println으로 서버에 전송하고 flush 메소드로 확인
-				> flush 메소드로 OutputStream 확인
-		6. close 메소드
-			> 역순으로 닫음.
-	 */
 	private Socket client;
 	
 	private String name;
@@ -54,6 +30,14 @@ public class EchoClient {
 	private Scanner receiver;
 	private Scanner scanner;
 	
+	/*
+		생성자 정의
+		1. accessServer 메소드 호출
+		2. if문 클라이언트가 null이 아닌지? 
+			> setClient 메소드
+			> communicate 메소드 호출
+		3. close 메소드 호출
+	 */
 	public EchoClient() {
 		accessServer();
 		
@@ -64,6 +48,17 @@ public class EchoClient {
 		close();
 	}
 
+	/*
+		accessServer; 서버 접근을 위한 메소드
+		1. Scanner 생성자 호출 후 초기화
+		2. 입력 값을 port에 저장
+		3. if문 port가 허용 범위내인지? 
+			> port를 매개로 클라이언트 소켓 생성
+			> 이름을 입력 받고 name 변수에 초기화
+		4. 예외 처리
+			> 잘못된 port 넘버일 경우; 사용할 수 없거나 사용 중인 port
+			> IP가 불가능한 경우
+	 */
 	private void accessServer() {
 		try {
 			scanner = new Scanner(System.in);
@@ -71,7 +66,7 @@ public class EchoClient {
 			port = scanner.nextInt();
 			
 			if(port > 0 && port < 65536) {
-				client = new Socket("localhost", port); // ip
+				client = new Socket("localhost", port); 
 				System.out.print("[서버 접속 중] 사용자 이름을 입력해주세요. \n ☞ ");
 				scanner.nextLine();
 				name = scanner.nextLine();
@@ -91,32 +86,11 @@ public class EchoClient {
 		} 
 	}
 	
-	private void close() {
-		try {
-			sender.close();
-			out.close();
-			receiver.close();
-			in.close();
-			client.close();
-			System.out.println("[접속 종료]");
-			
-		} catch (IOException e) {
-			System.out.println("[접속 종료 실패]");
-		}
-	}
-
-	private void communicate() {
-		while((msg = scanner.nextLine()) != null) {
-			if(msg.equals("종료")) {
-				break;
-			}
-			
-			sender.println(msg);
-			sender.flush();
-			System.out.printf("%s%n ☞ ", receiver.nextLine());
-		}
-	}
-
+	/*
+		setClient(); 클라이언트 정보 설정
+		1. 스트림 변수에 client 소켓 스트림의 값을 초기화함.
+		2. name을 println 메소드로 서버에 전송함.
+	 */
 	private void setClient() {
 		try {
 			out = client.getOutputStream();
@@ -132,7 +106,49 @@ public class EchoClient {
 			System.out.println("[통신 실패]");
 		}
 	}
+
+	/*
+		communicate 메소드
+		1. while문 입력 값을 msg에 초기화 후 null이 아닐 경우 반복함.  
+			> if문 msg가 종료이면, break
+			> msg를 println으로 서버에 전송하고 flush 메소드로 확인함.
+			> 서버로부터 돌려 받은 값을 출력함.
+	 */
+	private void communicate() {
+		while((msg = scanner.nextLine()) != null) {
+			if(msg.equals("종료")) {
+				break;
+			}
+			
+			sender.println(msg);
+			sender.flush();
+			System.out.printf("%s%n ☞ ", receiver.nextLine());
+		}
+	}
 	
+	/*
+		close 메소드
+		1. 스트림과 소켓을 역순으로 닫음.
+		2. 접속 종료 여부를 안내함.
+	 */
+	private void close() {
+		try {
+			sender.close();
+			out.close();
+			receiver.close();
+			in.close();
+			client.close();
+			System.out.println("[접속 종료]");
+			
+		} catch (IOException e) {
+			System.out.println("[접속 종료 실패]");
+		}
+	}
+	
+	/*
+		메인 메소드
+		1. 생성자 호출
+	 */
 	public static void main(String[] args) {
 		new EchoClient();
 	}
