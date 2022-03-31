@@ -42,7 +42,7 @@ public class EchoServer {
 	
 	private InputStream in;
 	private OutputStream out;
-	private Scanner reader;
+	private BufferedReader reader;
 	private PrintWriter writer;
 	private Scanner scan;
 	
@@ -106,12 +106,12 @@ public class EchoServer {
 	private void setClient() {
 		try {
 			in = client.getInputStream();
-			reader = new Scanner(new InputStreamReader(in));
+			reader = new BufferedReader(new InputStreamReader(in));
 			
 			out = client.getOutputStream();
 			writer = new PrintWriter(new OutputStreamWriter(out));
 			
-			name = reader.nextLine();
+			name = reader.readLine();
 			System.out.printf("[사용자 접속 성공] %s님이 접속했습니다.%n", name);
 			
 			Thread thread = new Thread() {
@@ -130,8 +130,7 @@ public class EchoServer {
 	
 	private void echo() {
 		try {
-			while(reader.hasNext()) {
-				msg = reader.nextLine();
+			while((msg = reader.readLine()) != null) {
 				String echo = String.format("[%s] %s"
 											, name, msg);
 				System.out.println(echo);
