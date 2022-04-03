@@ -18,7 +18,7 @@ public class EchoServer {
 		int port = 10001; //포트 번호 
 		
 		try{ 
-			serverSocket = new ServerSocket(port); //포트에 서버소켓을 붙인다(Bind) 
+			serverSocket = new ServerSocket(port); //포트에 서버소켓을 붙인다(Bind) ? 소켓 생성
 			System.out.println(getTime() + " 서버가 준비되었습니다."); 
 			Socket socket = serverSocket.accept(); // 클라이언트의 접속을 허가한다.(Accept) 
 			InetAddress clientAddress = socket.getInetAddress(); // 클라이언트의 주소를 가져온다. 
@@ -27,6 +27,7 @@ public class EchoServer {
 			InputStream in =socket.getInputStream(); //클라이언트 소켓의 바이트 스트림을 입력한다. 
 			PrintWriter pw = new PrintWriter(new OutputStreamWriter(out)); 
 			BufferedReader br = new BufferedReader(new InputStreamReader(in)); 
+			
 			String recvStr = null; //받은 문자열 
 			while((recvStr = br.readLine()) != null){ 
 				System.out.println(getTime() + " 클라이언트로부터 받은 문자열 : " + recvStr); 
