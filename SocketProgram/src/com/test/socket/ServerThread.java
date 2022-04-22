@@ -23,7 +23,6 @@ public class ServerThread implements Runnable {
 	private Socket client;
 	private String name;
 	private String msg;
-	private String time;
 	
 	private InputStream in;
 	private OutputStream out;
@@ -85,14 +84,15 @@ public class ServerThread implements Runnable {
 	private void echo() {
 		try {
 			while(receiver.hasNext()) {
-				String echo = String.format("%s [%s]"
-										, msg = receiver.nextLine()
-										, time = getTime());
-				System.out.printf("[%tF %s] %s님이 메시지를 수신했습니다.%n ☞ %s%n"
-									, calendar, time, name, msg);
+				msg = receiver.nextLine();
+				String time = getTime();
+				String echo = String.format("%s: %s %s"
+										, name, msg, time);
+				System.out.printf("%s %s님이 메시지를 수신했습니다.%n%s%n",
+									time, name, msg);
 				sender.println(echo);
-				System.out.printf("[%tF %s] %s님에게 메시지를 발신했습니다.%n ☞ %s%n"
-									, calendar, getTime(), name, echo);
+				System.out.printf("%s %s님에게 메시지를 발신했습니다.%n%s%n",
+						getTime(), name, echo);
 				sender.flush();
 			}
 		} catch (Exception e) {
@@ -120,7 +120,7 @@ public class ServerThread implements Runnable {
 	}
 	
 	private static String getTime() {
-		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("[HH:mm:ss]");
         return format.format(new Date());
 	}
 }

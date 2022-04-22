@@ -57,7 +57,7 @@ public class EchoServer {
 			} else {
 				new InputMismatchException();
 			}
-				
+			
 		} catch (InputMismatchException e) {
 			System.out.println("[서버 접속 실패] 65536 보다 작은 양수를 입력하세요.");
 		} catch (SocketException e) {
