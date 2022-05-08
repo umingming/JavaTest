@@ -1,11 +1,12 @@
 package com.aim.test;
 
 public class Temp {
-	public static int a = 100;
 	public static void main(String[] args) {
-		public int b = 10;
-		final double pi = 3.14;
-		System.out.println(a);
+		int[] numbers = {2, -9, 0, 5, 12, -25, 22, 9, 8, 12};
+		int sum = 0;
+		for(int number : numbers)
+				sum += number;
+		
 	}
 
 }
