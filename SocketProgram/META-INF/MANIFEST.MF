@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SocketProgram
+Bundle-SymbolicName: SocketProgram
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: SocketProgram.jar,
+ user/OneDrive - AIM System
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: .,
+ com.test.socket
