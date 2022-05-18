@@ -54,8 +54,6 @@ public class ServerThread implements Runnable {
 			sender = new PrintWriter(new OutputStreamWriter(out));
 			
 			name = receiver.nextLine();
-//			System.out.println(new String(name, StandardCharsets.UTF_8));
-//			name = "유미";
 			System.out.printf("[사용자 접속 성공] %s님이 접속했습니다.%n", name);
 
 		} catch (IOException e) {
