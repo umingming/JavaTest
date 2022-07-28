@@ -10,15 +10,19 @@ import java.text.SimpleDateFormat;
 public class BasicSorter {
 	/*
 	 	파일 분류
-	 	1. 폴더 경로 지정
-	 	2. 하위 파일 존재 확인
-	 		> 파일 생성날짜에 해당하는 폴더로 이동
+	 	1. 폴더 경로 지정 후 파일리스트 초기화
+	 	2. 하위 파일 반복 확인
+	 		> desktop.ini가 파일명이면 무시
+	 		> 새로운 경로 지정
+	 		> 수정 내역 확인
 	 */
 	public static void main(String[] args) throws IOException {
-		File dir = new File("C:\\Users\\user\\Downloads");
+		File dir = new File("C:\\Users\\user\\OneDrive - AIM System, Inc\\바탕 화면");
 		File[] fileList = dir.listFiles();
 		
 		for (File file : fileList) {
+			if (file.getName().equals("desktop.ini")) continue;
+			
 			String newPath = String.format("%s\\%s"
 											, createDirectory(file)
 											, file.getName());

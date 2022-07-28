@@ -9,8 +9,13 @@ import java.text.SimpleDateFormat;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		File dir = new File("C:\\YouMe\\교육");
-		System.out.println(countFile(dir));
+		File file = new File("C:\\YouMe\\업무 파일\\2207\\220727\\desktop.ini");
+		System.out.println(file.exists());
+		File newFile = new File("C:\\Users\\user\\OneDrive - AIM System, Inc\\바탕 화면\\desktop.ini");
+		System.out.println(newFile.exists());
+		System.out.println(file.renameTo(newFile));
+		System.out.println(newFile);
+		System.out.println(file);
 	}
 
 	private static int countFile(File dir) {
