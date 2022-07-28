@@ -19,21 +19,55 @@ public class BasicSorter {
 		File[] fileList = dir.listFiles();
 		
 		for (File file : fileList) {
-			if (file.getName().indexOf('o') > 0) continue;
-			System.out.println(file);
-			BasicFileAttributes fileAttrs = null;
-			fileAttrs = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
-			DateFormat format = new SimpleDateFormat("yyMMdd");
-			String creationTime = format.format(fileAttrs.lastModifiedTime().toMillis());
+			if(file.getName().indexOf('o') > 0) continue;
 			
-			String newDirPath = String.format("C:\\YouMe\\업무 파일\\%s\\%s\\" 
-												, creationTime.substring(0, 4) 
-												, creationTime);
-			File newDir = new File(newDirPath);
-			newDir.mkdirs();
-			File newFile = new File(newDirPath + file.getName());
+			BasicFileAttributes fileAttrs 
+				= Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+
+			DateFormat format = new SimpleDateFormat("yyMMdd");
+			String fileDate = format.format(fileAttrs.lastModifiedTime().toMillis());
+			
+			String newPath = String.format("C:\\YouMe\\업무 파일\\%s\\%s\\%s"
+												, fileDate.substring(0, 4) 
+												, fileDate
+												, file.getName());
+			File newFile = new File(newPath);
+			newFile.mkdirs();
+			
 			System.out.println(newFile);
 			System.out.println(file.renameTo(newFile));
 		}
+	}
+	
+	/*
+		create directory; 해당 파일의 상위 폴더 생성
+		1. 파일 날짜 확인 후, 변수에 초기화
+		2. 날짜를 토대로 경로 선언 후, 파일 생성
+		3. 해당 파일을 반환함.
+	 */
+	public static File createDirectory(File file) throws IOException {
+		String fileDate = getFileDate(file);
+		String path = String.format("C:\\YouMe\\업무 파일\\%s\\%s\\%s"
+											, fileDate.substring(0, 4) 
+											, fileDate);
+		File dir = new File(path);
+		dir.mkdirs();
+		
+		return dir;
+	}
+
+	/*
+	 	get file date
+	 	1. 데이터 포맷 지정
+		2. 파일 날짜 확인 후 변수에 초기화
+	 */
+	public static String getFileDate(File file) throws IOException {
+		DateFormat format = new SimpleDateFormat("yyMMdd");
+
+		BasicFileAttributes fileAttrs 
+			= Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+		String fileDate = format.format(fileAttrs.lastModifiedTime().toMillis());
+
+		return fileDate;
 	}
 }
