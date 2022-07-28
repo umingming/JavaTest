@@ -40,8 +40,8 @@ public class BasicSorter {
 	public static File createDirectory(File file) throws IOException {
 		String fileDate = getFileDate(file);
 		String path = String.format("C:\\YouMe\\업무 파일\\%s\\%s"
-											, fileDate.substring(0, 4) 
-											, fileDate);
+										, fileDate.substring(0, 4) 
+										, fileDate);
 		File dir = new File(path);
 		dir.mkdirs();
 		
