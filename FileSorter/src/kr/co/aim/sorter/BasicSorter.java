@@ -17,7 +17,7 @@ public class BasicSorter {
 	 		> 수정 내역 확인
 	 */
 	public static void main(String[] args) throws IOException {
-		File dir = new File("C:\\Users\\user\\Downloads");
+		File dir = new File("C:\\Users\\user\\OneDrive - AIM System, Inc\\바탕 화면");
 		File[] fileList = dir.listFiles();
 		
 		for (File file : fileList) {
