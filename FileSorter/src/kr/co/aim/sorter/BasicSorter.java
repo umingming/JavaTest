@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Scanner;
 
 public class BasicSorter {
 	/*
@@ -29,6 +30,9 @@ public class BasicSorter {
 			System.out.printf("%s%n -> %s ", file, newPath);
 			System.out.printf("[%s]%n", file.renameTo(new File(newPath)));
 		}
+		
+		Scanner scan = new Scanner(System.in);
+		scan.nextLine();
 	}
 	
 	/*
