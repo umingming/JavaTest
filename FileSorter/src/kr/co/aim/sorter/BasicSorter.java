@@ -30,9 +30,6 @@ public class BasicSorter {
 			System.out.printf("%s%n -> %s ", file, newPath);
 			System.out.printf("[%s]%n", file.renameTo(new File(newPath)));
 		}
-		
-		Scanner scan = new Scanner(System.in);
-		scan.nextLine();
 	}
 	
 	/*
