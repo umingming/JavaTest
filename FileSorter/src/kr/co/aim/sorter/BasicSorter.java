@@ -7,6 +7,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BasicSorter {
 	/*
@@ -18,7 +20,7 @@ public class BasicSorter {
 	 		> 수정 내역 확인
 	 */
 	public static void main(String[] args) throws IOException {
-		File dir = new File("C:\\Users\\user\\OneDrive - AIM System, Inc\\바탕 화면");
+		File dir = new File("C:\\Users\\user\\Downloads");
 		File[] fileList = dir.listFiles();
 		
 		for (File file : fileList) {
@@ -39,14 +41,28 @@ public class BasicSorter {
 		3. 해당 파일을 반환함.
 	 */
 	public static File createDirectory(File file) throws IOException {
+		String projectName = getProjectName(file.getName()); 
 		String fileDate = getFileDate(file);
-		String path = String.format("C:\\YouMe\\업무 파일\\%s\\%s"
+		String path = String.format("D:\\YouMe\\업무 파일\\%s\\%s\\%s"
+										, projectName
 										, fileDate.substring(0, 4) 
 										, fileDate);
 		File dir = new File(path);
 		dir.mkdirs();
 		
 		return dir;
+	}
+
+	/*
+	 	get project name
+	 	1. 프로젝트 패턴 정의 후 Matcher 선언
+		2. 파일 날짜 확인 후 변수에 초기화
+	 */
+	public static String getProjectName(String fileName) throws IOException {
+		Pattern pattern = Pattern.compile("WMS|RMS", Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(fileName);
+		
+		return matcher.find() ? matcher.group(0).toUpperCase() : "etc";
 	}
 
 	/*
