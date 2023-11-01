@@ -56,10 +56,10 @@ public class BasicSorter {
 	/*
 	 	get project name
 	 	1. 프로젝트 패턴 정의 후 Matcher 선언
-		2. 파일 날짜 확인 후 변수에 초기화
+		2. 일치하는 프로젝트명 반환
 	 */
 	public static String getProjectName(String fileName) throws IOException {
-		Pattern pattern = Pattern.compile("WMS|RMS", Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile("WMS|RMS|업무일지|MES", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(fileName);
 		
 		return matcher.find() ? matcher.group(0).toUpperCase() : "etc";
