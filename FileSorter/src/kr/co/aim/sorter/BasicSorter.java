@@ -57,6 +57,7 @@ public class BasicSorter {
 	 	get project name
 	 	1. 프로젝트 패턴 정의 후 Matcher 선언
 		2. 일치하는 프로젝트명 반환
+			- 없을 경우 etc
 	 */
 	public static String getProjectName(String fileName) throws IOException {
 		Pattern pattern = Pattern.compile("WMS|RMS|업무일지|MES", Pattern.CASE_INSENSITIVE);
