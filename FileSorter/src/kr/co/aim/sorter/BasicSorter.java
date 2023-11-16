@@ -20,7 +20,7 @@ public class BasicSorter {
 	 		> 수정 내역 확인
 	 */
 	public static void main(String[] args) throws IOException {
-		File dir = new File("C:\\Users\\user\\Downloads");
+		File dir = new File("C:\\Users\\user\\OneDrive - AIM System, Inc\\바탕 화면");
 		File[] fileList = dir.listFiles();
 		
 		for (File file : fileList) {
@@ -60,7 +60,7 @@ public class BasicSorter {
 			- 없을 경우 etc
 	 */
 	public static String getProjectName(String fileName) throws IOException {
-		Pattern pattern = Pattern.compile("WMS|RMS|업무일지|MES", Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile("WMS|RMS|업무일지|MES|SFM", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(fileName);
 		
 		return matcher.find() ? matcher.group(0).toUpperCase() : "etc";
