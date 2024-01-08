@@ -21,6 +21,7 @@ public class BasicSorter {
 	 */
 	public static void main(String[] args) throws IOException {
 		File dir = new File("C:\\Users\\user\\OneDrive - AIM System, Inc\\바탕 화면");
+//		File dir = new File("C:\\Users\\user\\Downloads");
 		File[] fileList = dir.listFiles();
 		
 		for (File file : fileList) {
